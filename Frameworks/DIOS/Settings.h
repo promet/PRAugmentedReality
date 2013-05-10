@@ -1,4 +1,5 @@
-#define kDiosBaseUrl @"http://d7.workhabit.com"
+#import "ARSettings.h"
+
 #define kDiosEndpoint @"test"
 #define kDiosBaseNode @"node"
 #define kDiosBaseComment @"comment"

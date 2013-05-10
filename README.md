@@ -1,7 +1,7 @@
 PRAugmentedReality
 ==================
 
-PRAugmentedReality is an easy to use iOS AR Library. It also includes communication protocols with a Custom Drupal Services AR Module (In the works).
+PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also includes communication protocols with a Custom Drupal Module (In the works).
 
 ==================
 
@@ -29,19 +29,30 @@ Several frameworks are required for PRAugmentedReality to work in your app:
 
 3 Frameworks are included in the Library for your convenience:
 * [fmdb](https://github.com/ccgus/fmdb)
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
-* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking) 	--> See notes for manual changes
+* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)		--> See notes for manual changes
 
 You are free to remove them and use the most up to date versions or use tools like cocoapods.
 
-Please note that AFNetworking only supports ARC. As PRAugmentedReality does not yet support ARC, you must manually flag AFNetworking files with "-fobjc-arc"
+The `ARSettings.h` file is where all global constants are set. This is where you will set the URL of the site to get data from.
+
+
+### Notes:
+
+AFNetworking - Please note that AFNetworking only supports ARC. As PRAugmentedReality does not yet support ARC, you must manually flag AFNetworking files with "-fobjc-arc"
 
 (in `Build Phases->Compile Sources`)
+
+DIOS - Please note that in order to keep all the settings in one place, it is required to edit the `Settings.h` file in DIOS.
+
+Replace `#import "Settings.h"` with `#import "ARSettings.h"`
 
 
 ### Version Requirements
 
 PRAugmentedReality is compatible with iOS 5.0 or later.
 
+
 ### Documentation
+
 To come

@@ -7,7 +7,7 @@
 //
 
 
-#define REFRESH_RATE            1/30    //30hz
+#define REFRESH_RATE            1/30    // 30hz
 #define DELAY_FOR_UPDATE        2       // How long to wait for everything to be started before going to look for updated places
 
 
@@ -19,29 +19,18 @@
 
 // -- Overlays & Container View -- //
 
-#define AR_VIEW_TAG             042313  // Random number to tag the view with
+#define AR_VIEW_TAG             042313  // Random number to tag the view that contains the overlays with
+
+#define VERTICAL_SENS           960     // The vertical sensitivity of the overlays --> How fast they move up & down with the accelerometer data
+#define HORIZ_SENS              14      // Counterpart of the VERTICAL_SENS --> How fast they move left & right with the accelerometer data
 
 #define TOOLBAR_HEIGHT          40
-#define OVERLAY_VIEW_WIDTH      350*HORIZ_SENS
+#define OVERLAY_VIEW_WIDTH      350*HORIZ_SENS  // The size of the view that contains the overlays, simulates a 360 view
 
-#define VERTICAL_SENS           960     // The sensitivity of the overlays, basically
-#define HORIZ_SENS              14      // how fast/slow the overlays move with the accelerometer
-
-#define X_CENTER                160
-#define Y_CENTER                150
-
-#define MAP_OVERLAY_X           20
-#define MAP_OVERLAY_Y           184
+#define X_CENTER                160     // Vertical center value to use to position the overlays
+#define Y_CENTER                150     // Horizontal center value to use to position the overlays
 
 #define MAXIMUM_DISTANCE        10.0    // The maximum distance the "distance" label should show, in Miles
-
-
-// -- Database -- //
-
-#define DB_FILE_NAME            @"db.sqlite"
-
-#define AR_COORDINATES_TABLE    @"arct"
-#define AR_DETAILS_TABLE        @"ardt"
 
 
 // -- Update Timestamp -- //
@@ -49,24 +38,33 @@
 #define TIMESTAMP_FILE          @"timestamp.time"
 
 
-// -- MATH -- //
+// -- MATH -- //                // Some of the values below may seem redundant but they do in fact remove overhead floating-point calculations
 
-#define inc_avg(x) (x+currentInclination)/2 // Average of the new inclination with the previous
+#define inc_avg(x)              (x+currentInclination)/2    // Average of the new inclination with the previous --> Rudimentary padding mechanism
 
-#define max(x,y) (x > y ? x : y)
-#define min(x,y) (x < y ? x : y)
+#define max(x,y)                (x > y ? x : y)
+#define min(x,y)                (x < y ? x : y)
 
-#define meterToMiles        0.00062137
-#define latitudeToMeters    111072
-#define longitudeToMeters   82905
-#define lat_over_lon        1.33975031663
+#define meterToMiles            0.00062137
+#define latitudeToMeters        111072
+#define longitudeToMeters       82905
+#define lat_over_lon            1.33975031663
 
-#define METERS_PER_MILE_OVER_2 1609.344/2
+#define METERS_PER_MILE_OVER_2  1609.344/2
 
-#define DEGREES( radians ) ((radians)*180/M_PI)
+#define DEGREES( radians )      ((radians)*180/M_PI)
 
 
-// -- Drupal Connectivity -- //
+// -- Drupal Connectivity -- //                 // Ties in to the Drupal mobile_ar_connector module
 
-#define BaseARNode @"ar_object"
-#define Endpoint @"prar"
+#define kDiosBaseUrl            @"http://192.168.1.34/prometar"
+#define BaseARNode              @"ar_object"    // Example content type resource as in the Drupal example distro
+#define Endpoint                @"prar"         // Example endpoint as in the Drupal example distro
+
+
+// -- Database -- //                            // Data is split into multiple tables for efficiency when using large datasets.
+
+#define DB_FILE_NAME            @"db.sqlite"
+
+#define AR_COORDINATES_TABLE    @"arct"
+#define AR_DETAILS_TABLE        @"ardt"
