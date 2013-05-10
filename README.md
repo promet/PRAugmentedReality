@@ -1,20 +1,33 @@
 PRAugmentedReality
 ==================
 
-PRAugmentedReality is an easy to use iOS AR Library. It also includes communication protocols with a "Custom Drupal Services AR Module":http://...to_come..._
+PRAugmentedReality is an easy to use iOS AR Library. It also includes communication protocols with a Custom Drupal Services AR Module (In the works).
 
 ==================
 
-It provides:
+### What it provides
+
 * An Augmented reality view out-of-the-box
 * Customizable AR Overlays
 * Simple and efficient Data Storing for AR Objects using SQLite DB
 * Communication system with a Drupal module for simple creation of content on a site
 
-Notes:
-AFNetworking only supports ARC. As this framework does not yet support it, you must manually flag each AFNetworking file with "-fobjc-arc" in "Build Phases"->"Compile Sources"
+### Notes
 
-Version Requirements:
+3 Frameworks are included in the Library for your convenience:
+* [fmdb](https://github.com/ccgus/fmdb)
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)
+* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)
+
+You are free to remove them and use the most up to date versions or use tools like cocoapods.
+
+Please note that AFNetworking only supports ARC. As PRAugmentedReality does not yet support ARC, you must manually flag AFNetworking files with "-fobjc-arc"
+
+(in `Build Phases->Compile Sources`)
+
+### Version Requirements
+
 PRAugmentedReality is compatible with iOS 5.0 or later.
 
-Documentation is available "here":http://...to_come..._
+### Documentation
+To come
