@@ -31,7 +31,7 @@
 
 #pragma mark - Data Delegate
 
-- (void)gotNearARData:(NSArray*)arObjects {
+- (void)gotNearData:(NSArray*)arObjects {
     
     int x_pos;
     for (ARObject *arObject in arObjects) {
@@ -47,51 +47,88 @@
                            forKey:[arObject.getARObjectData objectForKey:@"id"]];
     }
     
-    [[self delegate] arControllerDidFinishWithData:geoobjectOverlays];
-    
-    [dataController performSelector:@selector(fetchUpdatedARObjects) withObject:nil afterDelay:DELAY_FOR_UPDATE];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:dataController
-                                             selector:@selector(fetchUpdatedARObjects)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
+    [[self delegate] arControllerDidSetupData:geoobjectOverlays];
 }
 
-- (void)gotUpdatedARNearData:(NSArray*)arObjects {
-    int x_pos;
-    for (ARObject *arObject in arObjects) {
-        x_pos = [locWork getARObjectXPosition:arObject];
-        
-        [geoobjectOverlays setObject:arObject
-                              forKey:[arObject.getARObjectData objectForKey:@"id"]];
-        
-        [geoobjectPositions setObject:[NSNumber numberWithInt:x_pos]
-                               forKey:[arObject.getARObjectData objectForKey:@"id"]];
-        
-        [geoobjectVerts setObject:[NSNumber numberWithInt:1]
-                           forKey:[arObject.getARObjectData objectForKey:@"id"]];
-    }
-    
-    [[self delegate] arControllerDidFinishWithData:geoobjectOverlays];
+- (void)gotUpdatedData {
+    gotUpdate = YES;
+    [[self delegate] arControllerGotUpdatedData];
 }
-- (void)gotAllARData:(NSDictionary*)arObjects {
-    [[self delegate] arControllerDidFinishWithData:arObjects];
-}
-
-
-#pragma mark - Location Delegate
-
-- (void)gotPreciseLocation:(CLLocationCoordinate2D)preciseLocation {
-    [dataController getGeoObjectsNear:preciseLocation forUpdate:NO];
+- (void)gotAllData:(NSDictionary*)arObjects {
+    [[self delegate] arControllerDidSetupData:arObjects];
 }
 
 
 #pragma mark - Initialisers
 
+-(void)setupAllData {
+    if (tries == MAX_NUMBER_OF_TRIES) {
+        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... the distance between you and places won't be accurate"];
+    } else if (!locWork.gotPreciseEnoughLocation) {
+        tries++;
+        [self performSelector:@selector(setupAllData)
+                   withObject:nil
+                   afterDelay:1];
+    }
+    tries = 0;
+    
+    gotUpdate = NO;
+    [dataController getAllARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+}
+-(void)setupNeardata {
+    if (tries == MAX_NUMBER_OF_TRIES) {
+        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... thus no data near you can be found"];
+        return;
+    }
+    if (!locWork.gotPreciseEnoughLocation) {
+        tries++;
+        [self performSelector:@selector(setupNeardata)
+                   withObject:nil
+                   afterDelay:1];
+    }
+    tries = 0;
+    
+    gotUpdate = NO;
+    
+    [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+}
+-(void)startAR {
+    if (tries == MAX_NUMBER_OF_TRIES) {
+        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location..."];
+        return;
+    }
+    if (!locWork.gotPreciseEnoughLocation) {
+        tries++;
+        [self performSelector:@selector(startAR)
+                   withObject:nil
+                   afterDelay:1];
+    }
+    tries = 0;
+    
+    if (geoobjectOverlays.count == 0 || gotUpdate) {
+        gotUpdate = NO;
+        [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+    }
+    else {
+        [cameraSession startRunning];
+        
+        [self setupDataForAR];
+        [[self delegate] arControllerDidSetupDataAndAR:arOverlaysContainerView withCameraLayer:cameraLayer];
+        
+        refreshTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
+                                                        target:self
+                                                      selector:@selector(refreshPositionOfOverlay)
+                                                      userInfo:nil
+                                                       repeats:YES];
+    }
+}
+
 -(void)setupDataForAR {
     
     int distance, diff, x_pos;
     int vertPosition = 1;
+    
+    [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // Figure out the vertical position of the overlays
     startLoop:
@@ -125,18 +162,6 @@
             [arOverlaysContainerView addSubview:arObject.view];
         }
 }
--(void)startAR {
-    [cameraSession startRunning];
-    [self setupDataForAR];
-    
-    [[self delegate] arControllerDidFinishForAR:arOverlaysContainerView withCameraLayer:cameraLayer];
-    
-    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                    target:self
-                                                  selector:@selector(refreshPositionOfOverlay)
-                                                  userInfo:nil
-                                                   repeats:YES];
-}
 -(void)stopAR {
     [refreshTimer invalidate];
 }
@@ -158,7 +183,6 @@
 }
 -(void)startPosMonitoring {
     locWork = [[LocationWork alloc] init];
-    [locWork setDelegate:self];
     [locWork startAR:deviceScreenResolution];
 }
 -(void)startCamera {    
@@ -190,6 +214,9 @@
     if (self) {
         
         deviceScreenResolution = screenSize;
+        gotUpdate = NO;
+        
+        tries = 0;
         
         [self initAndAllocContainers];
         [self startDataController];

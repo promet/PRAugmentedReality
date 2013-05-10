@@ -23,6 +23,13 @@
             [self clearDB];
             if(![self checkForDB]) return 0;
         }
+
+        [self fetchUpdatedARObjects];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fetchUpdatedARObjects)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -151,14 +158,10 @@
 #pragma mark - Data Callbacks
 
 -(void)passARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
-    [self.delegate gotNearARData:arObjects];
-}
--(void)passUpdatedARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
-    [self.delegate gotUpdatedARNearData:arObjects];
+    [self.delegate gotNearData:arObjects];
 }
 
--(void)getGeoObjectsNear:(CLLocationCoordinate2D)currentLocationCoordinates forUpdate:(BOOL)forUpdate {
-    currentLocationCoord = currentLocationCoordinates;
+-(void)getNearARObjects:(CLLocationCoordinate2D)currentLocationCoordinates {
     
     if (![self openDBConnection]) return;
     
@@ -175,33 +178,32 @@
                                                   address:[detailsDict objectForKey:@"address"]
                                               coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
                                                                                      [rs doubleForColumn:@"lon"])
-                                       andCurrentLocation:currentLocationCoord]
+                                       andCurrentLocation:currentLocationCoordinates]
          ];
     }
     
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);
     [rs close];
     
-    if (forUpdate)  [self performSelectorOnMainThread:@selector(passUpdatedARObjectsToDelegateOnMainThread:) withObject:arObjects waitUntilDone:NO];
-    else            [self performSelectorOnMainThread:@selector(passARObjectsToDelegateOnMainThread:) withObject:arObjects waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(passARObjectsToDelegateOnMainThread:) withObject:arObjects waitUntilDone:NO];
 }
 
 -(void)passAllARObjectsToDelegateOnMainThread:(NSDictionary*)arObjects {
-    [self.delegate gotAllARData:arObjects];
+    [self.delegate gotAllData:arObjects];
 }
 
 
 #pragma mark - Data Fetching from Drupal site
 
 -(void)saveAllARObjects:(NSDictionary*)newARObjects {
-    
     @try {
         if ([newARObjects count] > 0) {
             for (NSString *ar_object_nid in [newARObjects allKeys]) {
                 [self saveARObject:ar_object_nid
                           withData:[newARObjects objectForKey:ar_object_nid]];
             }
-            [self getGeoObjectsNear:currentLocationCoord forUpdate:YES];
+            
+            [self.delegate gotUpdatedData];
         }
         
     }
@@ -251,7 +253,7 @@
     
     return temporaryObjectDict;
 }
--(void)getAllARObjects {    
+-(void)getAllARObjects:(CLLocationCoordinate2D)coordinates {    
     NSAutoreleasePool *subPool = [[NSAutoreleasePool alloc] init];
     
     if (![self openDBConnection]) return;
@@ -268,7 +270,7 @@
                                                  address:[detailsDict objectForKey:@"address"]
                                              coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
                                                                                      [rs doubleForColumn:@"lon"])
-                                       andCurrentLocation:currentLocationCoord]
+                                       andCurrentLocation:coordinates]
                       forKey:[rs stringForColumn:@"nid"]
          ];
     }

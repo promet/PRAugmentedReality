@@ -20,22 +20,22 @@
 @class DataController;
 
 @protocol ARObjectsDataDelegate
-- (void)gotNearARData:(NSArray*)arObjects;
-- (void)gotAllARData:(NSDictionary*)arObjects;
+- (void)gotNearData:(NSArray*)arObjects;
+- (void)gotAllData:(NSDictionary*)arObjects;
 
-- (void)gotUpdatedARNearData:(NSArray*)arObjects;
+- (void)gotUpdatedData;
+
 @end
 
 @interface DataController : NSObject {
     FMDatabase *fmdb;
-    CLLocationCoordinate2D currentLocationCoord;
 }
 
 @property (assign, nonatomic) id <ARObjectsDataDelegate> delegate;
 
--(void)getGeoObjectsNear:(CLLocationCoordinate2D)coordinates forUpdate:(BOOL)forUpdate;
+-(void)getNearARObjects:(CLLocationCoordinate2D)coordinates;
 -(void)fetchUpdatedARObjects;
 
--(void)getAllARObjects;
+-(void)getAllARObjects:(CLLocationCoordinate2D)coordinates;
 
 @end

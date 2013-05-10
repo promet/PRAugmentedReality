@@ -8,7 +8,11 @@
 
 
 #define REFRESH_RATE            1/30    // 30hz
-#define DELAY_FOR_UPDATE        2       // How long to wait for everything to be started before going to look for updated places
+#define DELAY_FOR_UPDATE        5       // How long to wait for everything to be started before going to look for updated places
+
+#define MAX_NUMBER_OF_TRIES     5       // How many times the system will try to do an asynchronous action before it gives up
+                                        // this is especially relevant in the ARController, whenever the system tries to get
+                                        // updates from the network or location.
 
 
 // -- Location & Heading -- //

@@ -19,17 +19,21 @@
 
 @protocol ARControllerDelegate
 @optional
-- (void)arControllerDidFinishForAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
-- (void)arControllerDidFinishWithData:(NSDictionary*)arObjects;
+- (void)arControllerDidSetupDataAndAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
+- (void)arControllerDidSetupData:(NSDictionary*)arObjects;
+
 - (void)arControllerUpdatePosition:(CGRect)arViewFrame;
+- (void)arControllerGotUpdatedData;
+
+- (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details;
 @end
 
 
-@interface ARController : NSObject <ARObjectsDataDelegate, LocationWorkDelegate> {
+@interface ARController : NSObject <ARObjectsDataDelegate> {
+    
     // -- Main Handler Classes -- //
     LocationWork *locWork;
     DataController *dataController;
-    
     
     // -- Main Containers -- //
     NSMutableDictionary *geoobjectOverlays;
@@ -44,6 +48,9 @@
     CGSize deviceScreenResolution;
     UIView *arOverlaysContainerView;
     NSTimer *refreshTimer;
+    
+    BOOL gotUpdate;
+    int tries;
 }
 
 @property (assign, nonatomic) id <ARControllerDelegate> delegate;
@@ -53,6 +60,8 @@
 -(id)initWithScreenSize:(CGSize)screenSize;
 -(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate;
 
+-(void)setupAllData;
+-(void)setupNeardata;
 -(void)startAR;
 -(void)stopAR;
 

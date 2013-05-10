@@ -11,12 +11,6 @@
 
 #import "ARObject.h"
 
-@class LocationWork;
-
-@protocol LocationWorkDelegate
-- (void)gotPreciseLocation:(CLLocationCoordinate2D)preciseLocation;
-@end
-
 
 @interface LocationWork : NSObject <CLLocationManagerDelegate, UIAccelerometerDelegate> {
     
@@ -40,7 +34,9 @@
     float deviceViewHeight;
 }
 
-@property (assign, nonatomic) id <LocationWorkDelegate> delegate;
+@property (nonatomic, assign) BOOL gotPreciseEnoughLocation;
+@property (nonatomic, assign) double currentLat;
+@property (nonatomic, assign) double currentLon;
 
 -(id)init;
 -(void)startAR:(CGSize)deviceScreenSize;

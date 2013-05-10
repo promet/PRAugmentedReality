@@ -11,6 +11,9 @@
 
 @implementation LocationWork
 
+@synthesize gotPreciseEnoughLocation;
+@synthesize currentLat, currentLon;
+
 
 -(id)init {
     self = [super init];
@@ -44,15 +47,8 @@
     currentHeading =  fmod(newHeading.trueHeading, 360.0);
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (!gotPreciseEnoughLocation && newLocation.horizontalAccuracy < MIN_LOCATION_ACCURACY) {
-        
-        gotPreciseEnoughLocation = YES;
-        [locationManager stopUpdatingLocation];
-        
-        [self.delegate gotPreciseLocation:newLocation.coordinate];
-    }
-    
     if (newLocation.horizontalAccuracy < MIN_LOCATION_ACCURACY) {
+        gotPreciseEnoughLocation = YES;
         currentLat = newLocation.coordinate.latitude;
         currentLon = newLocation.coordinate.longitude;
     }
