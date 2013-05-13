@@ -61,7 +61,7 @@
 
 // -- Drupal Connectivity -- //                 // Ties in to the Drupal mobile_ar_connector module
 
-#define kDiosBaseUrl            @"http://192.168.1.34/prometar"
+#define kDiosBaseUrl            @"http://192.168.1.66/prometar"
 #define BaseARNode              @"ar_object"    // Example content type resource as in the Drupal example distro
 #define Endpoint                @"prar"         // Example endpoint as in the Drupal example distro
 
