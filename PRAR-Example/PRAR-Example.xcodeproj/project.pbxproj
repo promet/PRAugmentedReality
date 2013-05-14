@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36DFE3F21741BF4A00415049 /* ar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DFE3EF1741BF4A00415049 /* ar_icon.png */; };
+		36DFE3F31741BF4A00415049 /* ar_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DFE3F01741BF4A00415049 /* ar_overlay.png */; };
+		36DFE3F41741BF4A00415049 /* ar_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36DFE3F11741BF4A00415049 /* ar_overlay@2x.png */; };
 		36EE34FF173D61D0008302F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE34FE173D61D0008302F3 /* UIKit.framework */; };
 		36EE3501173D61D0008302F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3500173D61D0008302F3 /* Foundation.framework */; };
 		36EE3503173D61D0008302F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3502173D61D0008302F3 /* CoreGraphics.framework */; };
@@ -60,12 +63,12 @@
 		36EE35C5173D63A6008302F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE35C4173D63A6008302F3 /* SystemConfiguration.framework */; };
 		36EE35C7173D63AE008302F3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE35C6173D63AE008302F3 /* libz.1.2.5.dylib */; };
 		36EE35C9173D63B3008302F3 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE35C8173D63B3008302F3 /* libsqlite3.0.dylib */; };
-		36EE35CF173D6667008302F3 /* ARObject.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EE35CB173D6667008302F3 /* ARObject.png */; };
-		36EE35D0173D6667008302F3 /* ARObject@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EE35CC173D6667008302F3 /* ARObject@2x.png */; };
-		36EE35D1173D6667008302F3 /* dc_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EE35CD173D6667008302F3 /* dc_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36DFE3EF1741BF4A00415049 /* ar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_icon.png; sourceTree = "<group>"; };
+		36DFE3F01741BF4A00415049 /* ar_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_overlay.png; sourceTree = "<group>"; };
+		36DFE3F11741BF4A00415049 /* ar_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ar_overlay@2x.png"; sourceTree = "<group>"; };
 		36EE34FB173D61D0008302F3 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EE34FE173D61D0008302F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		36EE3500173D61D0008302F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,9 +161,6 @@
 		36EE35C4173D63A6008302F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		36EE35C6173D63AE008302F3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		36EE35C8173D63B3008302F3 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		36EE35CB173D6667008302F3 /* ARObject.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARObject.png; sourceTree = "<group>"; };
-		36EE35CC173D6667008302F3 /* ARObject@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ARObject@2x.png"; sourceTree = "<group>"; };
-		36EE35CD173D6667008302F3 /* dc_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dc_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +185,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36DFE3EE1741BF4A00415049 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				36DFE3EF1741BF4A00415049 /* ar_icon.png */,
+				36DFE3F01741BF4A00415049 /* ar_overlay.png */,
+				36DFE3F11741BF4A00415049 /* ar_overlay@2x.png */,
+			);
+			name = Graphics;
+			path = Classes/Graphics;
+			sourceTree = "<group>";
+		};
 		36EE34F2173D61D0008302F3 = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +234,6 @@
 		36EE3504173D61D0008302F3 /* PRAR-Example */ = {
 			isa = PBXGroup;
 			children = (
-				36EE35CA173D6667008302F3 /* Graphics */,
 				36EE350D173D61D0008302F3 /* AppDelegate.h */,
 				36EE350E173D61D0008302F3 /* AppDelegate.m */,
 				36EE3516173D61D0008302F3 /* MainStoryboard.storyboard */,
@@ -266,6 +276,7 @@
 		36EE352B173D62EF008302F3 /* PRAugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
+				36DFE3EE1741BF4A00415049 /* Graphics */,
 				36EE352D173D62EF008302F3 /* Classes */,
 				36EE353E173D62EF008302F3 /* Frameworks */,
 			);
@@ -397,16 +408,6 @@
 			path = FMDB;
 			sourceTree = "<group>";
 		};
-		36EE35CA173D6667008302F3 /* Graphics */ = {
-			isa = PBXGroup;
-			children = (
-				36EE35CB173D6667008302F3 /* ARObject.png */,
-				36EE35CC173D6667008302F3 /* ARObject@2x.png */,
-				36EE35CD173D6667008302F3 /* dc_icon.png */,
-			);
-			path = Graphics;
-			sourceTree = SOURCE_ROOT;
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,9 +467,9 @@
 				36EE358F173D62EF008302F3 /* ARObject.xib in Resources */,
 				36EE35A5173D62EF008302F3 /* LICENSE in Resources */,
 				36EE35A6173D62EF008302F3 /* README.md in Resources */,
-				36EE35CF173D6667008302F3 /* ARObject.png in Resources */,
-				36EE35D0173D6667008302F3 /* ARObject@2x.png in Resources */,
-				36EE35D1173D6667008302F3 /* dc_icon.png in Resources */,
+				36DFE3F21741BF4A00415049 /* ar_icon.png in Resources */,
+				36DFE3F31741BF4A00415049 /* ar_overlay.png in Resources */,
+				36DFE3F41741BF4A00415049 /* ar_overlay@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
