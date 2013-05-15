@@ -1,4 +1,4 @@
-#import "ARSettings.h"
+#import "ARSettings.h" // Already replacing #define kDiosBaseUrl @"http://d7.workhabit.com"
 
 #define kDiosEndpoint @"test"
 #define kDiosBaseNode @"node"
