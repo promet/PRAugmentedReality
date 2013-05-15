@@ -33,7 +33,7 @@
 
 #pragma mark - AR Controller Delegate
 
-- (void)arControllerDidSetupData:(NSDictionary *)arObjects {
+- (void)arControllerDidSetupData:(NSDictionary *)arObjects {    
     [loadingProgress setProgress:0.5 animated:YES];
     
     if (arObjectsArray) [arObjects release];
