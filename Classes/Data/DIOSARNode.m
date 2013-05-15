@@ -8,7 +8,6 @@
 
 #import "DIOSARNode.h"
 #import "DIOSSession.h"
-#import "AFHTTPRequestOperation.h"
 
 #import "ARSettings.h"
 
