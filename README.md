@@ -16,7 +16,7 @@ PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also incl
 
 ### Requirements
 
-Several frameworks are required for PRAugmentedReality to work in your app:
+Several Libraries are required for PRAugmentedReality to work in your app:
 * AVFoundation
 * CoreGraphics
 * CoreLocation
