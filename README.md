@@ -32,7 +32,7 @@ Several Libraries are required for PRAugmentedReality to work in your app:
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking)   --> See notes for manual changes
 * [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)		--> See notes for manual changes
 
-You are free to remove them and use the most up to date versions or use tools like cocoapods.
+You are free to remove them and use the most up to date versions or use tools like cocoapods. As a side note, work is currently done to add this library to cocoapods.
 
 The `ARSettings.h` file is where all global constants are set. This is where you will set the URL of the site to get data from.
 
