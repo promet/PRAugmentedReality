@@ -61,7 +61,7 @@
 
 #pragma mark - Initialisers
 
--(void)setupAllData {
+-(void)setupAllData {    
     if (tries == MAX_NUMBER_OF_TRIES) {
         [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... the distance between you and places won't be accurate"];
     } else if (!locWork.gotPreciseEnoughLocation) {

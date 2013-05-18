@@ -57,7 +57,7 @@
 
 #pragma mark - AR Controller Delegate
 
-- (void)arControllerDidSetupData:(NSDictionary*)arObjects {
+- (void)arControllerDidSetupData:(NSDictionary*)arObjects {    
     if (arObjectsDictionary) [arObjectsDictionary release];
     [_mapView removeAnnotations:_mapView.annotations];
     

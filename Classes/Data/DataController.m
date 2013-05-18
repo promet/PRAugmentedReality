@@ -142,7 +142,7 @@
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
 }
--(NSString*)getLastUpdateTimestamp {
+-(NSString*)getLastUpdateTimestamp {    
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     if ([fileManager fileExistsAtPath:[self getTimestampPath]]) {
@@ -243,7 +243,7 @@
 -(NSDictionary*)getARObject:(NSString*)nid {
     NSMutableDictionary *temporaryObjectDict = [[NSMutableDictionary alloc] init];
     
-    FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE nid = %@",AR_DETAILS_TABLE, nid]];
+    FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE nid = %@", AR_DETAILS_TABLE, nid]];
     if ([rs next]) {
         [temporaryObjectDict addEntriesFromDictionary:[rs resultDictionary]];
     }
@@ -253,7 +253,7 @@
     
     return temporaryObjectDict;
 }
--(void)getAllARObjects:(CLLocationCoordinate2D)coordinates {    
+-(void)getAllARObjects:(CLLocationCoordinate2D)coordinates {
     NSAutoreleasePool *subPool = [[NSAutoreleasePool alloc] init];
     
     if (![self openDBConnection]) return;
