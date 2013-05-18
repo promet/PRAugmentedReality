@@ -78,8 +78,6 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     [titleL setText:arTitle];
     [addressL setText:address];
     
-    NSLog(@"distance: %.2f", distance.doubleValue);
-    
     if (distance.doubleValue < MAXIMUM_DISTANCE) [distanceL setText:[NSString stringWithFormat:@"%.2f mi", distance.doubleValue]];
 }
 - (void)didReceiveMemoryWarning {
