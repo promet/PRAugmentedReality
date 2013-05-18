@@ -34,19 +34,25 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
         lat = newCoordinates.latitude;
         lon = newCoordinates.longitude;
         
-        distance = [[NSNumber alloc] initWithFloat:[self calculateDistanceFrom:currLoc]];
+        distance = [[NSNumber alloc] initWithDouble:[self calculateDistanceFrom:currLoc]];
         
         [self.view setTag:newNid];
     }
     return self;
 }
 
--(float)calculateDistanceFrom:(CLLocationCoordinate2D)currentLoc {
+-(double)calculateDistanceFrom:(CLLocationCoordinate2D)user_loc_coord {
     
-    double latitudeDistance =    max(lat, currentLoc.latitude) - min(lat, currentLoc.latitude);
-    double longitudeDistance  =  max(lon, currentLoc.longitude) - min(lon, currentLoc.longitude);
+    CLLocationCoordinate2D object_loc_coord = CLLocationCoordinate2DMake(lat, lon);
     
-    return (sqrt(pow(latitudeDistance*lat_over_lon,2) + pow(longitudeDistance, 2))) * meterToMiles;
+    CLLocation *object_location = [[[CLLocation alloc] initWithLatitude:object_loc_coord.latitude
+                                                              longitude:object_loc_coord.longitude]
+                                   autorelease];
+    CLLocation *user_location = [[[CLLocation alloc] initWithLatitude:user_loc_coord.latitude
+                                                           longitude:user_loc_coord.longitude]
+                                 autorelease];
+    
+    return [object_location distanceFromLocation:user_location]*METERS_TO_MILES;
 }
 
 - (NSDictionary*)getARObjectData {
@@ -72,7 +78,9 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     [titleL setText:arTitle];
     [addressL setText:address];
     
-    if (distance.floatValue < MAXIMUM_DISTANCE) [distanceL setText:[NSString stringWithFormat:@"%.2f mi", distance.floatValue]];
+    NSLog(@"distance: %.2f", distance.doubleValue);
+    
+    if (distance.doubleValue < MAXIMUM_DISTANCE) [distanceL setText:[NSString stringWithFormat:@"%.2f mi", distance.doubleValue]];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

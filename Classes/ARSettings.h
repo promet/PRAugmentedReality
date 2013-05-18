@@ -49,9 +49,7 @@
 #define max(x,y)                (x > y ? x : y)
 #define min(x,y)                (x < y ? x : y)
 
-#define meterToMiles            0.00062137
-#define latitudeToMeters        111072
-#define longitudeToMeters       82905
+#define METERS_TO_MILES         0.00062
 #define lat_over_lon            1.33975031663
 
 #define METERS_PER_MILE_OVER_2  1609.344/2
@@ -61,7 +59,7 @@
 
 // -- Drupal Connectivity -- //                 // Ties in to the Drupal mobile_ar_connector module
 
-#define kDiosBaseUrl            @"http://192.168.1.124/prometar"
+#define kDiosBaseUrl            @"http://192.168.1.2/prometar"
 #define BaseARNode              @"ar_object"    // Example content type resource as in the Drupal example distro
 #define Endpoint                @"prar"         // Example endpoint as in the Drupal example distro
 
