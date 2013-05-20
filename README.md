@@ -14,7 +14,28 @@ PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also incl
 * Custom Map Pin annotation
 
 
-### Requirements
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-AR-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-AR.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-Map-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Map.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-List_Distance-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-List_Distance.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-List_Name-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-List_Name.png)
+
+### Version Requirements
+
+PRAugmentedReality is compatible with iOS 5.0 or later.
+
+
+### Installation
+#### Using Cocoapods
+
+Put this line in your podfile:
+`pod 'PRAugmentedReality',	'~> 1.0.2'`
+
+Note:
+As the DIOS Framework requried for PRAugmentedReality is not yet in CocoaPods, it is included for your convenience.
+[DIOS](https://github.com/workhabitinc/drupal-ios-sdk)				--> See notes for manual change done
+
+
+#### Manually
 
 Several Libraries are required for PRAugmentedReality to work in your app:
 * AVFoundation
@@ -27,36 +48,40 @@ Several Libraries are required for PRAugmentedReality to work in your app:
 * libz
 * libsqlite
 
-3 Frameworks are included in the Library for your convenience:
+3 Frameworks are required and included in the git repo for your convenience:
 * [fmdb](https://github.com/ccgus/fmdb)
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)   --> See notes for manual changes
-* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)		--> See notes for manual changes
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)   	--> See notes for manual changes
+* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)			--> See notes for manual changes
 
-You are free to remove them and use the most up to date versions or use tools like cocoapods. As a side note, work is currently done to add this library to cocoapods.
+You are free to remove them and download them manually... although CocoaPods would do this all for you (:
 
-The `ARSettings.h` file is where all global constants are set. This is where you will set the URL of the site to get data from.
+The `ARSettings.h` file is where all global constants (preprocessor directives actually) are set.
+This is where you will set:
+* The URL of the site to get data from
+
+And can modify:
+* The refresh rate
+* Delays/Timeouts for udpates and timers
+* Radius of region that is considered "near" the user
+* DB files & tables
 
 
 ### Notes:
-
-#### AFNetworking
-Please note that AFNetworking only supports ARC. As PRAugmentedReality does not yet support ARC, you must manually flag AFNetworking files with "-fobjc-arc"
+#### AFNetworking (only if manual install - no cocoapods)
+As AFNetworking requires ARC but PRAugmentedReality does not yet support it, you must manually flag AFNetworking source files with "-fobjc-arc"
 
 (in `Build Phases->Compile Sources`)
 
+
 #### DIOS
 
-Please note that in order to keep all the settings in one place, it is required to edit the `Settings.h` file in DIOS. 
+In order to keep all the settings in one place, it is required to edit the `Settings.h` file in DIOS. 
 (This only applies if you are downloading DIOS yourself instead of using the version given in this repo)
 
 Replace the difinition of "kDiosBaseUrl" in DIOS's settings.h with an import of PRAugmentedReality's ARSettings.h:
 
 Replace `#define kDiosBaseUrl @"http://d7.workhabit.com"` with `#import "ARSettings.h"`
 
-
-### Version Requirements
-
-PRAugmentedReality is compatible with iOS 5.0 or later.
 
 
 ### Documentation
