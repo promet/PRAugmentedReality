@@ -23,7 +23,7 @@
             [self clearDB];
             if(![self checkForDB]) return 0;
         }
-
+        
         [self fetchUpdatedARObjects];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -142,9 +142,9 @@
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
 }
--(NSString*)getLastUpdateTimestamp {    
+-(NSString*)getLastUpdateTimestamp {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-
+    
     if ([fileManager fileExistsAtPath:[self getTimestampPath]]) {
         return [NSString stringWithContentsOfFile:[self getTimestampPath]
                                          encoding:NSUTF8StringEncoding
@@ -165,10 +165,19 @@
     
     if (![self openDBConnection]) return;
     
+    CLLocationDistance regionRadius = REGION_RADIUS;
+    CLRegion *grRegion = [[CLRegion alloc] initCircularRegionWithCenter:currentLocationCoordinates
+                                                                 radius:regionRadius identifier:@"grRegion"];
+    
     NSMutableArray *arObjects = [[NSMutableArray alloc] init];
     
     FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@",AR_COORDINATES_TABLE]];
     while ([rs next]) {
+        
+        CLLocationCoordinate2D geoobjectCoordinates = CLLocationCoordinate2DMake([[rs stringForColumn:@"lat"] floatValue],
+                                                                                 [[rs stringForColumn:@"lon"] floatValue]);
+        
+        if (![grRegion containsCoordinate:geoobjectCoordinates]) continue;
         
         NSDictionary *detailsDict = [self getARObject:[rs stringForColumn:@"nid"]];
         if ([detailsDict count] == 0) continue;
@@ -184,6 +193,8 @@
     
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);
     [rs close];
+    
+    [grRegion release];
     
     [self performSelectorOnMainThread:@selector(passARObjectsToDelegateOnMainThread:) withObject:arObjects waitUntilDone:NO];
 }
@@ -210,16 +221,16 @@
     @catch (NSException *exception) {
         NSLog(@"Got error when fetching ar_objects");
     }
-
+    
 }
 -(void)fetchUpdatedARObjects {
     NSLog(@"Fetching Updated Places");
     
     [DIOSARNode getUpdatedARNodes:[self getLastUpdateTimestamp] success:^(AFHTTPRequestOperation *operation, id response) {
-                                [self saveAllARObjects:response];
-                                [self saveCurrentTimestamp];
-                                
-                              }
+        [self saveAllARObjects:response];
+        [self saveCurrentTimestamp];
+        
+    }
                           failure:^(AFHTTPRequestOperation *operation, NSError *error ) {
                               NSLog(@"got an error: %@", error.description);
                           }];
@@ -266,9 +277,9 @@
         if ([detailsDict count] == 0) continue;
         
         [arObjects setObject:[[ARObject alloc] initWithId:[[rs stringForColumn:@"nid"] intValue]
-                                                   title:[detailsDict objectForKey:@"title"]
-                                                 address:[detailsDict objectForKey:@"address"]
-                                             coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
+                                                    title:[detailsDict objectForKey:@"title"]
+                                                  address:[detailsDict objectForKey:@"address"]
+                                              coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
                                                                                      [rs doubleForColumn:@"lon"])
                                        andCurrentLocation:coordinates]
                       forKey:[rs stringForColumn:@"nid"]

@@ -11,8 +11,8 @@
 #define DELAY_FOR_UPDATE        5       // How long to wait for everything to be started before going to look for updated places
 
 #define MAX_NUMBER_OF_TRIES     5       // How many times the system will try to do an asynchronous action before it gives up
-                                        // this is especially relevant in the ARController, whenever the system tries to get
-                                        // updates from the network or location.
+// this is especially relevant in the ARController, whenever the system tries to get
+// updates from the network or location.
 
 
 // -- Location & Heading -- //
@@ -49,6 +49,7 @@
 #define max(x,y)                (x > y ? x : y)
 #define min(x,y)                (x < y ? x : y)
 
+#define REGION_RADIUS           300             // meters
 #define METERS_TO_MILES         0.00062
 #define lat_over_lon            1.33975031663
 
@@ -59,7 +60,7 @@
 
 // -- Drupal Connectivity -- //                 // Ties in to the Drupal mobile_ar_connector module
 
-#define kDiosBaseUrl            @"http://192.168.1.2/prometar"
+#define kDiosBaseUrl            @"http://192.168.1.7/prometar"
 #define BaseARNode              @"ar_object"    // Example content type resource as in the Drupal example distro
 #define Endpoint                @"prar"         // Example endpoint as in the Drupal example distro
 
