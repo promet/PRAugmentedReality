@@ -35,10 +35,10 @@ Put this line in your podfile:
 
 3 Frameworks are required and included in the git repo for your convenience:
 * [fmdb](https://github.com/ccgus/fmdb)
-* [AFNetworking](https://github.com/AFNetworking/AFNetworking)	--> See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started) for manual changes
-* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)		--> See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started) for manual changes
+* [AFNetworking](https://github.com/AFNetworking/AFNetworking)    --> See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually) for manual changes
+* [DIOS](https://github.com/workhabitinc/drupal-ios-sdk)    --> See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#whats-in-there) for more details
 
-Several Libraries are required for PRAugmentedReality			-->  [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started)
+Several Libraries are required for PRAugmentedReality    -->  [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually)
 
 
 ### Documentation
