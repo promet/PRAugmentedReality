@@ -90,6 +90,25 @@
     return TRUE;
 }
 
+-(void)testDBVersion {
+    NSString *version = [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    NSString *db_versionPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+                                stringByAppendingFormat:@"/db_version.plist"];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:db_versionPath]) {
+        NSArray *db_versionArray = [NSArray arrayWithContentsOfFile:db_versionPath];
+        if ([db_versionArray count] > 0 && [[db_versionArray objectAtIndex:0] isEqualToString:version]) {
+            NSLog(@"DB Version is valid");
+            return;
+        }
+    }
+    [[NSFileManager defaultManager] removeItemAtPath:db_versionPath error:nil];
+    [[NSArray arrayWithObject:version] writeToFile:db_versionPath atomically:YES];
+    [self clearDB];
+    
+    NSLog(@"RESET DB");
+}
+
 -(BOOL)doTablesExist {
     FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT COUNT() as count \
                                           FROM sqlite_master \
@@ -109,6 +128,8 @@
     return FALSE;
 }
 -(BOOL)checkForDB {
+    [self testDBVersion];
+    
     if (![self openDBConnection]) return FALSE;
     
     if (![self doTablesExist]) {
@@ -122,6 +143,7 @@
 -(void)clearDB {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtPath:[self getDBPath] error:nil];
+    [fileManager removeItemAtPath:[self getTimestampPath] error:nil];
     
     [self createDBtables];
 }
