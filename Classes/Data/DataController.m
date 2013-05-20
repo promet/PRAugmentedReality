@@ -278,7 +278,7 @@
     
     FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ WHERE nid = %@", AR_DETAILS_TABLE, nid]];
     if ([rs next]) {
-        [temporaryObjectDict addEntriesFromDictionary:[rs resultDictionary]];
+        [temporaryObjectDict addEntriesFromDictionary:[rs resultDict]];
     }
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);
     
