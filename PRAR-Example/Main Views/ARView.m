@@ -41,10 +41,13 @@
 }
 
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
+    
+    [loadingI stopAnimating];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:problemOrigin
                                                     message:details
                                                    delegate:nil
-                                          cancelButtonTitle:@"ok"
+                                          cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
     [alert release];

@@ -61,7 +61,7 @@
 
 #pragma mark - Initialisers
 
--(void)setupAllData {    
+-(void)setupAllData {
     if (tries == MAX_NUMBER_OF_TRIES) {
         [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... the distance between you and places won't be accurate"];
     } else if (!locWork.gotPreciseEnoughLocation) {
@@ -105,9 +105,11 @@
     }
     tries = 0;
     
-    if (geoobjectOverlays.count == 0 || gotUpdate) {
+    if (gotUpdate) {
         gotUpdate = NO;
         [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+    } else if (geoobjectOverlays.count == 0) {
+        [self.delegate gotProblemIn:@"AR Data" withDetails:@"No events or places near you"];
     }
     else {
         [cameraSession startRunning];
@@ -131,36 +133,36 @@
     [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     // Figure out the vertical position of the overlays
-    startLoop:
-        for (ARObject *arObject in [geoobjectOverlays allValues]) {
-            NSNumber *arObjectId = [arObject.getARObjectData objectForKey:@"id"];
+startLoop:
+    for (ARObject *arObject in [geoobjectOverlays allValues]) {
+        NSNumber *arObjectId = [arObject.getARObjectData objectForKey:@"id"];
+        
+        x_pos = [[geoobjectPositions objectForKey:arObjectId] intValue];
+        distance = [[geoobjectVerts objectForKey:arObjectId] intValue];
+        vertPosition = [[geoobjectVerts objectForKey:arObjectId] intValue];
+        
+        for (NSNumber *sub_key in [geoobjectOverlays allKeys]) {
+            if ([sub_key intValue] == [arObjectId intValue]) continue;
             
-            x_pos = [[geoobjectPositions objectForKey:arObjectId] intValue];
-            distance = [[geoobjectVerts objectForKey:arObjectId] intValue];
-            vertPosition = [[geoobjectVerts objectForKey:arObjectId] intValue];
+            diff = x_pos-[[geoobjectPositions objectForKey:sub_key] intValue];
             
-            for (NSNumber *sub_key in [geoobjectOverlays allKeys]) {
-                if ([sub_key intValue] == [arObjectId intValue]) continue;
-                
-                diff = x_pos-[[geoobjectPositions objectForKey:sub_key] intValue];
-                
-                if (diff < 0) diff = -diff;
-                if (diff < arObject.view.frame.size.width && vertPosition == [[geoobjectVerts objectForKey:sub_key] intValue]) {
-                    vertPosition++;
-                    [geoobjectVerts setValue:[NSNumber numberWithInt:vertPosition]
-                                      forKey:arObjectId];
-                    goto startLoop;
-                }
+            if (diff < 0) diff = -diff;
+            if (diff < arObject.view.frame.size.width && vertPosition == [[geoobjectVerts objectForKey:sub_key] intValue]) {
+                vertPosition++;
+                [geoobjectVerts setValue:[NSNumber numberWithInt:vertPosition]
+                                  forKey:arObjectId];
+                goto startLoop;
             }
-            
-            // Subtract the half the width to the x_pos so it points to the right place with it's right tip
-            [arObject.view setFrame:CGRectMake(x_pos-(arObject.view.frame.size.width/2),
-                                               (int)(Y_CENTER-((arObject.view.frame.size.height+2)*vertPosition)),
-                                               arObject.view.frame.size.width,
-                                               arObject.view.frame.size.height)];
-            
-            [arOverlaysContainerView addSubview:arObject.view];
         }
+        
+        // Subtract the half the width to the x_pos so it points to the right place with it's right tip
+        [arObject.view setFrame:CGRectMake(x_pos-(arObject.view.frame.size.width/2),
+                                           (int)(Y_CENTER-((arObject.view.frame.size.height+2)*vertPosition)),
+                                           arObject.view.frame.size.width,
+                                           arObject.view.frame.size.height)];
+        
+        [arOverlaysContainerView addSubview:arObject.view];
+    }
 }
 -(void)stopAR {
     [refreshTimer invalidate];
@@ -185,7 +187,7 @@
     locWork = [[LocationWork alloc] init];
     [locWork startAR:deviceScreenResolution];
 }
--(void)startCamera {    
+-(void)startCamera {
     cameraSession = [[AVCaptureSession alloc] init];
     AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
