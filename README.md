@@ -43,5 +43,9 @@ Several Libraries are required for PRAugmentedReality    -->  [Wiki Guide](https
 
 ### Documentation
 
-Go check out the [Wiki](https://github.com/promet/PRAugmentedReality/wiki) and read the "Getting Started" Guide for full walkthrough.  
-[GitHub Pages](http://praugmentedreality.com/)
+[Wiki](https://github.com/promet/PRAugmentedReality/wiki) - Go check it out and read the "Getting Started" Guide for full walkthrough.  
+[GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
+
+#### DrupalCon Social - Demo App
+
+[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://www.youtube.com/embed/vBc8L1zr0kk")
