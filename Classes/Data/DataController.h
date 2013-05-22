@@ -11,6 +11,8 @@
 
 #import "ARObject.h"
 
+#import "SCNetworkReachability.h"
+
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
 #import "FMDatabasePool.h"
@@ -27,8 +29,12 @@
 
 @end
 
-@interface DataController : NSObject {
+@interface DataController : NSObject <SCNetworkReachabilityDelegate> {
     FMDatabase *fmdb;
+    
+    // -- Reachability -- //
+    BOOL siteIsReachable;
+    int tries;
 }
 
 @property (assign, nonatomic) id <ARObjectsDataDelegate> delegate;

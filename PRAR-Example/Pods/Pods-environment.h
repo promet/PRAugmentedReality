@@ -34,29 +34,35 @@
 #define COCOAPODS_POD_AVAILABLE_PRAugmentedReality
 #define COCOAPODS_VERSION_MAJOR_PRAugmentedReality 1
 #define COCOAPODS_VERSION_MINOR_PRAugmentedReality 0
-#define COCOAPODS_VERSION_PATCH_PRAugmentedReality 2
+#define COCOAPODS_VERSION_PATCH_PRAugmentedReality 3
 
 // PRAugmentedReality/AR
 #define COCOAPODS_POD_AVAILABLE_PRAugmentedReality_AR
 #define COCOAPODS_VERSION_MAJOR_PRAugmentedReality_AR 1
 #define COCOAPODS_VERSION_MINOR_PRAugmentedReality_AR 0
-#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_AR 2
+#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_AR 3
 
 // PRAugmentedReality/Custom DIOS
 #define COCOAPODS_POD_AVAILABLE_PRAugmentedReality_Custom_DIOS
 #define COCOAPODS_VERSION_MAJOR_PRAugmentedReality_Custom_DIOS 1
 #define COCOAPODS_VERSION_MINOR_PRAugmentedReality_Custom_DIOS 0
-#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Custom_DIOS 2
+#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Custom_DIOS 3
 
 // PRAugmentedReality/Data
 #define COCOAPODS_POD_AVAILABLE_PRAugmentedReality_Data
 #define COCOAPODS_VERSION_MAJOR_PRAugmentedReality_Data 1
 #define COCOAPODS_VERSION_MINOR_PRAugmentedReality_Data 0
-#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Data 2
+#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Data 3
 
 // PRAugmentedReality/Location
 #define COCOAPODS_POD_AVAILABLE_PRAugmentedReality_Location
 #define COCOAPODS_VERSION_MAJOR_PRAugmentedReality_Location 1
 #define COCOAPODS_VERSION_MINOR_PRAugmentedReality_Location 0
-#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Location 2
+#define COCOAPODS_VERSION_PATCH_PRAugmentedReality_Location 3
+
+// SCNetworkReachability
+#define COCOAPODS_POD_AVAILABLE_SCNetworkReachability
+#define COCOAPODS_VERSION_MAJOR_SCNetworkReachability 1
+#define COCOAPODS_VERSION_MINOR_SCNetworkReachability 2
+#define COCOAPODS_VERSION_PATCH_SCNetworkReachability 0
 

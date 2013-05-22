@@ -177,6 +177,27 @@
 }
 
 
+#pragma mark - Reachability
+
+-(void)startReachability {
+    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:kDiosBaseUrl];
+}
+-(void)reachabilityDidChange:(SCNetworkStatus)status {
+    switch (status)
+    {
+        case SCNetworkStatusReachableViaWiFi:
+        case SCNetworkStatusReachableViaCellular:
+            siteIsReachable = YES;
+            break;
+        case SCNetworkStatusNotReachable:
+            siteIsReachable = NO;
+            break;
+        default:
+            break;
+    }
+}
+
+
 #pragma mark - Data Callbacks
 
 -(void)passARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
@@ -246,8 +267,20 @@
     
 }
 -(void)fetchUpdatedARObjects {
-    NSLog(@"Fetching Updated Places");
     
+    if (tries > MAX_NUMBER_OF_TRIES) {
+        tries = 0;
+        [self alertWithTitle:@"Unable to reach website :("
+                  andMessage:@"Cannot download updated places/events..."];
+        return;
+    }
+    if (!siteIsReachable) {
+        tries++;
+        [self performSelector:@selector(fetchUpdatedARObjects) withObject:nil afterDelay:1];
+        return;
+    }
+    
+    NSLog(@"Fetching Updated Places");
     [DIOSARNode getUpdatedARNodes:[self getLastUpdateTimestamp] success:^(AFHTTPRequestOperation *operation, id response) {
         [self saveAllARObjects:response];
         [self saveCurrentTimestamp];

@@ -19,6 +19,12 @@
     self = [super init];
     if (self) {
         
+        
+        tries = 0;
+        siteIsReachable = NO;
+        
+        [self startReachability];
+        
         if(![self checkForDB]) {
             [self clearDB];
             if(![self checkForDB]) return 0;
@@ -41,6 +47,17 @@
     
     NSLog(@"Could not open db.");
     return FALSE;
+}
+
+-(void)alertWithTitle:(NSString*)title andMessage:(NSString*)message {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 
@@ -176,13 +193,33 @@
     return @"0";
 }
 
+#pragma mark - Reachability
+
+-(void)startReachability {
+    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:kDiosBaseUrl];
+}
+-(void)reachabilityDidChange:(SCNetworkStatus)status {
+    switch (status)
+    {
+        case SCNetworkStatusReachableViaWiFi:
+        case SCNetworkStatusReachableViaCellular:
+            siteIsReachable = YES;
+            break;
+        case SCNetworkStatusNotReachable:
+            siteIsReachable = NO;
+            break;
+        default:
+            break;
+    }
+}
+
+
 
 #pragma mark - Data Callbacks
 
 -(void)passARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
     [self.delegate gotNearData:arObjects];
 }
-
 -(void)getNearARObjects:(CLLocationCoordinate2D)currentLocationCoordinates {
     
     if (![self openDBConnection]) return;
@@ -220,7 +257,6 @@
     
     [self performSelectorOnMainThread:@selector(passARObjectsToDelegateOnMainThread:) withObject:arObjects waitUntilDone:NO];
 }
-
 -(void)passAllARObjectsToDelegateOnMainThread:(NSDictionary*)arObjects {
     [self.delegate gotAllData:arObjects];
 }
@@ -246,8 +282,20 @@
     
 }
 -(void)fetchUpdatedARObjects {
-    NSLog(@"Fetching Updated Places");
     
+    if (tries > MAX_NUMBER_OF_TRIES) {
+        tries = 0;
+        [self alertWithTitle:@"Unable to reach website :("
+                  andMessage:@"Cannot download updated places/events..."];
+        return;
+    }
+    if (!siteIsReachable) {
+        tries++;
+        [self performSelector:@selector(fetchUpdatedARObjects) withObject:nil afterDelay:1];
+        return;
+    }
+    
+    NSLog(@"Fetching Updated Places");
     [DIOSARNode getUpdatedARNodes:[self getLastUpdateTimestamp] success:^(AFHTTPRequestOperation *operation, id response) {
         [self saveAllARObjects:response];
         [self saveCurrentTimestamp];
