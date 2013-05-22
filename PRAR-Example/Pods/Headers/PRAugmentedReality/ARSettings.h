@@ -1,1 +1,0 @@
-../../PRAugmentedReality/Classes/ARSettings.h
