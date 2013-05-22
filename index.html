@@ -57,66 +57,21 @@
 <p>Put this line in your podfile:
 <code>pod 'PRAugmentedReality',  '~&gt; 1.0.2'</code></p>
 
-<p>Note:
-As the DIOS Framework requried for PRAugmentedReality is not yet in CocoaPods, it is included for your convenience.
-<a href="https://github.com/workhabitinc/drupal-ios-sdk">DIOS</a>              --&gt; See notes for manual change done</p>
-
 <h4>Manually</h4>
 
-<p>Several Libraries are required for PRAugmentedReality to work in your app:</p>
-
-<ul>
-<li>AVFoundation</li>
-<li>CoreGraphics</li>
-<li>CoreLocation</li>
-<li>CoreMotion</li>
-<li>MapKit</li>
-<li>MobileCoreServices</li>
-<li>SystemConfiguration</li>
-<li>libz</li>
-<li>libsqlite</li>
-</ul><p>3 Frameworks are required and included in the git repo for your convenience:</p>
+<p>3 Frameworks are required and included in the git repo for your convenience:</p>
 
 <ul>
 <li><a href="https://github.com/ccgus/fmdb">fmdb</a></li>
 <li>
-<a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>      --&gt; See notes for manual changes</li>
+<a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>    --&gt; See <a href="https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually">Wiki Guide</a> for manual changes</li>
 <li>
-<a href="https://github.com/workhabitinc/drupal-ios-sdk">DIOS</a>            --&gt; See notes for manual changes</li>
-</ul><p>You are free to remove them and download them manually... although CocoaPods would do this all for you (:</p>
-
-<p>The <code>ARSettings.h</code> file is where all global constants (preprocessor directives actually) are set.
-This is where you will set:</p>
-
-<ul>
-<li>The URL of the site to get data from</li>
-</ul><p>And can modify:</p>
-
-<ul>
-<li>The refresh rate</li>
-<li>Delays/Timeouts for udpates and timers</li>
-<li>Radius of region that is considered "near" the user</li>
-<li>DB files &amp; tables</li>
-</ul><h3>Notes:</h3>
-
-<h4>AFNetworking (only if manual install - no cocoapods)</h4>
-
-<p>As AFNetworking requires ARC but PRAugmentedReality does not yet support it, you must manually flag AFNetworking source files with "-fobjc-arc"</p>
-
-<p>(in <code>Build Phases-&gt;Compile Sources</code>)</p>
-
-<h4>DIOS</h4>
-
-<p>In order to keep all the settings in one place, it is required to edit the <code>Settings.h</code> file in DIOS. 
-(This only applies if you are downloading DIOS yourself instead of using the version given in this repo)</p>
-
-<p>Replace the difinition of "kDiosBaseUrl" in DIOS's settings.h with an import of PRAugmentedReality's ARSettings.h:</p>
-
-<p>Replace <code>#define kDiosBaseUrl @"http://d7.workhabit.com"</code> with <code>#import "ARSettings.h"</code></p>
+<a href="https://github.com/workhabitinc/drupal-ios-sdk">DIOS</a>    --&gt; See <a href="https://github.com/promet/PRAugmentedReality/wiki/Getting-started#whats-in-there">Wiki Guide</a> for more details</li>
+</ul><p>Several Libraries are required for PRAugmentedReality    --&gt;  <a href="https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually">Wiki Guide</a></p>
 
 <h3>Documentation</h3>
 
-<p>To come</p>
+<p><a href="https://github.com/promet/PRAugmentedReality/wiki">Wiki</a><br><a href="http://praugmentedreality.com/">GitHub Pages</a></p>
         </section>
 
         <aside id="sidebar">
