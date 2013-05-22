@@ -43,5 +43,5 @@ Several Libraries are required for PRAugmentedReality    -->  [Wiki Guide](https
 
 ### Documentation
 
-Go check out the [Wiki](https://github.com/promet/PRAugmentedReality/wiki) and read the "Getting Started" Guide for full walkthrough.
+Go check out the [Wiki](https://github.com/promet/PRAugmentedReality/wiki) and read the "Getting Started" Guide for full walkthrough.  
 [GitHub Pages](http://praugmentedreality.com/)
