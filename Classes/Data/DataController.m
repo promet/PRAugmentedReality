@@ -43,6 +43,16 @@
     return FALSE;
 }
 
+-(void)alertWithTitle:(NSString*)title andMessage:(NSString*)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 
 #pragma mark - DB Utilities
 
