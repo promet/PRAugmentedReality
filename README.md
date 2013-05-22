@@ -28,7 +28,7 @@ PRAugmentedReality is compatible with iOS 5.0 or later.
 #### Using Cocoapods
 
 Put this line in your podfile:
-`pod 'PRAugmentedReality',	'~> 1.0.2'`
+`pod 'PRAugmentedReality'
 
 
 #### Manually
@@ -43,5 +43,5 @@ Several Libraries are required for PRAugmentedReality    -->  [Wiki Guide](https
 
 ### Documentation
 
-[Wiki](https://github.com/promet/PRAugmentedReality/wiki)  
+Go check out the [Wiki](https://github.com/promet/PRAugmentedReality/wiki) and read the "Getting Started" Guide for full walkthrough.
 [GitHub Pages](http://praugmentedreality.com/)
