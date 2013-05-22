@@ -48,4 +48,4 @@ Several Libraries are required for PRAugmentedReality    -->  [Wiki Guide](https
 
 #### DrupalCon Social - Demo App
 
-[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk")
+[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk)
