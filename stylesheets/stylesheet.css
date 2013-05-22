@@ -202,7 +202,7 @@ hr {
 
 table {
   width: 100%;
-  border: 1px solid #ebebeb;
+  border: 0px;
 }
 
 th {
@@ -210,8 +210,7 @@ th {
 }
 
 td {
-  border: 1px solid #ebebeb;
-  text-align: center; 
+  border: 0px;
   font-weight: 300;
 }
 
