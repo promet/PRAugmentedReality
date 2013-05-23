@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36082437174D9D72007874EA /* DBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBController.h; path = "/Users/andrewkucharski/Dropbox/Promet Source/prometar/iOS App/PRAugmentedReality/PRAR-Example/PRAR-Example/../../Classes/Data/DBController.h"; sourceTree = "<absolute>"; };
 		36EE34FB173D61D0008302F3 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EE34FE173D61D0008302F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		36EE3500173D61D0008302F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +104,7 @@
 				36EE3516173D61D0008302F3 /* MainStoryboard.storyboard */,
 				36EE3519173D61D0008302F3 /* ViewController.h */,
 				36EE351A173D61D0008302F3 /* ViewController.m */,
+				36082437174D9D72007874EA /* DBController.h */,
 				36EE3521173D62DC008302F3 /* Main Views */,
 				36EE3505173D61D0008302F3 /* Supporting Files */,
 			);

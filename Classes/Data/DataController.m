@@ -19,8 +19,8 @@
     self = [super init];
     if (self) {
         
+        [self startReachability];
         dbController = [[DBController alloc] init];
-        
         [self fetchUpdatedARObjects];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -44,19 +44,29 @@
 
 #pragma mark - Reachability
 
+-(NSString*)stripHTTPfrom:(NSString*)inputString {
+    if ([inputString characterAtIndex:inputString.length-1] == '/') {
+        inputString = [inputString stringByPaddingToLength:inputString.length-1 withString:@"" startingAtIndex:0];
+    }
+    return [inputString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+}
 -(void)startReachability {
-    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:kDiosBaseUrl];
+    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:[self stripHTTPfrom:kDiosBaseUrl]];
+    reachability.delegate = self;
 }
 -(void)reachabilityDidChange:(SCNetworkStatus)status {
+    
     switch (status)
     {
         case SCNetworkStatusReachableViaWiFi:
         case SCNetworkStatusReachableViaCellular:
             siteIsReachable = YES;
             break;
+            
         case SCNetworkStatusNotReachable:
             siteIsReachable = NO;
             break;
+            
         default:
             break;
     }

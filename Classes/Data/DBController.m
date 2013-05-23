@@ -22,6 +22,7 @@
             if(![self checkForDB]) return 0;
         }
     }
+    return self;
 }
 
 
