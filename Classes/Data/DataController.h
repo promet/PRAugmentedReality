@@ -7,16 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
-
-#import "ARObject.h"
 
 #import "SCNetworkReachability.h"
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabasePool.h"
-#import "FMDatabaseQueue.h"
+#import "DBController.h"
 
 
 @class DataController;
@@ -30,7 +24,7 @@
 @end
 
 @interface DataController : NSObject <SCNetworkReachabilityDelegate> {
-    FMDatabase *fmdb;
+    DBController *dbController;
     
     // -- Reachability -- //
     BOOL siteIsReachable;
@@ -40,8 +34,9 @@
 @property (assign, nonatomic) id <ARObjectsDataDelegate> delegate;
 
 -(void)getNearARObjects:(CLLocationCoordinate2D)coordinates;
+-(void)getAllARObjects:(CLLocationCoordinate2D)coordinates;
+
 -(void)fetchUpdatedARObjects;
 
--(void)getAllARObjects:(CLLocationCoordinate2D)coordinates;
 
 @end
