@@ -2,7 +2,7 @@
 //  ARController.h
 //  PrometAR
 //
-//  Created by Geoffroy Lesage on 4/12/13.
+//  Created by Geoffroy Lesage on 5/28/13.
 //  Copyright (c) 2013 Promet Solutions Inc. All rights reserved.
 //
 
