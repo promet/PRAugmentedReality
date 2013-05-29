@@ -50,7 +50,8 @@
     NSTimer *refreshTimer;
     
     BOOL gotUpdate;
-    int tries;
+    int locTries;
+    int dataTries;
 }
 
 @property (assign, nonatomic) id <ARControllerDelegate> delegate;

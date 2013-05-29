@@ -84,7 +84,9 @@
 
 -(void)getNearARObjects_IN_BACKGROUND:(CLLocation*)location {
     NSDictionary *arObjects = [dbController getARObjectsNear:location];
-    if (!arObjects || arObjects == nil) NSLog(@"uh oh");
+    if (!arObjects || arObjects == nil) return;
+    
+    [self.delegate gotNearData:arObjects.allValues];
 }
 -(void)getNearARObjects:(CLLocationCoordinate2D)coordinates {
     [self performSelectorInBackground:@selector(getNearARObjects_IN_BACKGROUND:)
@@ -94,7 +96,9 @@
 
 -(void)getAllARObjects_IN_BACKGROUND:(CLLocation*)location {
     NSDictionary *arObjects = [dbController getAllARObjectsAndSetupWithLoc:location];
-    if (!arObjects || arObjects == nil) NSLog(@"uh oh");
+    if (!arObjects || arObjects == nil) return;
+    
+    [self.delegate gotAllData:arObjects];
 }
 -(void)getAllARObjects:(CLLocationCoordinate2D)coordinates {
     [self performSelectorInBackground:@selector(getAllARObjects_IN_BACKGROUND:)

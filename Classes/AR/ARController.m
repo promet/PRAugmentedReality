@@ -62,54 +62,48 @@
 #pragma mark - Initialisers
 
 -(void)setupAllData {
-    if (tries == MAX_NUMBER_OF_TRIES) {
+    if (locTries == MAX_NUMBER_OF_TRIES) {
         [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... the distance between you and places won't be accurate"];
     } else if (!locWork.gotPreciseEnoughLocation) {
-        tries++;
+        locTries++;
         [self performSelector:@selector(setupAllData)
                    withObject:nil
                    afterDelay:1];
     }
-    tries = 0;
+    locTries = 0;
     
     gotUpdate = NO;
     [dataController getAllARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
 }
 -(void)setupNeardata {
-    if (tries == MAX_NUMBER_OF_TRIES) {
+    if (locTries == MAX_NUMBER_OF_TRIES) {
         [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location... thus no data near you can be found"];
         return;
     }
     if (!locWork.gotPreciseEnoughLocation) {
-        tries++;
+        locTries++;
         [self performSelector:@selector(setupNeardata)
                    withObject:nil
                    afterDelay:1];
     }
-    tries = 0;
+    locTries = 0;
     
     gotUpdate = NO;
     
     [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
 }
--(void)startAR {
-    if (tries == MAX_NUMBER_OF_TRIES) {
-        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location..."];
-        return;
-    }
-    if (!locWork.gotPreciseEnoughLocation) {
-        tries++;
-        [self performSelector:@selector(startAR)
-                   withObject:nil
-                   afterDelay:1];
-    }
-    tries = 0;
-    
+-(void)startARAfterGotLoc {
     if (gotUpdate) {
         gotUpdate = NO;
         [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
-    } else if (geoobjectOverlays.count == 0) {
+    }
+    else if (dataTries == MAX_NUMBER_OF_TRIES) {
         [self.delegate gotProblemIn:@"AR Data" withDetails:@"No events or places near you"];
+    }
+    else if (geoobjectOverlays.count == 0) {
+        dataTries++;
+        [dataController getNearARObjects:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+        return;
     }
     else {
         [cameraSession startRunning];
@@ -123,6 +117,22 @@
                                                       userInfo:nil
                                                        repeats:YES];
     }
+    dataTries = 0;
+}
+-(void)startAR {
+    if (locTries == MAX_NUMBER_OF_TRIES) {
+        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location..."];
+    }
+    if (!locWork.gotPreciseEnoughLocation) {
+        locTries++;
+        [self performSelector:@selector(startAR)
+                   withObject:nil
+                   afterDelay:1];
+        return;
+    }
+    locTries = 0;
+    
+    [self performSelectorOnMainThread:@selector(startARAfterGotLoc) withObject:nil waitUntilDone:NO];
 }
 
 -(void)setupDataForAR {
@@ -218,7 +228,8 @@ startLoop:
         deviceScreenResolution = screenSize;
         gotUpdate = NO;
         
-        tries = 0;
+        locTries = 0;
+        dataTries = 0;
         
         [self initAndAllocContainers];
         [self startDataController];
