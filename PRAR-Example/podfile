@@ -1,2 +1,2 @@
 platform :ios, '6.0'
-pod 'PRAugmentedReality', '~> 1.0.3'
+pod 'PRAugmentedReality', '~> 1.0.0'

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36B0C695175698030090BDF4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B0C694175698030090BDF4 /* QuartzCore.framework */; };
 		36EE34FF173D61D0008302F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE34FE173D61D0008302F3 /* UIKit.framework */; };
 		36EE3501173D61D0008302F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3500173D61D0008302F3 /* Foundation.framework */; };
 		36EE3503173D61D0008302F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3502173D61D0008302F3 /* CoreGraphics.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36B0C694175698030090BDF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		36EE34FB173D61D0008302F3 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EE34FE173D61D0008302F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		36EE3500173D61D0008302F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B0C695175698030090BDF4 /* QuartzCore.framework in Frameworks */,
 				36EE34FF173D61D0008302F3 /* UIKit.framework in Frameworks */,
 				36EE3501173D61D0008302F3 /* Foundation.framework in Frameworks */,
 				36EE3503173D61D0008302F3 /* CoreGraphics.framework in Frameworks */,
@@ -69,6 +72,7 @@
 		36EE34F2173D61D0008302F3 = {
 			isa = PBXGroup;
 			children = (
+				36B0C694175698030090BDF4 /* QuartzCore.framework */,
 				36EE3504173D61D0008302F3 /* PRAR-Example */,
 				36EE34FD173D61D0008302F3 /* Frameworks */,
 				36EE34FC173D61D0008302F3 /* Products */,

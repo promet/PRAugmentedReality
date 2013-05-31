@@ -82,6 +82,7 @@
     [self.delegate gotAllData:arObjects];
 }
 
+// -- Data callbacks for delegate -- //
 -(void)getNearARObjects_IN_BACKGROUND:(CLLocation*)location {
     NSDictionary *arObjects = [dbController getARObjectsNear:location];
     if (!arObjects || arObjects == nil) return;
