@@ -32,9 +32,9 @@
 #define OVERLAY_VIEW_WIDTH      350*HORIZ_SENS  // The size of the view that contains the overlays, simulates a 360 view
 
 #define X_CENTER                160     // Vertical center value to use to position the overlays
-#define Y_CENTER                150     // Horizontal center value to use to position the overlays
+#define Y_CENTER                170     // Horizontal center value to use to position the overlays
 
-#define MAXIMUM_DISTANCE        10.0    // The maximum distance the "distance" label should show, in Miles
+#define OVERLAY_WIDTH           240
 
 
 // -- Update Timestamp -- //
@@ -49,7 +49,7 @@
 #define max(x,y)                (x > y ? x : y)
 #define min(x,y)                (x < y ? x : y)
 
-#define REGION_RADIUS           300             // meters
+#define REGION_RADIUS           800             // meters
 #define METERS_TO_MILES         0.00062
 #define lat_over_lon            1.33975031663
 
@@ -60,7 +60,8 @@
 
 // -- Drupal Connectivity -- //                 // Ties in to the Drupal mobile_ar_connector module
 
-#define kDiosBaseUrl            @"http://192.168.1.7/prometar"
+#define kDiosBaseUrl            @"http://192.168.1.133/prometar"
+//#define kDiosBaseUrl            @"http://prometar.prometdev.com/"
 #define BaseARNode              @"ar_object"    // Example content type resource as in the Drupal example distro
 #define Endpoint                @"prar"         // Example endpoint as in the Drupal example distro
 

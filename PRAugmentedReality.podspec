@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "PRAugmentedReality"
-  s.version       = "1.0.3"
+  s.version       = "1.0.4"
   s.summary       = "iOS AR Library with Drupal communication module."
   s.homepage      = "https://github.com/promet/PRAugmentedReality"
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Classes/ARSettings.h'
   s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib"]
-  s.frameworks    = 'AVFoundation', 'CoreLocation', 'CoreMotion', 'MapKit', 'MobileCoreServices', 'SystemConfiguration'
+  s.frameworks    = 'AVFoundation', 'CoreLocation', 'CoreMotion', 'MapKit', 'MobileCoreServices', 'SystemConfiguration', 'QuartzCore'
   
   s.dependency 'FMDB', '~> 2.0'
   s.dependency 'AFNetworking', '~> 1.0'

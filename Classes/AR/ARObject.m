@@ -49,7 +49,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
                                                               longitude:object_loc_coord.longitude]
                                    autorelease];
     CLLocation *user_location = [[[CLLocation alloc] initWithLatitude:user_loc_coord.latitude
-                                                           longitude:user_loc_coord.longitude]
+                                                            longitude:user_loc_coord.longitude]
                                  autorelease];
     
     return [object_location distanceFromLocation:user_location]*METERS_TO_MILES;
@@ -78,7 +78,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     [titleL setText:arTitle];
     [addressL setText:address];
     
-    if (distance.doubleValue < MAXIMUM_DISTANCE) [distanceL setText:[NSString stringWithFormat:@"%.2f mi", distance.doubleValue]];
+    [distanceL setText:[NSString stringWithFormat:@"%.2f mi", distance.doubleValue]];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

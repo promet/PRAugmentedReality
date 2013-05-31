@@ -51,7 +51,7 @@
     return [inputString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
 }
 -(void)startReachability {
-    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:[self stripHTTPfrom:kDiosBaseUrl]];
+    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:[self stripHTTPfrom:@"www.google.com"]];//kDiosBaseUrl]];
     reachability.delegate = self;
 }
 -(void)reachabilityDidChange:(SCNetworkStatus)status {
@@ -82,7 +82,6 @@
     [self.delegate gotAllData:arObjects];
 }
 
-// -- Data callbacks for delegate -- //
 -(void)getNearARObjects_IN_BACKGROUND:(CLLocation*)location {
     NSDictionary *arObjects = [dbController getARObjectsNear:location];
     if (!arObjects || arObjects == nil) return;
