@@ -8,6 +8,16 @@
 
 #import "DBController.h"
 
+#define DB_FILE_NAME            @"db.sqlite"
+
+#define AR_COORDINATES_TABLE    @"arct"
+#define AR_DETAILS_TABLE        @"ardt"
+
+#define TIMESTAMP_FILE          @"timestamp.time"
+
+#define REGION_RADIUS           800 // meters
+
+
 @implementation DBController
 
 
@@ -219,7 +229,7 @@
 
 #pragma mark - Data callbacks
 
--(NSDictionary*)getARObjectsNear:(CLLocation*)location {
+-(NSArray*)getARObjectsNear:(CLLocation*)location {
     if (!location || location == nil) return nil;
     if (![self openDBConnection]) return nil;
     
@@ -227,7 +237,7 @@
     CLRegion *grRegion = [[CLRegion alloc] initCircularRegionWithCenter:location.coordinate
                                                                  radius:regionRadius identifier:@"grRegion"];
     
-    NSMutableDictionary *arObjects = [[NSMutableDictionary alloc] init];
+    NSMutableArray *arObjects = [[NSMutableArray alloc] init];
     
     FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@",AR_COORDINATES_TABLE]];
     while ([rs next]) {
@@ -240,14 +250,11 @@
         NSDictionary *detailsDict = [self getARObjectDetails:[rs stringForColumn:@"nid"]];
         if ([detailsDict count] == 0) continue;
         
-        [arObjects setObject:[[ARObject alloc] initWithId:[[rs stringForColumn:@"nid"] intValue]
-                                                    title:[detailsDict objectForKey:@"title"]
-                                                  address:[detailsDict objectForKey:@"address"]
-                                              coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
-                                                                                     [rs doubleForColumn:@"lon"])
-                                       andCurrentLocation:location.coordinate]
-                      forKey:[rs stringForColumn:@"nid"]
-         ];
+        NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:detailsDict];
+        [tempDict setObject:[rs stringForColumn:@"lat"] forKey:@"lat"];
+        [tempDict setObject:[rs stringForColumn:@"lon"] forKey:@"lon"];
+        
+        [arObjects addObject:tempDict];
     }
     
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);
@@ -257,11 +264,11 @@
     
     return arObjects;
 }
--(NSDictionary*)getAllARObjectsAndSetupWithLoc:(CLLocation*)location {
+-(NSArray*)getAllARObjectsAndSetupWithLoc:(CLLocation*)location {
     if (!location || location == nil) return nil;
     if (![self openDBConnection]) return nil;
     
-    NSMutableDictionary *arObjects = [[NSMutableDictionary alloc] init];
+    NSMutableArray *arObjects = [[NSMutableArray alloc] init];
     
     FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@",AR_COORDINATES_TABLE]];
     while ([rs next]) {
@@ -269,14 +276,7 @@
         NSDictionary *detailsDict = [self getARObjectDetails:[rs stringForColumn:@"nid"]];
         if ([detailsDict count] == 0) continue;
         
-        [arObjects setObject:[[ARObject alloc] initWithId:[[rs stringForColumn:@"nid"] intValue]
-                                                    title:[detailsDict objectForKey:@"title"]
-                                                  address:[detailsDict objectForKey:@"address"]
-                                              coordinates:CLLocationCoordinate2DMake([rs doubleForColumn:@"lat"],
-                                                                                     [rs doubleForColumn:@"lon"])
-                                       andCurrentLocation:location.coordinate]
-                      forKey:[rs stringForColumn:@"nid"]
-         ];
+        [arObjects addObject:detailsDict];
     }
     
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);

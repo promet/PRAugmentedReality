@@ -1,0 +1,10 @@
+#define kDiosBaseUrl                @"http://192.168.1.170/prometar"
+#define kDiosBaseNode               @"ar_object"
+#define kDiosEndpoint               @"prar"
+
+#define kDiosBaseComment            @"comment"
+#define kDiosBaseUser               @"user"
+#define kDiosBaseFile               @"file"
+#define kDiosBaseView               @"views"
+#define kDiosBaseTaxonmyTerm        @"taxonomy_term"
+#define kDiosBaseTaxonmyVocabulary  @"taxonomy_vocabulary"

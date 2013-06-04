@@ -10,6 +10,8 @@
 
 #import "DIOSARNode.h"
 
+#define MAX_NUMBER_OF_TRIES     5 
+
 @implementation DataController
 
 
@@ -19,9 +21,10 @@
     self = [super init];
     if (self) {
         
+        tries = 0;
         [self startReachability];
+        
         dbController = [[DBController alloc] init];
-        [self fetchUpdatedARObjects];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(fetchUpdatedARObjects)
@@ -78,15 +81,15 @@
 -(void)passARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
     [self.delegate gotNearData:arObjects];
 }
--(void)passAllARObjectsToDelegateOnMainThread:(NSDictionary*)arObjects {
+-(void)passAllARObjectsToDelegateOnMainThread:(NSArray*)arObjects {
     [self.delegate gotAllData:arObjects];
 }
 
 -(void)getNearARObjects_IN_BACKGROUND:(CLLocation*)location {
-    NSDictionary *arObjects = [dbController getARObjectsNear:location];
+    NSArray *arObjects = [dbController getARObjectsNear:location];
     if (!arObjects || arObjects == nil) return;
     
-    [self.delegate gotNearData:arObjects.allValues];
+    [self.delegate gotNearData:arObjects];
 }
 -(void)getNearARObjects:(CLLocationCoordinate2D)coordinates {
     [self performSelectorInBackground:@selector(getNearARObjects_IN_BACKGROUND:)
@@ -95,7 +98,7 @@
 }
 
 -(void)getAllARObjects_IN_BACKGROUND:(CLLocation*)location {
-    NSDictionary *arObjects = [dbController getAllARObjectsAndSetupWithLoc:location];
+    NSArray *arObjects = [dbController getAllARObjectsAndSetupWithLoc:location];
     if (!arObjects || arObjects == nil) return;
     
     [self.delegate gotAllData:arObjects];

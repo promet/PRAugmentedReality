@@ -11,6 +11,8 @@
 #define MAP_OVERLAY_X           20
 #define MAP_OVERLAY_Y           184
 
+#define MAX_NUMBER_OF_TRIES     5
+
 
 @interface MapView ()
 
@@ -23,13 +25,26 @@
 @synthesize arController;
 
 
+- (void)alert:(NSString*)title withDetails:(NSString*)details {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:details
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 #pragma mark - View Management
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    /*
     [arController performSelectorInBackground:@selector(setupNeardata) withObject:nil];
     [self setMapToUserLocation];
+     */
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -73,13 +88,7 @@
 }
 
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:problemOrigin
-                                                    message:details
-                                                   delegate:nil
-                                          cancelButtonTitle:@"ok"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [self alert:problemOrigin withDetails:details];
 }
 
 

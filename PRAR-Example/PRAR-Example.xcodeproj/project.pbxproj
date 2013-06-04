@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36870756175D816E00283E31 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3687073F175D816E00283E31 /* DataController.m */; };
+		36870757175D816E00283E31 /* DBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870741175D816E00283E31 /* DBController.m */; };
+		36870758175D816E00283E31 /* DIOSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870744175D816E00283E31 /* DIOSComment.m */; };
+		36870759175D816E00283E31 /* DIOSFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870746175D816E00283E31 /* DIOSFile.m */; };
+		3687075A175D816E00283E31 /* DIOSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870748175D816E00283E31 /* DIOSNode.m */; };
+		3687075B175D816E00283E31 /* DIOSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 3687074A175D816E00283E31 /* DIOSSession.m */; };
+		3687075C175D816E00283E31 /* DIOSSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3687074C175D816E00283E31 /* DIOSSystem.m */; };
+		3687075D175D816E00283E31 /* DIOSTaxonomy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3687074E175D816E00283E31 /* DIOSTaxonomy.m */; };
+		3687075E175D816E00283E31 /* DIOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870750175D816E00283E31 /* DIOSUser.m */; };
+		3687075F175D816E00283E31 /* DIOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870752175D816E00283E31 /* DIOSView.m */; };
+		36870760175D816E00283E31 /* DIOSARNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 36870755175D816E00283E31 /* DIOSARNode.m */; };
 		36EE34FF173D61D0008302F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE34FE173D61D0008302F3 /* UIKit.framework */; };
 		36EE3501173D61D0008302F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3500173D61D0008302F3 /* Foundation.framework */; };
 		36EE3503173D61D0008302F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EE3502173D61D0008302F3 /* CoreGraphics.framework */; };
@@ -25,6 +36,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3687073E175D816E00283E31 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		3687073F175D816E00283E31 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		36870740175D816E00283E31 /* DBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBController.h; sourceTree = "<group>"; };
+		36870741175D816E00283E31 /* DBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBController.m; sourceTree = "<group>"; };
+		36870743175D816E00283E31 /* DIOSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSComment.h; sourceTree = "<group>"; };
+		36870744175D816E00283E31 /* DIOSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSComment.m; sourceTree = "<group>"; };
+		36870745175D816E00283E31 /* DIOSFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSFile.h; sourceTree = "<group>"; };
+		36870746175D816E00283E31 /* DIOSFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSFile.m; sourceTree = "<group>"; };
+		36870747175D816E00283E31 /* DIOSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSNode.h; sourceTree = "<group>"; };
+		36870748175D816E00283E31 /* DIOSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSNode.m; sourceTree = "<group>"; };
+		36870749175D816E00283E31 /* DIOSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSSession.h; sourceTree = "<group>"; };
+		3687074A175D816E00283E31 /* DIOSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSSession.m; sourceTree = "<group>"; };
+		3687074B175D816E00283E31 /* DIOSSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSSystem.h; sourceTree = "<group>"; };
+		3687074C175D816E00283E31 /* DIOSSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSSystem.m; sourceTree = "<group>"; };
+		3687074D175D816E00283E31 /* DIOSTaxonomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSTaxonomy.h; sourceTree = "<group>"; };
+		3687074E175D816E00283E31 /* DIOSTaxonomy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSTaxonomy.m; sourceTree = "<group>"; };
+		3687074F175D816E00283E31 /* DIOSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSUser.h; sourceTree = "<group>"; };
+		36870750175D816E00283E31 /* DIOSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSUser.m; sourceTree = "<group>"; };
+		36870751175D816E00283E31 /* DIOSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSView.h; sourceTree = "<group>"; };
+		36870752175D816E00283E31 /* DIOSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSView.m; sourceTree = "<group>"; };
+		36870753175D816E00283E31 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		36870754175D816E00283E31 /* DIOSARNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSARNode.h; sourceTree = "<group>"; };
+		36870755175D816E00283E31 /* DIOSARNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSARNode.m; sourceTree = "<group>"; };
 		36EE34FB173D61D0008302F3 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36EE34FE173D61D0008302F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		36EE3500173D61D0008302F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -66,6 +100,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3687073D175D816E00283E31 /* Data Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				3687073E175D816E00283E31 /* DataController.h */,
+				3687073F175D816E00283E31 /* DataController.m */,
+				36870740175D816E00283E31 /* DBController.h */,
+				36870741175D816E00283E31 /* DBController.m */,
+				36870742175D816E00283E31 /* DIOS */,
+				36870754175D816E00283E31 /* DIOSARNode.h */,
+				36870755175D816E00283E31 /* DIOSARNode.m */,
+			);
+			path = "Data Handlers";
+			sourceTree = "<group>";
+		};
+		36870742175D816E00283E31 /* DIOS */ = {
+			isa = PBXGroup;
+			children = (
+				36870743175D816E00283E31 /* DIOSComment.h */,
+				36870744175D816E00283E31 /* DIOSComment.m */,
+				36870745175D816E00283E31 /* DIOSFile.h */,
+				36870746175D816E00283E31 /* DIOSFile.m */,
+				36870747175D816E00283E31 /* DIOSNode.h */,
+				36870748175D816E00283E31 /* DIOSNode.m */,
+				36870749175D816E00283E31 /* DIOSSession.h */,
+				3687074A175D816E00283E31 /* DIOSSession.m */,
+				3687074B175D816E00283E31 /* DIOSSystem.h */,
+				3687074C175D816E00283E31 /* DIOSSystem.m */,
+				3687074D175D816E00283E31 /* DIOSTaxonomy.h */,
+				3687074E175D816E00283E31 /* DIOSTaxonomy.m */,
+				3687074F175D816E00283E31 /* DIOSUser.h */,
+				36870750175D816E00283E31 /* DIOSUser.m */,
+				36870751175D816E00283E31 /* DIOSView.h */,
+				36870752175D816E00283E31 /* DIOSView.m */,
+				36870753175D816E00283E31 /* Settings.h */,
+			);
+			path = DIOS;
+			sourceTree = "<group>";
+		};
 		36EE34F2173D61D0008302F3 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +175,7 @@
 				36EE3516173D61D0008302F3 /* MainStoryboard.storyboard */,
 				36EE3519173D61D0008302F3 /* ViewController.h */,
 				36EE351A173D61D0008302F3 /* ViewController.m */,
+				3687073D175D816E00283E31 /* Data Handlers */,
 				36EE3521173D62DC008302F3 /* Main Views */,
 				36EE3505173D61D0008302F3 /* Supporting Files */,
 			);
@@ -241,6 +314,17 @@
 				36EE3528173D62DC008302F3 /* ARView.m in Sources */,
 				36EE3529173D62DC008302F3 /* ListView.m in Sources */,
 				36EE352A173D62DC008302F3 /* MapView.m in Sources */,
+				36870756175D816E00283E31 /* DataController.m in Sources */,
+				36870757175D816E00283E31 /* DBController.m in Sources */,
+				36870758175D816E00283E31 /* DIOSComment.m in Sources */,
+				36870759175D816E00283E31 /* DIOSFile.m in Sources */,
+				3687075A175D816E00283E31 /* DIOSNode.m in Sources */,
+				3687075B175D816E00283E31 /* DIOSSession.m in Sources */,
+				3687075C175D816E00283E31 /* DIOSSystem.m in Sources */,
+				3687075D175D816E00283E31 /* DIOSTaxonomy.m in Sources */,
+				3687075E175D816E00283E31 /* DIOSUser.m in Sources */,
+				3687075F175D816E00283E31 /* DIOSView.m in Sources */,
+				36870760175D816E00283E31 /* DIOSARNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +362,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (92X29RVVAF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -293,7 +377,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C96D7F18-FC89-4B4D-9BA1-C7DF94FB1FE5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFE1B03A-17CE-4999-BCB8-8F226304C820";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -310,7 +394,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (92X29RVVAF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -318,7 +402,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C96D7F18-FC89-4B4D-9BA1-C7DF94FB1FE5";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFE1B03A-17CE-4999-BCB8-8F226304C820";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -328,11 +412,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 675E50A2C8AD43EB94EEE95E /* Pods.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRAR-Example/PRAR-Example-Prefix.pch";
 				INFOPLIST_FILE = "PRAR-Example/PRAR-Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFE1B03A-17CE-4999-BCB8-8F226304C820";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -341,11 +427,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 675E50A2C8AD43EB94EEE95E /* Pods.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRAR-Example/PRAR-Example-Prefix.pch";
 				INFOPLIST_FILE = "PRAR-Example/PRAR-Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFE1B03A-17CE-4999-BCB8-8F226304C820";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

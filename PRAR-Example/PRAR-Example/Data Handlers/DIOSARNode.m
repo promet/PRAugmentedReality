@@ -9,15 +9,13 @@
 #import "DIOSARNode.h"
 #import "DIOSSession.h"
 
-#import "ARSettings.h"
-
 @implementation DIOSARNode
 
 + (void)getUpdatedARNodes:(NSString *)timestamp
                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", Endpoint, BaseARNode, timestamp];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, timestamp];
     
     [[DIOSSession sharedSession] getPath:path
                                parameters:nil

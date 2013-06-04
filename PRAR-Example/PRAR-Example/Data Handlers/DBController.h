@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "ARObject.h"
+#import <CoreLocation/CoreLocation.h>
 
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
@@ -19,8 +18,8 @@
     FMDatabase *fmdb;
 }
 
--(NSDictionary*)getARObjectsNear:(CLLocation*)location;
--(NSDictionary*)getAllARObjectsAndSetupWithLoc:(CLLocation*)location;
+-(NSArray*)getARObjectsNear:(CLLocation*)location;
+-(NSArray*)getAllARObjectsAndSetupWithLoc:(CLLocation*)location;
 
 -(BOOL)saveARObject:(NSString*)nid withData:(NSDictionary*)data;
 

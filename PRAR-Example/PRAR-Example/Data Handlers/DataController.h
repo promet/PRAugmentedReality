@@ -9,15 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import "SCNetworkReachability.h"
-
 #import "DBController.h"
 
 
 @class DataController;
 
-@protocol ARObjectsDataDelegate
+@protocol DataControllerDelegate
 - (void)gotNearData:(NSArray*)arObjects;
-- (void)gotAllData:(NSDictionary*)arObjects;
+- (void)gotAllData:(NSArray*)arObjects;
 
 - (void)gotUpdatedData;
 
@@ -31,7 +30,7 @@
     int tries;
 }
 
-@property (assign, nonatomic) id <ARObjectsDataDelegate> delegate;
+@property (assign, nonatomic) id <DataControllerDelegate> delegate;
 
 -(void)getNearARObjects:(CLLocationCoordinate2D)coordinates;
 -(void)getAllARObjects:(CLLocationCoordinate2D)coordinates;

@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="z3G-fy-mtl">
@@ -72,31 +72,47 @@
                                     <action selector="startPRAR:" destination="2" eventType="valueChanged" id="g31-5g-pFm"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start PRAugmentedReality system" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-9g-iyZ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Setup data:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4D-9g-iyZ">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zp-N8-gRk">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="221" id="8Gh-U4-Pjf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="J32-cU-YJD"/>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OPj-TY-NTn" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="129" id="1MT-8a-65h"/>
+                            <constraint firstItem="9NW-gF-Nkx" firstAttribute="leading" secondItem="7Zp-N8-gRk" secondAttribute="leading" type="default" id="2rt-Du-1Dp"/>
+                            <constraint firstItem="OPj-TY-NTn" firstAttribute="centerX" secondItem="J32-cU-YJD" secondAttribute="centerX" type="default" id="5DF-cD-AvD"/>
                             <constraint firstItem="z3G-fy-mtl" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="8aW-XS-T9I"/>
-                            <constraint firstItem="9NW-gF-Nkx" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="51" id="B4m-ka-7z2"/>
+                            <constraint firstAttribute="bottom" secondItem="9NW-gF-Nkx" secondAttribute="bottom" constant="144" id="Ghk-Te-3xR"/>
                             <constraint firstItem="z3G-fy-mtl" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="J9M-ex-oET"/>
+                            <constraint firstItem="ERS-9N-akV" firstAttribute="trailing" secondItem="7Zp-N8-gRk" secondAttribute="trailing" type="default" id="MMu-1C-jz6"/>
+                            <constraint firstItem="z4D-9g-iyZ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="72" id="MzW-nx-CTa"/>
+                            <constraint firstItem="z4D-9g-iyZ" firstAttribute="centerY" secondItem="N3k-7k-ifV" secondAttribute="centerY" type="default" id="NAk-4z-KhM"/>
+                            <constraint firstItem="J32-cU-YJD" firstAttribute="centerX" secondItem="7Zp-N8-gRk" secondAttribute="centerX" type="default" id="NHZ-nI-bia"/>
                             <constraint firstItem="OPj-TY-NTn" firstAttribute="baseline" secondItem="ERS-9N-akV" secondAttribute="baseline" type="default" id="Vmm-ZY-pMT"/>
-                            <constraint firstAttribute="trailing" secondItem="ERS-9N-akV" secondAttribute="trailing" constant="50" id="a3U-cQ-HhZ"/>
-                            <constraint firstAttribute="bottom" secondItem="9NW-gF-Nkx" secondAttribute="bottom" constant="195" id="cR4-uw-ybe"/>
+                            <constraint firstItem="N3k-7k-ifV" firstAttribute="top" secondItem="3" secondAttribute="top" constant="115" id="XoQ-xI-PNV"/>
+                            <constraint firstItem="J32-cU-YJD" firstAttribute="top" secondItem="7Zp-N8-gRk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Y4c-pU-dvC"/>
+                            <constraint firstAttribute="trailing" secondItem="N3k-7k-ifV" secondAttribute="trailing" constant="69" id="dTK-CK-jP5"/>
+                            <constraint firstItem="7Zp-N8-gRk" firstAttribute="centerX" secondItem="z3G-fy-mtl" secondAttribute="centerX" type="default" id="dUN-yP-PdO"/>
                             <constraint firstItem="z3G-fy-mtl" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="eyL-ZL-4H8"/>
-                            <constraint firstItem="N3k-7k-ifV" firstAttribute="top" secondItem="3" secondAttribute="top" constant="161" id="mXq-s5-4UR"/>
-                            <constraint firstItem="z3G-fy-mtl" firstAttribute="centerX" secondItem="z4D-9g-iyZ" secondAttribute="centerX" type="default" id="nID-Um-OFL"/>
-                            <constraint firstItem="N3k-7k-ifV" firstAttribute="centerX" secondItem="z4D-9g-iyZ" secondAttribute="centerX" type="default" id="ruO-9h-qpc"/>
+                            <constraint firstItem="7Zp-N8-gRk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="173" id="kzk-Zs-mG2"/>
                             <constraint firstItem="9NW-gF-Nkx" firstAttribute="baseline" secondItem="OPj-TY-NTn" secondAttribute="baseline" type="default" id="sQ5-rD-fNa"/>
-                            <constraint firstItem="z4D-9g-iyZ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="115" id="ywc-a9-y41"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="loadingI" destination="J32-cU-YJD" id="0V5-rd-nWX"/>
                         <outlet property="prarSwitch" destination="N3k-7k-ifV" id="LMD-T5-8av"/>
+                        <outlet property="statusL" destination="7Zp-N8-gRk" id="QHQ-yU-C8w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -108,7 +124,7 @@
             <objects>
                 <viewController storyboardIdentifier="MapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GWz-PT-VxQ" customClass="MapView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ymd-zt-pYh">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="fdk-oR-Wz3">
@@ -140,6 +156,7 @@
                             <constraint firstItem="fdk-oR-Wz3" firstAttribute="trailing" secondItem="Ymd-zt-pYh" secondAttribute="trailing" type="default" id="p1v-wq-h07"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_mapView" destination="EWv-RE-lEh" id="8DR-d3-Mam"/>
                     </connections>
@@ -153,7 +170,7 @@
             <objects>
                 <viewController storyboardIdentifier="ARView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aVx-Hk-zXj" customClass="ARView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jNE-nG-PsV">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="ZQB-s3-IoU">
@@ -179,6 +196,7 @@
                             <constraint firstItem="ZQB-s3-IoU" firstAttribute="top" secondItem="jNE-nG-PsV" secondAttribute="top" type="default" id="vSl-7C-9da"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="loadingI" destination="ARq-tn-Ajc" id="hMm-Bd-Nvj"/>
                     </connections>
@@ -192,7 +210,7 @@
             <objects>
                 <viewController storyboardIdentifier="ListView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c5l-Mg-Lmb" customClass="ListView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNz-V7-hSf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bz8-XA-EPQ">
@@ -263,6 +281,7 @@
                             <constraint firstItem="bz8-XA-EPQ" firstAttribute="bottom" secondItem="LNz-V7-hSf" secondAttribute="bottom" type="default" id="wEY-R5-CQ7"/>
                         </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_tableView" destination="bz8-XA-EPQ" id="9x1-kB-DxX"/>
                         <outlet property="loadingI" destination="W7K-Is-Fej" id="8P8-hL-lyq"/>
@@ -275,45 +294,6 @@
             <point key="canvasLocation" x="421" y="1024"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ARView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ARView.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="ListView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ListView.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="orderBy:"/>
-                <relationship kind="action" name="sort:"/>
-                <relationship kind="outlet" name="_tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="loadingProgress" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="sortView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MapView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapView.h"/>
-            <relationships>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="loadingIndicator" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="startPRAR:"/>
-                <relationship kind="outlet" name="prarSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

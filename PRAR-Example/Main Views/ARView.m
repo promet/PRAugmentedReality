@@ -16,35 +16,13 @@
 
 @implementation ARView
 
-@synthesize arController;
+@synthesize arData;
+@synthesize currentLoc;
 
 
-#pragma mark - AR Controller Delegate
-
-- (void)arControllerDidSetupDataAndAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer {
-    NSLog(@"Finished displaying ARObjects");
+- (void)alert:(NSString*)title withDetails:(NSString*)details {
     
-    [self.view.layer addSublayer:cameraLayer];
-    [self.view addSubview:arView];
-    
-    [loadingI stopAnimating];
-}
-- (void)arControllerDidSetupData:(NSDictionary *)arObjects {
-    [arController startAR];
-}
-- (void)arControllerUpdatePosition:(CGRect)arViewFrame {
-    [[self.view viewWithTag:AR_VIEW_TAG] setFrame:arViewFrame];
-}
-
-- (void)arControllerGotUpdatedData {
-    [arController startAR];
-}
-
-- (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
-
-    [loadingI stopAnimating];
-     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:problemOrigin
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
                                                     message:details
                                                    delegate:nil
                                           cancelButtonTitle:@"Ok"
@@ -53,29 +31,59 @@
     [alert release];
 }
 
+#pragma mark - AR Controller Delegate
+
+- (void)arControllerDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer {
+    NSLog(@"Finished displaying ARObjects");
+    
+    [self.view.layer addSublayer:cameraLayer];
+    [self.view addSubview:arView];
+    
+    [loadingI stopAnimating];
+}
+- (void)arControllerUpdateFrame:(CGRect)arViewFrame {
+    [[self.view viewWithTag:AR_VIEW_TAG] setFrame:arViewFrame];
+}
+- (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
+
+    [loadingI stopAnimating];
+    
+    [self alert:problemOrigin withDetails:details];
+}
+
 
 #pragma mark - View Management
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [loadingI startAnimating];
-    [arController startAR];
+    if (arData.count > 0) {
+        [loadingI startAnimating];
+        [arController startARWithData:arData andCurrentLoc:currentLoc];
+        return;
+    }
+    
+    [self alert:@"No data" withDetails:nil];
 }
 -(void)viewWillDisappear:(BOOL)animated {
     [arController stopAR];
     [super viewWillDisappear:animated];
 }
 
--(void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    arController = [[ARController alloc] initWithScreenSize:self.view.frame.size];
+    [arController setDelegate:self];
 }
+
 
 
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender {
+    //[arController release];
+    
     [self.delegate arViewControllerDidFinish:self];
 }
 

@@ -9,31 +9,24 @@
 #import <Foundation/Foundation.h>
 
 #import <AVFoundation/AVFoundation.h>
-#import <CoreMedia/CoreMedia.h>
 
 #import "LocationWork.h"
-#import "DataController.h"
 
 
 @class ARController;
 
 @protocol ARControllerDelegate
 @optional
-- (void)arControllerDidSetupDataAndAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
-- (void)arControllerDidSetupData:(NSDictionary*)arObjects;
-
-- (void)arControllerUpdatePosition:(CGRect)arViewFrame;
-- (void)arControllerGotUpdatedData;
-
+- (void)arControllerUpdateFrame:(CGRect)arViewFrame;
+- (void)arControllerDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details;
 @end
 
 
-@interface ARController : NSObject <ARObjectsDataDelegate> {
+@interface ARController : NSObject {
     
     // -- Main Handler Classes -- //
     LocationWork *locWork;
-    DataController *dataController;
     
     // -- Main Containers -- //
     NSMutableDictionary *geoobjectOverlays;
@@ -49,21 +42,17 @@
     UIView *arOverlaysContainerView;
     NSTimer *refreshTimer;
     
-    BOOL gotUpdate;
     int locTries;
     int dataTries;
 }
 
 @property (assign, nonatomic) id <ARControllerDelegate> delegate;
-@property (retain, nonatomic) DataController *dataController;
 @property (retain, nonatomic) LocationWork *locWork;
 
 -(id)initWithScreenSize:(CGSize)screenSize;
 -(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate;
 
--(void)setupAllData;
--(void)setupNeardata;
--(void)startAR;
+-(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation;
 -(void)stopAR;
 
 @end

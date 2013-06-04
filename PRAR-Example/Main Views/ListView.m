@@ -30,6 +30,16 @@
 @synthesize arController;
 
 
+- (void)alert:(NSString*)title withDetails:(NSString*)details {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:details
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Ok"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
 
 #pragma mark - AR Controller Delegate
 
@@ -51,13 +61,7 @@
 }
 
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:problemOrigin
-                                                    message:details
-                                                   delegate:nil
-                                          cancelButtonTitle:@"ok"
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [self alert:problemOrigin withDetails:details];
 }
 
 
@@ -66,9 +70,13 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    /*
     [loadingI startAnimating];
     [loadingProgress setProgress:0.0];
     [arController performSelectorInBackground:@selector(setupAllData) withObject:nil];
+     */
+    
+    [self alert:@"In the works" withDetails:@"This has not yet been updated for this version"];
 }
 -(void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];

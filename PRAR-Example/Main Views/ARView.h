@@ -20,12 +20,16 @@
 
 @interface ARView : UIViewController <ARControllerDelegate> {
     ARController *arController;
+    NSArray *arData;
+    CLLocationCoordinate2D currentLoc;
     
     IBOutlet UIActivityIndicatorView *loadingI;
 }
 
 @property (assign, nonatomic) id <ARViewDelegate> delegate;
-@property (nonatomic, retain) ARController *arController;
+
+@property (retain, nonatomic) NSArray *arData;
+@property CLLocationCoordinate2D currentLoc;
 
 - (IBAction)done:(id)sender;
 

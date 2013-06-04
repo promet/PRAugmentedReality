@@ -10,14 +10,19 @@
 #import "ARView.h"
 #import "MapView.h"
 
-@interface ViewController : UIViewController <ListViewDelegate, ARViewDelegate, MapViewDelegate> {
+#import "DataController.h"
+
+@interface ViewController : UIViewController <CLLocationManagerDelegate, ListViewDelegate, ARViewDelegate, MapViewDelegate, DataControllerDelegate> {
     
-    ARController *arController;
+    DataController *dataController;
+    CLLocationManager * locationManager;
     
     IBOutlet UISwitch *prarSwitch;
+    IBOutlet UIActivityIndicatorView *loadingI;
+    IBOutlet UILabel *statusL;
+        
+    NSArray *arData;
 }
-
-@property (nonatomic, retain) ARController *arController;
 
 -(IBAction)startPRAR:(id)sender;
 
