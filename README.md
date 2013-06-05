@@ -11,19 +11,20 @@ PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also incl
 * Customizable AR Overlays
 
 
-[![](https://dl.dropboxusercontent.com/u/30415492/Device-AR-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-AR.png)
-[![](https://dl.dropboxusercontent.com/u/30415492/Device-Map-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Map.png)
-[![](https://dl.dropboxusercontent.com/u/30415492/Device-List_Distance-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-List_Distance.png)
-[![](https://dl.dropboxusercontent.com/u/30415492/Device-List_Name-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-List_Name.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-Launch-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Launch.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-PRAR-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-PRAR.png)
+[![](https://dl.dropboxusercontent.com/u/30415492/Device-Main-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Main.png)
 
 
-### Example App
+#### Example App
 
 Demonstrates the use of the PRAugmentedReality Framework with:
 * Simple and efficient Data Storing for AR Objects using SQLite DB
 * Custom Map Pin annotation
 * Communication system with a Drupal module for simple creation of content on a site
 
+
+==================
 
 ### Version Requirements
 
@@ -57,6 +58,7 @@ Several Libraries are required for PRAugmentedReality
 [Wiki](https://github.com/promet/PRAugmentedReality/wiki) - Go check it out and read the "Getting Started" Guide for full walkthrough.  
 [GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
 
-#### DrupalCon Social - Demo App
+
+### DrupalCon Social - Demo App
 
 [![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk)
