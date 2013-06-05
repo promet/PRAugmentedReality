@@ -40,17 +40,8 @@ Put this line in your podfile:
 
 #### Manually
 
-Several Libraries are required for PRAugmentedReality
-* AVFoundation
-* CoreGraphics
-* CoreLocation
-* CoreMotion
-* MapKit
-* MobileCoreServices
-* SystemConfiguration
-* libz
-* libsqlite
--->  See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually) for more info
+Several Libraries are required for PRAugmentedReality  
+See [Wiki Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually) for more info
 
 
 ### Documentation
