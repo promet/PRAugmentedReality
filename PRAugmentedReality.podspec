@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name          = "PRAugmentedReality"
   s.version       = "2.0.0"
-  s.summary       = "iOS AR Library with Drupal communication module."
+  s.summary       = "iOS AR Library"
   s.homepage      = "https://github.com/promet/PRAugmentedReality"
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
   s.author        = { "Geoffroy Lesage" => "geoff@promethost.com" }
