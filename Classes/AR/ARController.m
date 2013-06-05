@@ -27,7 +27,7 @@
     [[self delegate] arControllerUpdateFrame:CGRectMake(newPos.origin.x,
                                                         newPos.origin.y,
                                                         OVERLAY_VIEW_WIDTH,
-                                                        deviceScreenResolution.height-TOOLBAR_HEIGHT)];
+                                                        deviceScreenResolution.height)];
 }
 
 
@@ -59,7 +59,6 @@
 #pragma mark - AR builders
 
 -(void)buildAROverlays:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation {
-    NSMutableArray *arObjects = [NSMutableArray arrayWithCapacity:arData.count];
     
     int x_pos = 0;
     ARObject *arObject;
@@ -149,7 +148,6 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     }
 }
 -(void)checkForVerticalPosClashes {
-    NSNumber *arObjectId;
     
     int distance, sub_distance, diff, x_pos, vertPosition, sub_vertPosition;
     BOOL gotConflict = YES;
@@ -240,10 +238,9 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     geoobjectPositions = [[NSMutableDictionary alloc] init];
     geoobjectVerts = [[NSMutableDictionary alloc] init];
     
-    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                       TOOLBAR_HEIGHT,
+    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
                                                                        OVERLAY_VIEW_WIDTH,
-                                                                       deviceScreenResolution.height-TOOLBAR_HEIGHT)];
+                                                                       deviceScreenResolution.height)];
     [arOverlaysContainerView setTag:AR_VIEW_TAG];
 }
 
@@ -267,10 +264,9 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
     [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
-    CGRect layerRect = CGRectMake(0,
-                                  TOOLBAR_HEIGHT,
+    CGRect layerRect = CGRectMake(0, 0,
                                   deviceScreenResolution.width,
-                                  deviceScreenResolution.height-TOOLBAR_HEIGHT);
+                                  deviceScreenResolution.height);
 	[cameraLayer setBounds:layerRect];
 	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
 }

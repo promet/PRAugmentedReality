@@ -28,7 +28,6 @@
 #define VERTICAL_SENS           960     // The vertical sensitivity of the overlays --> How fast they move up & down with the accelerometer data
 #define HORIZ_SENS              14      // Counterpart of the VERTICAL_SENS --> How fast they move left & right with the accelerometer data
 
-#define TOOLBAR_HEIGHT          40
 #define OVERLAY_VIEW_WIDTH      350*HORIZ_SENS  // The size of the view that contains the overlays, simulates a 360 view
 
 #define X_CENTER                160     // Vertical center value to use to position the overlays
@@ -47,6 +46,6 @@
 #define METERS_TO_MILES         0.00062
 #define lat_over_lon            1.33975031663
 
-#define METERS_PER_MILE_OVER_2  1609.344/2
+#define METERS_PER_MILE_OVER_2  804
 
 #define DEGREES( radians )      ((radians)*180/M_PI)

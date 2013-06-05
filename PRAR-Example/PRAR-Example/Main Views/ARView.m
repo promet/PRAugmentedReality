@@ -31,6 +31,7 @@
     [alert release];
 }
 
+
 #pragma mark - AR Controller Delegate
 
 - (void)arControllerDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer {
@@ -38,6 +39,8 @@
     
     [self.view.layer addSublayer:cameraLayer];
     [self.view addSubview:arView];
+    
+    [self.view bringSubviewToFront:[self.view viewWithTag:1992]];
     
     [loadingI stopAnimating];
 }
@@ -76,7 +79,6 @@
     arController = [[ARController alloc] initWithScreenSize:self.view.frame.size];
     [arController setDelegate:self];
 }
-
 
 
 #pragma mark - Actions

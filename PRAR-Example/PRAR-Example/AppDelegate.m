@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  PRAR-Example
 //
-//  Created by Geoffroy Lesage on 5/10/13.
+//  Created by ANDREW KUCHARSKI on 6/5/13.
 //  Copyright (c) 2013 Geoffroy Lesage. All rights reserved.
 //
 

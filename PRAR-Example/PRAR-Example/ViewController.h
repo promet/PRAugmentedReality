@@ -2,26 +2,29 @@
 //  ViewController.h
 //  PRAR-Example
 //
-//  Created by Geoffroy Lesage on 5/10/13.
+//  Created by ANDREW KUCHARSKI on 6/5/13.
 //  Copyright (c) 2013 Geoffroy Lesage. All rights reserved.
 //
 
-#import "ListView.h"
-#import "ARView.h"
-#import "MapView.h"
+#import <MapKit/MapKit.h>
 
+#import "ARView.h"
 #import "DataController.h"
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate, ListViewDelegate, ARViewDelegate, MapViewDelegate, DataControllerDelegate> {
+@interface ViewController : UIViewController <ARViewDelegate, DataControllerDelegate, MKMapViewDelegate> {
     
     DataController *dataController;
-    CLLocationManager * locationManager;
+    IBOutlet MKMapView *_mapView;
     
     IBOutlet UISwitch *prarSwitch;
     IBOutlet UIActivityIndicatorView *loadingI;
     IBOutlet UILabel *statusL;
-        
+    
+    IBOutlet UIButton *arB;
+    
     NSArray *arData;
+    
+    NSTimer *locRefreshTimer;
 }
 
 -(IBAction)startPRAR:(id)sender;
