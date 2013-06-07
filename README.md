@@ -33,7 +33,7 @@ PRAugmentedReality is compatible with iOS 5.0 or later.
 
 ### Installation - Using Cocoapods
 
-Put this line in your podfile:
+Put this line in your podfile:  
 `pod 'PRAugmentedReality'  
 
 
