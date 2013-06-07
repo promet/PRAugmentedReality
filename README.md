@@ -1,7 +1,7 @@
 PRAugmentedReality
 ==================
 
-PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also includes communication protocols with a Custom Drupal Module (In the works).
+PRAugmentedReality is an easy to use iOS Augmented Reality Library - Well optimized for all devices, even the older iPhones.
 
 ==================
 
