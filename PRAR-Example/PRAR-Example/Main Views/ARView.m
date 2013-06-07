@@ -17,7 +17,6 @@
 @implementation ARView
 
 @synthesize arData;
-@synthesize currentLoc;
 
 
 - (void)alert:(NSString*)title withDetails:(NSString*)details {
@@ -62,7 +61,7 @@
     
     if (arData.count > 0) {
         [loadingI startAnimating];
-        [arController startARWithData:arData andCurrentLoc:currentLoc];
+        [arController startARWithData:arData];
         return;
     }
     
@@ -76,8 +75,8 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    arController = [[ARController alloc] initWithScreenSize:self.view.frame.size];
-    [arController setDelegate:self];
+    arController = [[ARController alloc] initWithScreenSize:self.view.frame.size
+                                                andDelegate:self];
 }
 
 

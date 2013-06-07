@@ -55,6 +55,9 @@
                                                   userInfo:nil
                                                    repeats:YES];
 }
+-(void)startARWithData:(NSArray*)arData {
+    [self startARWithData:arData andCurrentLoc:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
+}
 
 #pragma mark - AR builders
 

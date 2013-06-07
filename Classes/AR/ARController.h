@@ -53,6 +53,7 @@
 -(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate;
 
 -(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation;
+-(void)startARWithData:(NSArray*)arData;
 -(void)stopAR;
 
 @end

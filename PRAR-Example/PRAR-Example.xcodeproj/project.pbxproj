@@ -25,7 +25,6 @@
 		361466D9175FBF8D00E7970B /* Image_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 361466D5175FBF8D00E7970B /* Image_back.png */; };
 		361466DA175FBF8D00E7970B /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 361466D6175FBF8D00E7970B /* x.png */; };
 		361466DC175FC01900E7970B /* ARBO.png in Resources */ = {isa = PBXBuildFile; fileRef = 361466DB175FC01900E7970B /* ARBO.png */; };
-		361466DE175FC3D600E7970B /* Promet.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 361466DD175FC3D600E7970B /* Promet.gpx */; };
 		361466E1175FC6FC00E7970B /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 361466E0175FC6FC00E7970B /* MyLocation.m */; };
 		361EC62C175FB647007C10B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361EC62B175FB647007C10B9 /* UIKit.framework */; };
 		361EC62E175FB647007C10B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361EC62D175FB647007C10B9 /* Foundation.framework */; };
@@ -77,7 +76,6 @@
 		361466D5175FBF8D00E7970B /* Image_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Image_back.png; path = "PRAR-Example/Main Graphics/Image_back.png"; sourceTree = "<group>"; };
 		361466D6175FBF8D00E7970B /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = "PRAR-Example/Main Graphics/x.png"; sourceTree = "<group>"; };
 		361466DB175FC01900E7970B /* ARBO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ARBO.png; path = "PRAR-Example/Main Graphics/ARBO.png"; sourceTree = "<group>"; };
-		361466DD175FC3D600E7970B /* Promet.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Promet.gpx; path = "../../PRAR-Example-bak/Promet.gpx"; sourceTree = "<group>"; };
 		361466DF175FC6FC00E7970B /* MyLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLocation.h; sourceTree = "<group>"; };
 		361466E0175FC6FC00E7970B /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
 		361EC628175FB647007C10B9 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +264,6 @@
 		361EC632175FB647007C10B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				361466DD175FC3D600E7970B /* Promet.gpx */,
 				361EC633175FB647007C10B9 /* PRAR-Example-Info.plist */,
 				361EC634175FB647007C10B9 /* InfoPlist.strings */,
 				361EC637175FB647007C10B9 /* main.m */,
@@ -387,7 +384,6 @@
 				361466D9175FBF8D00E7970B /* Image_back.png in Resources */,
 				361466DA175FBF8D00E7970B /* x.png in Resources */,
 				361466DC175FC01900E7970B /* ARBO.png in Resources */,
-				361466DE175FC3D600E7970B /* Promet.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
