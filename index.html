@@ -1,97 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <title>PRAugmentedReality by promet</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+
+      <header>
         <h1>PRAugmentedReality</h1>
-        <h2>iOS AR Library with Drupal communication module</h2>
-        <a href="https://github.com/promet/PRAugmentedReality" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
+        <p>iOS AR Library with Drupal communication module</p>
+      </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>PRAugmentedReality</h1>
+      <div id="banner">
+        <span id="logo"></span>
 
-<p>PRAugmentedReality is an easy to use iOS Augmented Reality Library. It also includes communication protocols with a Custom Drupal Module (In the works).</p>
+        <a href="https://github.com/promet/PRAugmentedReality" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/promet/PRAugmentedReality/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/promet/PRAugmentedReality/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a name="praugmentedreality" class="anchor" href="#praugmentedreality"><span class="octicon octicon-link"></span></a>PRAugmentedReality</h1>
+
+<p>PRAugmentedReality is an easy to use iOS Augmented Reality Library.</p>
 
 <h1></h1>
 
-<h3>What it provides</h3>
+<h3>
+<a name="what-it-provides" class="anchor" href="#what-it-provides"><span class="octicon octicon-link"></span></a>What it provides</h3>
 
 <ul>
 <li>An Augmented reality view out-of-the-box</li>
 <li>Customizable AR Overlays</li>
-<li>Simple and efficient Data Storing for AR Objects using SQLite DB</li>
-<li>Communication system with a Drupal module for simple creation of content on a site</li>
-<li>Custom Map Pin annotation</li>
-</ul><p><a href="https://dl.dropboxusercontent.com/u/30415492/Device-AR.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-AR-thumb.png" alt=""></a>
-<a href="https://dl.dropboxusercontent.com/u/30415492/Device-Map.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-Map-thumb.png" alt=""></a>
-<a href="https://dl.dropboxusercontent.com/u/30415492/Device-List_Name.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-List_Name-thumb.png" alt=""></a></p>
+</ul><p><a href="https://dl.dropboxusercontent.com/u/30415492/Device-Launch.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-Launch-thumb.png" alt=""></a>
+<a href="https://dl.dropboxusercontent.com/u/30415492/Device-PRAR.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-PRAR-thumb.png" alt=""></a>
+<a href="https://dl.dropboxusercontent.com/u/30415492/Device-Main.png"><img src="https://dl.dropboxusercontent.com/u/30415492/Device-Main-thumb.png" alt=""></a></p>
 
-<table>
-<tr valign='top' align='left'>
-  <td>
-    <h3>DrupalCon Social - Demo App</h3><br/>
-  </td>
-  <td>
-	  <a href="https://itunes.apple.com/us/app/drupalcon-social/id647481674"><img src="https://dl.dropboxusercontent.com/u/30415492/app-store-thumb.png" alt=""></a>
-  </td>
-</tr>
-</table>
+<h3>
+<a name="included-example-app" class="anchor" href="#included-example-app"><span class="octicon octicon-link"></span></a>Included Example App</h3>
+
+<p>Demonstrates the use of the PRAugmentedReality Framework with:</p>
+
+<ul>
+<li>Simple and efficient Data Storing for AR Objects using SQLite DB</li>
+<li>Custom Map Pin annotation</li>
+<li>Communication system with a Drupal module for simple creation of content on a site</li>
+</ul><h3>
+<a name="drupalcon-social---demo-app" class="anchor" href="#drupalcon-social---demo-app"><span class="octicon octicon-link"></span></a>DrupalCon Social - Demo App</h3>
 
 <p>DrupalCon Social is an events guide for Social events during DrupalCon Portland 2013.</p>
 
 <p>The app not only displays events and locations around the user in all 3 view modes of PRAugmentedReality.</p>
 
-<iframe width="560" height="315" src="http://www.youtube.com/embed/vBc8L1zr0kk" frameborder="0" allowfullscreen></iframe>
+<p>THIS IS RIGHT  </p>
 
-<h3>Documentation</h3>
+<p><a href="https://itunes.apple.com/us/app/drupalcon-social/id647481674"><img src="https://dl.dropboxusercontent.com/u/30415492/app-store-thumb.png" alt=""></a></p>
+
+<h3>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h3>
 
 <p><a href="https://github.com/promet/PRAugmentedReality/wiki">Wiki</a>  </p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/promet/PRAugmentedReality/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/promet/PRAugmentedReality/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/promet/PRAugmentedReality"></a> is maintained by <a href="https://github.com/promet">promet</a>.</p>
-
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/promet">promet</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
     </div>
-
-            <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
           <script type="text/javascript">
             try {
-              var pageTracker = _gat._getTracker("UA-39098334-2");
+              var pageTracker = _gat._getTracker("UA-4747942-2");
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
