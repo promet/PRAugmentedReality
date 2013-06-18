@@ -38,7 +38,7 @@ Put this line in your podfile:
 
 ### Documentation
 
-[Manual Install Guide Wiki](https://github.com/promet/PRAugmentedReality/wiki/Wik)
+[Manual Install Guide Wiki](https://github.com/promet/PRAugmentedReality/wiki/Wik)  
 [GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
 
 
