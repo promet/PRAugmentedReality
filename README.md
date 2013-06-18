@@ -38,8 +38,7 @@ Put this line in your podfile:
 
 ### Documentation
 
-[Manual Install Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started#manually)
-[Wiki](https://github.com/promet/PRAugmentedReality/wiki) - Go check it out and read the "Getting Started" Guide for full walkthrough.  
+[Manual Install Guide Wiki](https://github.com/promet/PRAugmentedReality/wiki/Wik)
 [GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
 
 
