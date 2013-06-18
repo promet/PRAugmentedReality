@@ -11,7 +11,6 @@ PRAugmentedReality is an easy to use iOS Augmented Reality Library - Well optimi
 * Customizable AR Overlays
 
 
-[![](https://dl.dropboxusercontent.com/u/30415492/Device-Launch-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Launch.png)
 [![](https://dl.dropboxusercontent.com/u/30415492/Device-PRAR-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-PRAR.png)
 [![](https://dl.dropboxusercontent.com/u/30415492/Device-Main-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Main.png)
 

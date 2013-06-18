@@ -2,8 +2,26 @@
 //  ARController.m
 //  PrometAR
 //
-//  Created by Geoffroy Lesage on 4/12/13.
-//  Copyright (c) 2013 Promet Solutions Inc. All rights reserved.
+// Created by Geoffroy Lesage on 4/24/13.
+// Copyright (c) 2013 Promet Solutions Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 //
 
 #import "ARController.h"
@@ -20,6 +38,25 @@
 @implementation ARController
 
 @synthesize locWork;
+
+
+// -- Shape warper -- //
+#define CATransform3DPerspective(t, x, y) (CATransform3DConcat(t, CATransform3DMake(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, 0, 0, 0, 0, 1)))
+#define CATransform3DMakePerspective(x, y) (CATransform3DPerspective(CATransform3DIdentity, x, y))
+
+CG_INLINE CATransform3D
+CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
+				  CGFloat m21, CGFloat m22, CGFloat m23, CGFloat m24,
+				  CGFloat m31, CGFloat m32, CGFloat m33, CGFloat m34,
+				  CGFloat m41, CGFloat m42, CGFloat m43, CGFloat m44)
+{
+	CATransform3D t;
+	t.m11 = m11; t.m12 = m12; t.m13 = m13; t.m14 = m14;
+	t.m21 = m21; t.m22 = m22; t.m23 = m23; t.m24 = m24;
+	t.m31 = m31; t.m32 = m32; t.m33 = m33; t.m34 = m34;
+	t.m41 = m41; t.m42 = m42; t.m43 = m43; t.m44 = m44;
+	return t;
+}
 
 
 -(void)refreshPositionOfOverlay {
@@ -59,6 +96,7 @@
     [self startARWithData:arData andCurrentLoc:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
 }
 
+
 #pragma mark - AR builders
 
 -(void)buildAROverlays:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation {
@@ -87,23 +125,18 @@
     [self.delegate arControllerDidSetupAR:arOverlaysContainerView withCameraLayer:cameraLayer];
 }
 
-#define CATransform3DPerspective(t, x, y) (CATransform3DConcat(t, CATransform3DMake(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, 0, 0, 0, 0, 1)))
-#define CATransform3DMakePerspective(x, y) (CATransform3DPerspective(CATransform3DIdentity, x, y))
-
-CG_INLINE CATransform3D
-CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
-				  CGFloat m21, CGFloat m22, CGFloat m23, CGFloat m24,
-				  CGFloat m31, CGFloat m32, CGFloat m33, CGFloat m34,
-				  CGFloat m41, CGFloat m42, CGFloat m43, CGFloat m44)
-{
-	CATransform3D t;
-	t.m11 = m11; t.m12 = m12; t.m13 = m13; t.m14 = m14;
-	t.m21 = m21; t.m22 = m22; t.m23 = m23; t.m24 = m24;
-	t.m31 = m31; t.m32 = m32; t.m33 = m33; t.m34 = m34;
-	t.m41 = m41; t.m42 = m42; t.m43 = m43; t.m44 = m44;
-	return t;
+-(void)setupDataForAR {
+    
+    [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    [self setVerticalPosWithDistance];
+    [self checkForVerticalPosClashes];
+    [self checkAllVerticalPos];
+    
+    [self setFramesForOverlays];
 }
 
+// Warps the view into a parrallelogram shape in order to give it a 3D perspective
 -(void)warpView:(UIView*)arView atVerticalPosition:(int)verticalPos {
     
     arView.layer.transform = CATransform3DMakePerspective(0, verticalPos*-0.0006);
@@ -128,7 +161,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     for (NSString *key in [geoobjectOverlays allKeys]) {
         
         arObject = [geoobjectOverlays objectForKey:key];
-        distance = (int)(arObject.distance.doubleValue/METERS_TO_MILES);
+        distance = (int)(arObject.distance.doubleValue);
         
         if (distance < 20) {
             [geoobjectVerts setValue:[NSNumber numberWithInt:0] forKey:key];
@@ -161,7 +194,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         for (NSString *key in [geoobjectOverlays allKeys]) {
             
             vertPosition = [[geoobjectVerts objectForKey:key] intValue];
-            distance = (int)([(ARObject*)[geoobjectOverlays objectForKey:key] distance].doubleValue/METERS_TO_MILES);
+            distance = (int)([(ARObject*)[geoobjectOverlays objectForKey:key] distance].doubleValue);
             x_pos = [[geoobjectPositions objectForKey:key] intValue];
             
             for (NSString *sub_key in [geoobjectOverlays allKeys]) {
@@ -171,7 +204,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                 if (vertPosition != sub_vertPosition) continue;
                 
                 diff = x_pos-[[geoobjectPositions objectForKey:sub_key] intValue];
-                sub_distance = [(ARObject*)[geoobjectOverlays objectForKey:sub_key] distance].intValue/METERS_TO_MILES;
+                sub_distance = [(ARObject*)[geoobjectOverlays objectForKey:sub_key] distance].intValue;
                 
                 if (diff < 0) diff = -diff;
                 if (diff > OVERLAY_WIDTH) continue;
@@ -209,7 +242,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         
         x_pos = [[geoobjectPositions objectForKey:arObjectId] intValue];
         vertPosition = [[geoobjectVerts objectForKey:arObjectId] intValue];
-        distance = (int)(arObject.distance.doubleValue/METERS_TO_MILES);
+        distance = (int)(arObject.distance.doubleValue);
         
         // Subtract the half the width to the x_pos so it points to the right place with it's right tip
         [arObject.view setFrame:CGRectMake(x_pos-(arObject.view.frame.size.width/2),
@@ -222,19 +255,12 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     }
 }
 
--(void)setupDataForAR {
-    
-    [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    [self setVerticalPosWithDistance];
-    [self checkForVerticalPosClashes];
-    [self checkAllVerticalPos];
-    
-    [self setFramesForOverlays];
-}
 -(void)stopAR {
     [refreshTimer invalidate];
 }
+
+
+#pragma mark - Main Initialization
 
 -(void)initAndAllocContainers {
     geoobjectOverlays = [[NSMutableDictionary alloc] init];
@@ -296,6 +322,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     }
     return self;
 }
+
 -(void)dealloc {
     [super dealloc];
     

@@ -1,4 +1,4 @@
-#define kDiosBaseUrl                @"http://192.168.1.51/prometar"
+#define kDiosBaseUrl                @"http://192.168.11.13/prometar"
 #define kDiosBaseNode               @"ar_object"
 #define kDiosEndpoint               @"prar"
 

@@ -51,6 +51,7 @@
 		361EC674175FB719007C10B9 /* DIOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC667175FB719007C10B9 /* DIOSView.m */; };
 		361EC675175FB719007C10B9 /* DIOSARNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC66A175FB719007C10B9 /* DIOSARNode.m */; };
 		361EC67D175FB72B007C10B9 /* ARView.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC678175FB72B007C10B9 /* ARView.m */; };
+		36A16BFD176FEE19004A75BA /* TestLoc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36A16BFC176FEE19004A75BA /* TestLoc.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		361EC66A175FB719007C10B9 /* DIOSARNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSARNode.m; sourceTree = "<group>"; };
 		361EC677175FB72B007C10B9 /* ARView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARView.h; path = "Main Views/ARView.h"; sourceTree = "<group>"; };
 		361EC678175FB72B007C10B9 /* ARView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARView.m; path = "Main Views/ARView.m"; sourceTree = "<group>"; };
+		36A16BFC176FEE19004A75BA /* TestLoc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestLoc.gpx; sourceTree = "<group>"; };
 		4CABE336794A4F5EA94BF959 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -287,6 +289,7 @@
 				361EC66A175FB719007C10B9 /* DIOSARNode.m */,
 				361466DF175FC6FC00E7970B /* MyLocation.h */,
 				361466E0175FC6FC00E7970B /* MyLocation.m */,
+				36A16BFC176FEE19004A75BA /* TestLoc.gpx */,
 			);
 			path = "Data Handlers";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				361466D9175FBF8D00E7970B /* Image_back.png in Resources */,
 				361466DA175FBF8D00E7970B /* x.png in Resources */,
 				361466DC175FC01900E7970B /* ARBO.png in Resources */,
+				36A16BFD176FEE19004A75BA /* TestLoc.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +484,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -495,6 +500,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "982FE711-AE5F-4227-B4CF-830C349706F6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -510,7 +516,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -518,6 +525,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "982FE711-AE5F-4227-B4CF-830C349706F6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

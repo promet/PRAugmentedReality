@@ -2,14 +2,33 @@
 //  ViewController.m
 //  PRAR-Example
 //
-//  Created by Geoffroy Lesage on 5/10/13.
-//  Copyright (c) 2013 Geoffroy Lesage. All rights reserved.
+// Created by Geoffroy Lesage on 4/24/13.
+// Copyright (c) 2013 Promet Solutions Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 //
 
 #import "ViewController.h"
 #import "MyLocation.h"
 
-#define LOC_REFRESH_TIMER   10 //seconds
+#define LOC_REFRESH_TIMER   10  //seconds
+#define MAP_SPAN            804 // The span of the map view
 
 
 @interface ViewController ()
@@ -61,7 +80,7 @@
                                                      userInfo: nil
                                                       repeats: YES];
     
-    [self performSelector:@selector(setMapToUserLocation) withObject:nil afterDelay:LOC_REFRESH_TIMER/2];
+    [self performSelector:@selector(setMapToUserLocation) withObject:nil afterDelay:1];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -137,8 +156,8 @@
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(_mapView.userLocation.location.coordinate.latitude,
                                                                                                   _mapView.userLocation.location.coordinate.longitude),
-                                                                       METERS_PER_MILE_OVER_2,
-                                                                       METERS_PER_MILE_OVER_2);
+                                                                       MAP_SPAN,
+                                                                       MAP_SPAN);
     [_mapView setRegion:[_mapView regionThatFits:viewRegion] animated:YES];
     [UIView commitAnimations];
 }
