@@ -139,7 +139,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 // Warps the view into a parrallelogram shape in order to give it a 3D perspective
 -(void)warpView:(UIView*)arView atVerticalPosition:(int)verticalPos {
     
-    arView.layer.transform = CATransform3DMakePerspective(0, verticalPos*-0.0006);
+    arView.layer.sublayerTransform = CATransform3DMakePerspective(0, verticalPos*-0.0004);
     
     float shrinkLevel = powf(0.9, verticalPos-1);
     arView.transform = CGAffineTransformMakeScale(shrinkLevel, shrinkLevel);
@@ -251,6 +251,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                                            arObject.view.frame.size.height)];
         
         [self warpView:arObject.view atVerticalPosition:vertPosition];
+        
         [arOverlaysContainerView addSubview:arObject.view];
     }
 }
