@@ -69,8 +69,6 @@
 #define X_CENTER                160     // Vertical center value to use to position the overlays
 #define Y_CENTER                170     // Horizontal center value to use to position the overlays
 
-#define OVERLAY_WIDTH           240
-
 
 // -- MATH -- //
 // Some of the values below may seem redundant but they do in fact remove overhead floating-point calculations

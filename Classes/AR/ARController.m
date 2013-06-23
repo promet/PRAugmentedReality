@@ -186,6 +186,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 -(void)checkForVerticalPosClashes {
     
     int distance, sub_distance, diff, x_pos, vertPosition, sub_vertPosition;
+    int overlay_width = ((ARObject*)[[geoobjectOverlays allValues] objectAtIndex:0]).view.frame.size.width;
     BOOL gotConflict = YES;
     
     while (gotConflict) {
@@ -207,14 +208,14 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                 sub_distance = [(ARObject*)[geoobjectOverlays objectForKey:sub_key] distance].intValue;
                 
                 if (diff < 0) diff = -diff;
-                if (diff > OVERLAY_WIDTH) continue;
+                if (diff > overlay_width) continue;
                 
                 gotConflict = YES;
                 
-                if (diff < OVERLAY_WIDTH && sub_distance<distance) {
+                if (diff < overlay_width && sub_distance<distance) {
                     vertPosition++;
                     
-                } else if (diff < OVERLAY_WIDTH) {
+                } else if (diff < overlay_width) {
                     [geoobjectVerts setValue:[NSNumber numberWithInt:sub_vertPosition+1] forKey:sub_key];
                 }
             }
