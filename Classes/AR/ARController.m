@@ -107,7 +107,6 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         NSNumber *ar_id = [NSNumber numberWithInt:[[arObjectData objectForKey:@"nid"] intValue]];
         arObject = [[ARObject alloc] initWithId:ar_id.intValue
                                           title:[arObjectData objectForKey:@"title"]
-                                        address:[arObjectData objectForKey:@"address"]
                                     coordinates:CLLocationCoordinate2DMake([[arObjectData objectForKey:@"lat"] doubleValue],
                                                                            [[arObjectData objectForKey:@"lon"] doubleValue])
                              andCurrentLocation:currentLocation];

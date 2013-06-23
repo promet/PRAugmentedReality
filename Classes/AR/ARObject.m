@@ -34,11 +34,10 @@
 
 @implementation ARObject
 
-@synthesize arTitle, address, distance;
+@synthesize arTitle, distance;
 
 - (id)initWithId:(int)newNid
            title:(NSString*)newTitle
-         address:(NSString*)newAddress
      coordinates:(CLLocationCoordinate2D)newCoordinates
 andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     
@@ -47,7 +46,6 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
         nid = newNid;
         
         arTitle = [[NSString alloc] initWithString:newTitle];
-        address = [[NSString alloc] initWithString:newAddress];
         
         lat = newCoordinates.latitude;
         lon = newCoordinates.longitude;
@@ -79,12 +77,11 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
 }
 
 - (NSDictionary*)getARObjectData {
-    NSArray *keys = [NSArray arrayWithObjects:@"id",@"title", @"address", @"latitude", @"longitude", @"distance", nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"id",@"title", @"latitude", @"longitude", @"distance", nil];
     
     NSArray *values = [NSArray arrayWithObjects:
                        [NSNumber numberWithInt:nid],
                        arTitle,
-                       address,
                        [NSNumber numberWithDouble:lat],
                        [NSNumber numberWithDouble:lon],
                        distance,
@@ -111,7 +108,6 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     [super dealloc];
     
     [arTitle release];
-    [address release];
     [distance release];
 }
 

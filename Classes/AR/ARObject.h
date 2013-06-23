@@ -34,7 +34,6 @@
     
     // ARObject main components
     NSString *arTitle;
-    NSString *address;
     
     int nid;
     double lat;
@@ -47,12 +46,10 @@
 }
 
 @property (nonatomic, retain) NSString *arTitle;
-@property (nonatomic, retain) NSString *address;
 @property (nonatomic, retain) NSNumber *distance;
 
 - (id)initWithId:(int)newNid
            title:(NSString*)newTitle
-         address:(NSString*)newAddress
      coordinates:(CLLocationCoordinate2D)newCoordinates
 andCurrentLocation:(CLLocationCoordinate2D)currLoc;
 
