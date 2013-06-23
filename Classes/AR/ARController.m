@@ -111,7 +111,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                                                                            [[arObjectData objectForKey:@"lon"] doubleValue])
                              andCurrentLocation:currentLocation];
         
-        x_pos = [locWork getARObjectXPosition:arObject];
+        x_pos = [locWork getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
         [geoobjectOverlays  setObject:arObject                          forKey:ar_id];
         [geoobjectPositions setObject:[NSNumber numberWithInt:x_pos]    forKey:ar_id];
@@ -149,7 +149,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     int pos = Y_CENTER-(int)(arView.frame.size.height*verticalPos);
     pos -= (powf(verticalPos, 2)*4);
     
-    return pos;
+    return pos-(arView.frame.size.height/2);
 }
 
 -(void)setVerticalPosWithDistance {
@@ -235,18 +235,18 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 -(void)setFramesForOverlays {
     
-    int distance, x_pos, vertPosition;
+    int distance, x_pos, y_pos, vertPosition;
     
     for (ARObject *arObject in [geoobjectOverlays allValues]) {
         NSNumber *arObjectId = [arObject.getARObjectData objectForKey:@"id"];
         
         x_pos = [[geoobjectPositions objectForKey:arObjectId] intValue];
         vertPosition = [[geoobjectVerts objectForKey:arObjectId] intValue];
+        y_pos = [self setYPosForView:arObject.view atVerticalPos:vertPosition];
         distance = (int)(arObject.distance.doubleValue);
         
         // Subtract the half the width to the x_pos so it points to the right place with it's right tip
-        [arObject.view setFrame:CGRectMake(x_pos-(arObject.view.frame.size.width/2),
-                                           [self setYPosForView:arObject.view atVerticalPos:vertPosition],
+        [arObject.view setFrame:CGRectMake(x_pos, y_pos,
                                            arObject.view.frame.size.width,
                                            arObject.view.frame.size.height)];
         
