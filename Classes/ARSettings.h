@@ -1,6 +1,6 @@
 //
 //  ARSettings.h
-//  PrometAR
+//  PrometAR v2.1.1
 //
 // Created by Geoffroy Lesage on 4/24/13.
 // Copyright (c) 2013 Promet Solutions Inc.
