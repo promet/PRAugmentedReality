@@ -1,7 +1,7 @@
-PRAugmentedReality - Augmented Reality Framework for iOS
+PRAugmentedReality
 ==================
 
-PRAugmentedReality is an easy to use iOS Augmented Reality Library - Well optimized for all devices, even the older iPhones.
+Augmented Reality Framework for iOS - Well optimized for all devices, even the older iPhones.
 
 ==================
 
