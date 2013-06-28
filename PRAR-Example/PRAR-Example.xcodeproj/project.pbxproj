@@ -52,6 +52,7 @@
 		361EC675175FB719007C10B9 /* DIOSARNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC66A175FB719007C10B9 /* DIOSARNode.m */; };
 		361EC67D175FB72B007C10B9 /* ARView.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC678175FB72B007C10B9 /* ARView.m */; };
 		36A16BFD176FEE19004A75BA /* TestLoc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36A16BFC176FEE19004A75BA /* TestLoc.gpx */; };
+		36CB34F0177D106D00083F35 /* TechWeek.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36CB34EF177D106D00083F35 /* TechWeek.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,7 @@
 		361EC677175FB72B007C10B9 /* ARView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARView.h; path = "Main Views/ARView.h"; sourceTree = "<group>"; };
 		361EC678175FB72B007C10B9 /* ARView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARView.m; path = "Main Views/ARView.m"; sourceTree = "<group>"; };
 		36A16BFC176FEE19004A75BA /* TestLoc.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestLoc.gpx; sourceTree = "<group>"; };
+		36CB34EF177D106D00083F35 /* TechWeek.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TechWeek.gpx; sourceTree = "<group>"; };
 		4CABE336794A4F5EA94BF959 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -289,6 +291,7 @@
 				361EC66A175FB719007C10B9 /* DIOSARNode.m */,
 				361466DF175FC6FC00E7970B /* MyLocation.h */,
 				361466E0175FC6FC00E7970B /* MyLocation.m */,
+				36CB34EF177D106D00083F35 /* TechWeek.gpx */,
 				36A16BFC176FEE19004A75BA /* TestLoc.gpx */,
 			);
 			path = "Data Handlers";
@@ -388,6 +391,7 @@
 				361466DA175FBF8D00E7970B /* x.png in Resources */,
 				361466DC175FC01900E7970B /* ARBO.png in Resources */,
 				36A16BFD176FEE19004A75BA /* TestLoc.gpx in Resources */,
+				36CB34F0177D106D00083F35 /* TechWeek.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -55,6 +55,8 @@
                                                         error:nil];
 }
 -(NSString*)getLastUpdateTimestamp {
+    return @"0";
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if ([fileManager fileExistsAtPath:[self getTimestampPath]]) {
