@@ -39,8 +39,8 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 
 [Wiki - Getting Started Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started-Guide) - Everything you need to use the framework out of the box.  
 [Wiki - Expanding on it Guide](https://github.com/promet/PRAugmentedReality/wiki/Expanding-on-it) - Tips on modifying the framework for your own use.  
-[GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
-**Contact**: If you need additional help, contact me at `geoff at promethost.com`
+[GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers  
+**Contact**: If you need additional help, contact me at `geoff at promethost.com`  
 
 
 ==================
