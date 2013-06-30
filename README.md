@@ -48,3 +48,9 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 ### DrupalCon Social - Demo App
 
 [![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk)
+
+==================
+
+### TechWeek Ar Promo
+
+[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/promo-thumb.png)](http://youtu.be/7SIn5tmcjvc)
