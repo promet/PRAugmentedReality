@@ -112,6 +112,26 @@
         <image name="Image_back.png" width="640" height="336"/>
         <image name="x.png" width="240" height="240"/>
     </resources>
+    <classes>
+        <class className="ARView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ARView.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="startPRAR:"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="arB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="prarSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="statusL" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

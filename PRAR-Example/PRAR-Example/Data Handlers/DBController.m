@@ -54,7 +54,7 @@
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];
 }
--(NSString*)getLastUpdateTimestamp {    
+-(NSString*)getLastUpdateTimestamp {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if ([fileManager fileExistsAtPath:[self getTimestampPath]]) {
