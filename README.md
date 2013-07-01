@@ -21,6 +21,7 @@ Demonstrates the use of the PRAugmentedReality Framework with:
 * Simple and efficient Data Storing for AR Objects using SQLite DB
 * Custom Map Pin annotation
 * Communication system with a Drupal module for simple creation of content on a site
+** [prar.prometsource.com](http://prar.prometsource.com/) Includes 20+ locations near the provided "Test Location" for testing.
 
 
 ==================
@@ -39,8 +40,7 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 
 [Wiki - Getting Started Guide](https://github.com/promet/PRAugmentedReality/wiki/Getting-started-Guide) - Everything you need to use the framework out of the box.  
 [Wiki - Expanding on it Guide](https://github.com/promet/PRAugmentedReality/wiki/Expanding-on-it) - Tips on modifying the framework for your own use.  
-[GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers  
-**Contact**: If you need additional help, contact me at `geoff at promethost.com`  
+[GitHub Pages](http://praugmentedreality.com/) - Info page for less techie viewers
 
 
 ==================
@@ -48,9 +48,3 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 ### DrupalCon Social - Demo App
 
 [![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk)
-
-==================
-
-### TechWeek Ar Promo
-
-[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/promo-thumb.png)](http://youtu.be/7SIn5tmcjvc)
