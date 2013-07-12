@@ -41,14 +41,10 @@
 		361EC651175FB6A3007C10B9 /* Logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 361EC650175FB6A3007C10B9 /* Logo@2x.png */; };
 		361EC66B175FB719007C10B9 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC654175FB719007C10B9 /* DataController.m */; };
 		361EC66C175FB719007C10B9 /* DBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC656175FB719007C10B9 /* DBController.m */; };
-		361EC66D175FB719007C10B9 /* DIOSComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC659175FB719007C10B9 /* DIOSComment.m */; };
-		361EC66E175FB719007C10B9 /* DIOSFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC65B175FB719007C10B9 /* DIOSFile.m */; };
 		361EC66F175FB719007C10B9 /* DIOSNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC65D175FB719007C10B9 /* DIOSNode.m */; };
 		361EC670175FB719007C10B9 /* DIOSSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC65F175FB719007C10B9 /* DIOSSession.m */; };
 		361EC671175FB719007C10B9 /* DIOSSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC661175FB719007C10B9 /* DIOSSystem.m */; };
-		361EC672175FB719007C10B9 /* DIOSTaxonomy.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC663175FB719007C10B9 /* DIOSTaxonomy.m */; };
 		361EC673175FB719007C10B9 /* DIOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC665175FB719007C10B9 /* DIOSUser.m */; };
-		361EC674175FB719007C10B9 /* DIOSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC667175FB719007C10B9 /* DIOSView.m */; };
 		361EC675175FB719007C10B9 /* DIOSARNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC66A175FB719007C10B9 /* DIOSARNode.m */; };
 		361EC67D175FB72B007C10B9 /* ARView.m in Sources */ = {isa = PBXBuildFile; fileRef = 361EC678175FB72B007C10B9 /* ARView.m */; };
 		36A16BFD176FEE19004A75BA /* TestLoc.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36A16BFC176FEE19004A75BA /* TestLoc.gpx */; };
@@ -101,22 +97,14 @@
 		361EC654175FB719007C10B9 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 		361EC655175FB719007C10B9 /* DBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBController.h; sourceTree = "<group>"; };
 		361EC656175FB719007C10B9 /* DBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBController.m; sourceTree = "<group>"; };
-		361EC658175FB719007C10B9 /* DIOSComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSComment.h; sourceTree = "<group>"; };
-		361EC659175FB719007C10B9 /* DIOSComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSComment.m; sourceTree = "<group>"; };
-		361EC65A175FB719007C10B9 /* DIOSFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSFile.h; sourceTree = "<group>"; };
-		361EC65B175FB719007C10B9 /* DIOSFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSFile.m; sourceTree = "<group>"; };
 		361EC65C175FB719007C10B9 /* DIOSNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSNode.h; sourceTree = "<group>"; };
 		361EC65D175FB719007C10B9 /* DIOSNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSNode.m; sourceTree = "<group>"; };
 		361EC65E175FB719007C10B9 /* DIOSSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSSession.h; sourceTree = "<group>"; };
 		361EC65F175FB719007C10B9 /* DIOSSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSSession.m; sourceTree = "<group>"; };
 		361EC660175FB719007C10B9 /* DIOSSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSSystem.h; sourceTree = "<group>"; };
 		361EC661175FB719007C10B9 /* DIOSSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSSystem.m; sourceTree = "<group>"; };
-		361EC662175FB719007C10B9 /* DIOSTaxonomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSTaxonomy.h; sourceTree = "<group>"; };
-		361EC663175FB719007C10B9 /* DIOSTaxonomy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSTaxonomy.m; sourceTree = "<group>"; };
 		361EC664175FB719007C10B9 /* DIOSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSUser.h; sourceTree = "<group>"; };
 		361EC665175FB719007C10B9 /* DIOSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSUser.m; sourceTree = "<group>"; };
-		361EC666175FB719007C10B9 /* DIOSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSView.h; sourceTree = "<group>"; };
-		361EC667175FB719007C10B9 /* DIOSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSView.m; sourceTree = "<group>"; };
 		361EC668175FB719007C10B9 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		361EC669175FB719007C10B9 /* DIOSARNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIOSARNode.h; sourceTree = "<group>"; };
 		361EC66A175FB719007C10B9 /* DIOSARNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIOSARNode.m; sourceTree = "<group>"; };
@@ -297,22 +285,14 @@
 		361EC657175FB719007C10B9 /* DIOS */ = {
 			isa = PBXGroup;
 			children = (
-				361EC658175FB719007C10B9 /* DIOSComment.h */,
-				361EC659175FB719007C10B9 /* DIOSComment.m */,
-				361EC65A175FB719007C10B9 /* DIOSFile.h */,
-				361EC65B175FB719007C10B9 /* DIOSFile.m */,
 				361EC65C175FB719007C10B9 /* DIOSNode.h */,
 				361EC65D175FB719007C10B9 /* DIOSNode.m */,
 				361EC65E175FB719007C10B9 /* DIOSSession.h */,
 				361EC65F175FB719007C10B9 /* DIOSSession.m */,
 				361EC660175FB719007C10B9 /* DIOSSystem.h */,
 				361EC661175FB719007C10B9 /* DIOSSystem.m */,
-				361EC662175FB719007C10B9 /* DIOSTaxonomy.h */,
-				361EC663175FB719007C10B9 /* DIOSTaxonomy.m */,
 				361EC664175FB719007C10B9 /* DIOSUser.h */,
 				361EC665175FB719007C10B9 /* DIOSUser.m */,
-				361EC666175FB719007C10B9 /* DIOSView.h */,
-				361EC667175FB719007C10B9 /* DIOSView.m */,
 				361EC668175FB719007C10B9 /* Settings.h */,
 			);
 			path = DIOS;
@@ -434,14 +414,10 @@
 				361EC648175FB647007C10B9 /* ViewController.m in Sources */,
 				361EC66B175FB719007C10B9 /* DataController.m in Sources */,
 				361EC66C175FB719007C10B9 /* DBController.m in Sources */,
-				361EC66D175FB719007C10B9 /* DIOSComment.m in Sources */,
-				361EC66E175FB719007C10B9 /* DIOSFile.m in Sources */,
 				361EC66F175FB719007C10B9 /* DIOSNode.m in Sources */,
 				361EC670175FB719007C10B9 /* DIOSSession.m in Sources */,
 				361EC671175FB719007C10B9 /* DIOSSystem.m in Sources */,
-				361EC672175FB719007C10B9 /* DIOSTaxonomy.m in Sources */,
 				361EC673175FB719007C10B9 /* DIOSUser.m in Sources */,
-				361EC674175FB719007C10B9 /* DIOSView.m in Sources */,
 				361EC675175FB719007C10B9 /* DIOSARNode.m in Sources */,
 				361EC67D175FB72B007C10B9 /* ARView.m in Sources */,
 				361466BB175FB7BE00E7970B /* ARController.m in Sources */,

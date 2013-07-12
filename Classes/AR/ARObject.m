@@ -89,19 +89,12 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     [titleL setText:arTitle];
     
     [distanceL setText:[self getDistanceLabelText]];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc {
