@@ -86,6 +86,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated {
     [arController stopAR];
+    
     [super viewWillDisappear:animated];
 }
 

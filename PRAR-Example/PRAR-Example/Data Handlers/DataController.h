@@ -46,6 +46,8 @@
     // -- Reachability -- //
     BOOL siteIsReachable;
     int tries;
+    
+    BOOL fetching;
 }
 
 @property (assign, nonatomic) id <DataControllerDelegate> delegate;

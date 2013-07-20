@@ -30,11 +30,12 @@
 #import "ARObject.h"
 
 
-@interface LocationWork : NSObject <CLLocationManagerDelegate, UIAccelerometerDelegate> {
+@interface LocationWork : NSObject <CLLocationManagerDelegate> {
     
     // Main managers
     CLLocationManager * locationManager;
-    UIAccelerometer *accelerometer;
+    CMMotionManager * motionManager;
+    NSTimer *accelTimer;
     
     // Major variables   
     float currentHeading;
@@ -46,6 +47,9 @@
     // Others
     float rollingZ;
     float rollingX;
+    
+    float rollingZ2;
+    float rollingX2;
     
     BOOL gotPreciseEnoughLocation;
     

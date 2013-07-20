@@ -40,6 +40,8 @@
     if (self) {
         
         tries = 0;
+        fetching = NO;
+        
         [self startReachability];
         
         dbController = [[DBController alloc] init];
@@ -134,8 +136,11 @@
     @try {
         if ([newARObjects count] > 0) {
             for (NSString *ar_object_nid in [newARObjects allKeys]) {
-                [dbController saveARObject:ar_object_nid
-                                  withData:[newARObjects objectForKey:ar_object_nid]];
+                NSDictionary *ar_obj = [newARObjects objectForKey:ar_object_nid];
+                if ([[ar_obj objectForKey:@"coordinates"] objectForKey:@"lat"] == [NSNull null]) continue;
+                if ([[[ar_obj objectForKey:@"coordinates"] objectForKey:@"lat"] isEqualToString:@"<null>"]) continue;
+                
+                [dbController saveARObject:ar_object_nid withData:ar_obj];
             }
             
             [self.delegate gotUpdatedData];
@@ -151,6 +156,7 @@
     
     if (tries > MAX_NUMBER_OF_TRIES) {
         tries = 0;
+        fetching = NO;
         [self alertWithTitle:@"Unable to reach website :("
                   andMessage:@"Cannot download updated places/events..."];
         return;
@@ -161,10 +167,12 @@
         return;
     }
     
+    if (fetching) return;
+    fetching = YES;
+    
     NSLog(@"Fetching Updated Places");
     [DIOSARNode getUpdatedARNodes:[dbController getLastUpdateTimestamp]
                           success:^(AFHTTPRequestOperation *operation, id response) {
-                              
                               [self saveAllARObjects:response];
                               [dbController saveCurrentTimestamp];
                           }

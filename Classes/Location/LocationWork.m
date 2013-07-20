@@ -38,21 +38,34 @@
     if (self) {
         gotPreciseEnoughLocation = NO;
         
+        motionManager = [[CMMotionManager alloc] init];
+        
         [self setupLocationManager];
     }
     return self;
+}
+
+-(void)dealloc {
+    [locationManager release];
+    [motionManager release];
+    
+    if (accelTimer) {
+        [accelTimer release];
+        accelTimer = nil;
+    }
+    
+    [super dealloc];
 }
 
 
 # pragma mark - LocationManager
 
 -(void)setupLocationManager {
-    if (locationManager == nil){
-		locationManager = [[CLLocationManager alloc]init];
-		locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        locationManager.distanceFilter = kCLDistanceFilterNone;
-		locationManager.delegate = self;
-	}
+
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [locationManager setDistanceFilter:kCLDistanceFilterNone];
+    [locationManager setDelegate:self];
     
     [locationManager startUpdatingLocation];
 }
@@ -74,10 +87,10 @@
     if (status == kCLAuthorizationStatusAuthorized) [self setupLocationManager];
 }
 
-
-# pragma mark - Accellerometer
-
--(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+-(void)pollAccellerometerForVerticalPosition {
+    
+    CMAcceleration acceleration = motionManager.accelerometerData.acceleration;
+    
     rollingZ  = (acceleration.z * kFilteringFactor) + (rollingZ  * (1.0 - kFilteringFactor));
     rollingX = (acceleration.y * kFilteringFactor) + (rollingX * (1.0 - kFilteringFactor));
     
@@ -87,15 +100,24 @@
 	else if (rollingX >= 0)  currentInclination = inc_avg(3 * M_PI/2.0);
 }
 
+# pragma mark - Accellerometer
+
 -(void)startAR:(CGSize)deviceScreenSize {
     
-    [locationManager startUpdatingHeading];
-    
-    accelerometer = [UIAccelerometer sharedAccelerometer];
-    accelerometer.updateInterval = 0.01;
-    [accelerometer setDelegate:self];
-    
     deviceViewHeight = deviceScreenSize.height;
+    
+    [locationManager startUpdatingHeading];
+    [motionManager startAccelerometerUpdates];
+
+    if (accelTimer) {
+        [accelTimer release];
+        accelTimer = nil;
+    }
+    accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
+                                                  target:self
+                                                selector:@selector(pollAccellerometerForVerticalPosition)
+                                                userInfo:nil
+                                                 repeats:YES];
 }
 
 
