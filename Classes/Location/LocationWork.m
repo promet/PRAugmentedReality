@@ -118,8 +118,8 @@
 }
 -(int)getARObjectXPosition:(ARObject*)arObject {
     CLLocationCoordinate2D coordinates;
-    coordinates.latitude        = [[[arObject getARObjectData] objectForKey:@"latitude"] doubleValue];
-    coordinates.longitude       = [[[arObject getARObjectData] objectForKey:@"longitude"] doubleValue];
+    coordinates.latitude        = [[arObject getARObjectData][@"latitude"] doubleValue];
+    coordinates.longitude       = [[arObject getARObjectData][@"longitude"] doubleValue];
     
     double latitudeDistance     = max(coordinates.latitude, currentLat) - min(coordinates.latitude, currentLat);
     double longitudeDistance    = max(coordinates.longitude, currentLon) - min(coordinates.longitude, currentLon);

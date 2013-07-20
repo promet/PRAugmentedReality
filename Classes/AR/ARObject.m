@@ -50,7 +50,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
         lat = newCoordinates.latitude;
         lon = newCoordinates.longitude;
         
-        distance = [[NSNumber alloc] initWithDouble:[self calculateDistanceFrom:currLoc]];
+        distance = @([self calculateDistanceFrom:currLoc]);
         
         [self.view setTag:newNid];
     }
@@ -75,15 +75,13 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
 }
 
 - (NSDictionary*)getARObjectData {
-    NSArray *keys = [NSArray arrayWithObjects:@"id",@"title", @"latitude", @"longitude", @"distance", nil];
+    NSArray *keys = @[@"id",@"title", @"latitude", @"longitude", @"distance"];
     
-    NSArray *values = [NSArray arrayWithObjects:
-                       [NSNumber numberWithInt:nid],
+    NSArray *values = @[@(nid),
                        arTitle,
-                       [NSNumber numberWithDouble:lat],
-                       [NSNumber numberWithDouble:lon],
-                       distance,
-                       nil];
+                       @(lat),
+                       @(lon),
+                       distance];
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 

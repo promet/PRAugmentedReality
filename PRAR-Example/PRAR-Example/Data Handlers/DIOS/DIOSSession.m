@@ -99,8 +99,8 @@ realm, signRequests, threeLegged;
   [client setDefaultHeader:@"Accept" value:@"text/html"];
   [client setDefaultHeader:@"Content-Type" value:@"text/html"];
   NSMutableDictionary *params = [NSMutableDictionary new];
-  [params setObject:[[DIOSSession sharedSession] consumerKey] forKey:kOAuthConsumerKey];
-  [params setObject:[[DIOSSession sharedSession] consumerSecret] forKey:kOAuthTokenIdentifier];
+  params[kOAuthConsumerKey] = [[DIOSSession sharedSession] consumerKey];
+  params[kOAuthTokenIdentifier] = [[DIOSSession sharedSession] consumerSecret];
   [client sendSignedRequestWithPath:@"/oauth/request_token" method:@"GET" params:params success:success failure:failure];
 }
 + (void) getAccessTokensWithRequestTokens:(NSDictionary *)requestTokens
@@ -112,7 +112,7 @@ realm, signRequests, threeLegged;
   [client registerHTTPOperationClass:[AFHTTPRequestOperation class]];
   [client setDefaultHeader:@"Accept" value:@"text/html"];
   [client setDefaultHeader:@"Content-Type" value:@"text/html"];
-  [client setAccessToken:[requestTokens objectForKey:@"oauth_token"] secret:[requestTokens objectForKey:@"oauth_token_secret"]];
+  [client setAccessToken:requestTokens[@"oauth_token"] secret:requestTokens[@"oauth_token_secret"]];
   [client sendSignedRequestWithPath:@"/oauth/access_token" method:@"GET" params:requestTokens success:success failure:failure];
 }
 - (void) sendSignedRequestWithPath:(NSString*)path
@@ -207,8 +207,8 @@ realm, signRequests, threeLegged;
                                  kOAuthVersion1_0, kOAuthVersionKey,
                                  nil];
 
-  if (self.consumerKey) [result setObject:self.consumerKey forKey:kOAuthConsumerKey];
-  if (self.tokenIdentifier) [result setObject:self.tokenIdentifier forKey:kOAuthTokenIdentifier];
+  if (self.consumerKey) result[kOAuthConsumerKey] = self.consumerKey;
+  if (self.tokenIdentifier) result[kOAuthTokenIdentifier] = self.tokenIdentifier;
 
   [self addGeneratedTimestampAndNonceInto:result];
 
@@ -223,7 +223,7 @@ realm, signRequests, threeLegged;
   NSArray *sortedKeys = [[params allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSString *key1, NSString *key2) {
     NSComparisonResult result = [key1 compare:key2 options:NSLiteralSearch];
     if (result == NSOrderedSame)
-      result = [[params objectForKey:key1] compare:[params objectForKey:key2] options:NSLiteralSearch];
+      result = [params[key1] compare:params[key2] options:NSLiteralSearch];
 
     return result;
   }];
@@ -231,7 +231,7 @@ realm, signRequests, threeLegged;
   // join keys and values with =
   NSMutableArray *longListOfParameters = [NSMutableArray arrayWithCapacity:[sortedKeys count]];
   [sortedKeys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
-    [longListOfParameters addObject:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
+    [longListOfParameters addObject:[NSString stringWithFormat:@"%@=%@", key, params[key]]];
   }];
 
   // join components with &
@@ -248,14 +248,14 @@ realm, signRequests, threeLegged;
   for(NSString *component in parameterComponents) {
     NSArray *subComponents = [component componentsSeparatedByString:@"="];
     if ([subComponents count] == 2) {
-      [parameters setObject:[subComponents objectAtIndex:1] forKey:[subComponents objectAtIndex:0]];
+      parameters[subComponents[0]] = subComponents[1];
     }
   }
   NSData *body = [request HTTPBody];
   NSString *htttpBody = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
   NSArray *subComponents = [htttpBody componentsSeparatedByString:@"="];
   if ([subComponents count] == 2) {
-    [parameters setObject:[subComponents objectAtIndex:1] forKey:[subComponents objectAtIndex:0]];
+    parameters[subComponents[0]] = subComponents[1];
   }
 
   NSString *allParameters = [self stringWithOAuthParameters:oauthParams requestParameters:parameters];
@@ -265,7 +265,7 @@ realm, signRequests, threeLegged;
   NSString *signature = [self signatureForBaseString:signatureBaseString];
 
   // add to OAuth params
-  [oauthParams setObject:signature forKey:kOAuthSignatureKey];
+  oauthParams[kOAuthSignatureKey] = signature;
 
   // build OAuth Authorization Header
   NSMutableArray *headerParams = [NSMutableArray arrayWithCapacity:[oauthParams count]];
@@ -290,8 +290,8 @@ realm, signRequests, threeLegged;
   NSString *nonce = (NSString *)CFBridgingRelease(string);
   CFRelease(theUUID);
 
-  [dictionary setObject:nonce forKey:@"oauth_nonce"];
-  [dictionary setObject:timestamp forKey:@"oauth_timestamp"];
+  dictionary[@"oauth_nonce"] = nonce;
+  dictionary[@"oauth_timestamp"] = timestamp;
 }
 
 - (NSString *) signatureForBaseString:(NSString *)baseString {

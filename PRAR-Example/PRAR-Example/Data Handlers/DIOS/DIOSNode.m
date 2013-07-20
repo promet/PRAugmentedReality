@@ -44,7 +44,7 @@
         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
 
-  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, [node objectForKey:@"nid"]];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, node[@"nid"]];
   
   if ([[DIOSSession sharedSession] signRequests]) {
     [[DIOSSession sharedSession] sendSignedRequestWithPath:path
@@ -87,7 +87,7 @@
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
   
-  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, [node objectForKey:@"nid"]];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, node[@"nid"]];
   
   if ([[DIOSSession sharedSession] signRequests]) {
     [[DIOSSession sharedSession] sendSignedRequestWithPath:path
@@ -110,7 +110,7 @@
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
   
-  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, [node objectForKey:@"nid"]];
+  NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseNode, node[@"nid"]];
   
   if ([[DIOSSession sharedSession] signRequests]) {
     [[DIOSSession sharedSession] sendSignedRequestWithPath:path

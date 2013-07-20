@@ -40,7 +40,7 @@
 
 -(NSString*)getTimestampPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:TIMESTAMP_FILE];
+    return [paths[0] stringByAppendingPathComponent:TIMESTAMP_FILE];
 }
 -(void)saveCurrentTimestamp {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -80,16 +80,16 @@
 }
 
 -(NSArray*)ar_coordinates_table_keys {
-    return [NSArray arrayWithObjects:@"nid", @"lat", @"lon", nil];
+    return @[@"nid", @"lat", @"lon"];
 }
 -(NSArray*)ar_details_table_keys {
-    return [NSArray arrayWithObjects:@"nid", @"title", @"address", nil];
+    return @[@"nid", @"title", @"address"];
     
 }
 
 -(NSString*)getDBPath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:DB_FILE_NAME];
+    return [paths[0] stringByAppendingPathComponent:DB_FILE_NAME];
 }
 -(BOOL)createDBtables {
     NSArray *arctk = [self ar_coordinates_table_keys];
@@ -99,9 +99,9 @@
     
     [fmdb executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(%@ int PRIMARY KEY, %@ REAL(10), %@ REAL(10))",
                          AR_COORDINATES_TABLE,
-                         [arctk objectAtIndex:0],
-                         [arctk objectAtIndex:1],
-                         [arctk objectAtIndex:2]]];
+                         arctk[0],
+                         arctk[1],
+                         arctk[2]]];
     
     if ([fmdb hadError]) {
         NSLog(@"error create coord: %@", fmdb.lastErrorMessage);
@@ -110,9 +110,9 @@
     
     [fmdb executeUpdate:[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@(%@ int PRIMARY KEY, %@ TEXT, %@ TEXT)",
                          AR_DETAILS_TABLE,
-                         [ardtk objectAtIndex:0],
-                         [ardtk objectAtIndex:1],
-                         [ardtk objectAtIndex:2]]];
+                         ardtk[0],
+                         ardtk[1],
+                         ardtk[2]]];
     
     if ([fmdb hadError]) {
         NSLog(@"error create details: %@", fmdb.lastErrorMessage);
@@ -125,18 +125,18 @@
 
 -(void)testDBVersion {
     NSString *version = [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    NSString *db_versionPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+    NSString *db_versionPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]
                                 stringByAppendingFormat:@"/db_version.plist"];
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:db_versionPath]) {
         NSArray *db_versionArray = [NSArray arrayWithContentsOfFile:db_versionPath];
-        if ([db_versionArray count] > 0 && [[db_versionArray objectAtIndex:0] isEqualToString:version]) {
+        if ([db_versionArray count] > 0 && [db_versionArray[0] isEqualToString:version]) {
             NSLog(@"DB Version is valid");
             return;
         }
     }
     [[NSFileManager defaultManager] removeItemAtPath:db_versionPath error:nil];
-    [[NSArray arrayWithObject:version] writeToFile:db_versionPath atomically:YES];
+    [@[version] writeToFile:db_versionPath atomically:YES];
     [self clearDB];
     
     NSLog(@"RESET DB");
@@ -217,10 +217,10 @@
     return [inputString stringByReplacingOccurrencesOfString:@"," withString:@""];
 }
 -(NSString*)buildAddress:(NSDictionary*)address {
-    NSMutableString *validAddress = [address objectForKey:@"thoroughfare"];
+    NSMutableString *validAddress = address[@"thoroughfare"];
     
-    if ([(NSString*)[address objectForKey:@"premise"] length] > 0) {
-        [validAddress appendFormat:@", %@",[address objectForKey:@"premise"]];
+    if ([(NSString*)address[@"premise"] length] > 0) {
+        [validAddress appendFormat:@", %@",address[@"premise"]];
     }
     
     return [self removeCommasFrom:validAddress];
@@ -251,8 +251,8 @@
         if ([detailsDict count] == 0) continue;
         
         NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:detailsDict];
-        [tempDict setObject:[rs stringForColumn:@"lat"] forKey:@"lat"];
-        [tempDict setObject:[rs stringForColumn:@"lon"] forKey:@"lon"];
+        tempDict[@"lat"] = [rs stringForColumn:@"lat"];
+        tempDict[@"lon"] = [rs stringForColumn:@"lon"];
         
         [arObjects addObject:tempDict];
     }
@@ -297,25 +297,25 @@
     
     // -- Coordinates data -- //
     NSString *coord_keys = [NSString stringWithFormat:@"%@, %@, %@",
-                            [coord_keys_array objectAtIndex:0],
-                            [coord_keys_array objectAtIndex:1],
-                            [coord_keys_array objectAtIndex:2]];
+                            coord_keys_array[0],
+                            coord_keys_array[1],
+                            coord_keys_array[2]];
     
     NSString *coord_values = [NSString stringWithFormat:@"%@, %@, %@",
-                              [data objectForKey:@"nid"],
-                              [[data objectForKey:@"coordinates"] objectForKey:@"lat"],
-                              [[data objectForKey:@"coordinates"] objectForKey:@"lon"]];
+                              data[@"nid"],
+                              data[@"coordinates"][@"lat"],
+                              data[@"coordinates"][@"lon"]];
     
     // -- Details data -- //
     NSString *details_keys = [NSString stringWithFormat:@"%@, %@, %@",
-                              [details_keys_array objectAtIndex:0],
-                              [details_keys_array objectAtIndex:1],
-                              [details_keys_array objectAtIndex:2]];
+                              details_keys_array[0],
+                              details_keys_array[1],
+                              details_keys_array[2]];
     
     NSString *details_values = [NSString stringWithFormat:@"%@, '%@', '%@'",
-                                [data objectForKey:@"nid"],
-                                [self escapeApostrophesFrom:[data objectForKey:@"title"]],
-                                [self escapeApostrophesFrom:[self buildAddress:[data objectForKey:@"address"]]]];
+                                data[@"nid"],
+                                [self escapeApostrophesFrom:data[@"title"]],
+                                [self escapeApostrophesFrom:[self buildAddress:data[@"address"]]]];
     
     // -- Build queries -- //
     NSString *coord_query = [NSString stringWithFormat:@"INSERT INTO %@(%@) VALUES (%@)",

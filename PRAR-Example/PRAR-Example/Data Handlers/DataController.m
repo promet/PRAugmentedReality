@@ -129,9 +129,9 @@
     @try {
         if ([newARObjects count] > 0) {
             for (NSString *ar_object_nid in [newARObjects allKeys]) {
-                NSDictionary *ar_obj = [newARObjects objectForKey:ar_object_nid];
-                if ([[ar_obj objectForKey:@"coordinates"] objectForKey:@"lat"] == [NSNull null]) continue;
-                if ([[[ar_obj objectForKey:@"coordinates"] objectForKey:@"lat"] isEqualToString:@"<null>"]) continue;
+                NSDictionary *ar_obj = newARObjects[ar_object_nid];
+                if (ar_obj[@"coordinates"][@"lat"] == [NSNull null]) continue;
+                if ([ar_obj[@"coordinates"][@"lat"] isEqualToString:@"<null>"]) continue;
                 
                 [dbController saveARObject:ar_object_nid withData:ar_obj];
             }

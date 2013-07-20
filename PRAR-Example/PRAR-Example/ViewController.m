@@ -155,15 +155,15 @@
 
 -(void)plotAllPlaces {
     for (NSDictionary *place in arData) {
-        [self plotPlace:place andId:[[place objectForKey:@"nid"] integerValue]];
+        [self plotPlace:place andId:[place[@"nid"] integerValue]];
     }
 }
 -(void)plotPlace:(NSDictionary*)somePlace andId:(NSInteger)nid {
-    NSString *arObjectName = [somePlace objectForKey:@"title"];
+    NSString *arObjectName = somePlace[@"title"];
     
     CLLocationCoordinate2D coordinates;
-    coordinates.latitude = [[somePlace objectForKey:@"lat"] doubleValue];
-    coordinates.longitude = [[somePlace objectForKey:@"lon"] doubleValue];
+    coordinates.latitude = [somePlace[@"lat"] doubleValue];
+    coordinates.longitude = [somePlace[@"lon"] doubleValue];
     MyLocation *annotation = [[MyLocation alloc] initWithName:arObjectName coordinate:coordinates andId:nid] ;
     [_mapView addAnnotation:annotation];
 }

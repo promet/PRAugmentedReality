@@ -104,18 +104,18 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     int x_pos = 0;
     ARObject *arObject;
     for (NSDictionary *arObjectData in arData) {
-        NSNumber *ar_id = [NSNumber numberWithInt:[[arObjectData objectForKey:@"nid"] intValue]];
+        NSNumber *ar_id = @([arObjectData[@"nid"] intValue]);
         arObject = [[ARObject alloc] initWithId:ar_id.intValue
-                                           title:[arObjectData objectForKey:@"title"]
-                                     coordinates:CLLocationCoordinate2DMake([[arObjectData objectForKey:@"lat"] doubleValue],
-                                                                            [[arObjectData objectForKey:@"lon"] doubleValue])
+                                           title:arObjectData[@"title"]
+                                     coordinates:CLLocationCoordinate2DMake([arObjectData[@"lat"] doubleValue],
+                                                                            [arObjectData[@"lon"] doubleValue])
                               andCurrentLocation:currentLocation];
         
         x_pos = [locWork getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
-        [geoobjectOverlays  setObject:arObject                          forKey:ar_id];
-        [geoobjectPositions setObject:[NSNumber numberWithInt:x_pos]    forKey:ar_id];
-        [geoobjectVerts     setObject:[NSNumber numberWithInt:1]        forKey:ar_id];
+        geoobjectOverlays[ar_id] = arObject;
+        geoobjectPositions[ar_id] = @(x_pos);
+        geoobjectVerts[ar_id] = @1;
     }
     
     [cameraSession startRunning];
@@ -159,33 +159,33 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     for (NSString *key in [geoobjectOverlays allKeys]) {
         
-        arObject = [geoobjectOverlays objectForKey:key];
+        arObject = geoobjectOverlays[key];
         distance = (int)(arObject.distance.doubleValue);
         
         if (distance < 20) {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:0] forKey:key];
+            [geoobjectVerts setValue:@0 forKey:key];
         }
         else if (distance < 50) {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:1] forKey:key];
+            [geoobjectVerts setValue:@1 forKey:key];
         }
         else if (distance < 100) {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:2] forKey:key];
+            [geoobjectVerts setValue:@2 forKey:key];
         }
         else if (distance < 200) {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:3] forKey:key];
+            [geoobjectVerts setValue:@3 forKey:key];
         }
         else if (distance < 300) {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:4] forKey:key];
+            [geoobjectVerts setValue:@4 forKey:key];
         }
         else {
-            [geoobjectVerts setValue:[NSNumber numberWithInt:5] forKey:key];
+            [geoobjectVerts setValue:@5 forKey:key];
         }
     }
 }
 -(void)checkForVerticalPosClashes {
     
     int distance, sub_distance, diff, x_pos, vertPosition, sub_vertPosition;
-    int overlay_width = ((ARObject*)[[geoobjectOverlays allValues] objectAtIndex:0]).view.frame.size.width;
+    int overlay_width = ((ARObject*)[geoobjectOverlays allValues][0]).view.frame.size.width;
     BOOL gotConflict = YES;
     
     while (gotConflict) {
@@ -193,18 +193,18 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         
         for (NSString *key in [geoobjectOverlays allKeys]) {
             
-            vertPosition = [[geoobjectVerts objectForKey:key] intValue];
-            distance = (int)([(ARObject*)[geoobjectOverlays objectForKey:key] distance].doubleValue);
-            x_pos = [[geoobjectPositions objectForKey:key] intValue];
+            vertPosition = [geoobjectVerts[key] intValue];
+            distance = (int)([(ARObject*)geoobjectOverlays[key] distance].doubleValue);
+            x_pos = [geoobjectPositions[key] intValue];
             
             for (NSString *sub_key in [geoobjectOverlays allKeys]) {
                 if ([sub_key intValue] == [key intValue]) continue;
                 
-                sub_vertPosition = [[geoobjectVerts objectForKey:sub_key] intValue];
+                sub_vertPosition = [geoobjectVerts[sub_key] intValue];
                 if (vertPosition != sub_vertPosition) continue;
                 
-                diff = x_pos-[[geoobjectPositions objectForKey:sub_key] intValue];
-                sub_distance = [(ARObject*)[geoobjectOverlays objectForKey:sub_key] distance].intValue;
+                diff = x_pos-[geoobjectPositions[sub_key] intValue];
+                sub_distance = [(ARObject*)geoobjectOverlays[sub_key] distance].intValue;
                 
                 if (diff < 0) diff = -diff;
                 if (diff > overlay_width) continue;
@@ -215,21 +215,21 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                     vertPosition++;
                     
                 } else if (diff < overlay_width) {
-                    [geoobjectVerts setValue:[NSNumber numberWithInt:sub_vertPosition+1] forKey:sub_key];
+                    [geoobjectVerts setValue:@(sub_vertPosition+1) forKey:sub_key];
                 }
             }
             
-            [geoobjectVerts setValue:[NSNumber numberWithInt:vertPosition] forKey:key];
+            [geoobjectVerts setValue:@(vertPosition) forKey:key];
         }
     }
 }
 -(void)checkAllVerticalPos {
     
     NSNumber *vert;
-    while (![[geoobjectVerts allValues] containsObject:[NSNumber numberWithInt:0]]) {
+    while (![[geoobjectVerts allValues] containsObject:@0]) {
         for (NSNumber *key in [geoobjectVerts allKeys]) {
-            vert = [geoobjectVerts objectForKey:key];
-            [geoobjectVerts setObject:[NSNumber numberWithInt:vert.intValue-1] forKey:key];
+            vert = geoobjectVerts[key];
+            geoobjectVerts[key] = @(vert.intValue-1);
         }
     }
 }
@@ -238,10 +238,10 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     int distance, x_pos, y_pos, vertPosition;
     
     for (ARObject *arObject in [geoobjectOverlays allValues]) {
-        NSNumber *arObjectId = [arObject.getARObjectData objectForKey:@"id"];
+        NSNumber *arObjectId = (arObject.getARObjectData)[@"id"];
         
-        x_pos = [[geoobjectPositions objectForKey:arObjectId] intValue];
-        vertPosition = [[geoobjectVerts objectForKey:arObjectId] intValue];
+        x_pos = [geoobjectPositions[arObjectId] intValue];
+        vertPosition = [geoobjectVerts[arObjectId] intValue];
         y_pos = [self setYPosForView:arObject.view atVerticalPos:vertPosition];
         distance = (int)(arObject.distance.doubleValue);
         

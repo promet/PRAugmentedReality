@@ -48,7 +48,7 @@ static NSInteger anonymous_user = 0;
         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, [user objectForKey:@"uid"]];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, user[@"uid"]];
     
     if ([[DIOSSession sharedSession] signRequests]) {
         [[DIOSSession sharedSession] sendSignedRequestWithPath:path
@@ -115,7 +115,7 @@ static NSInteger anonymous_user = 0;
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, [user objectForKey:@"uid"]];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, user[@"uid"]];
     
     if ([[DIOSSession sharedSession] signRequests]) {
         [[DIOSSession sharedSession] sendSignedRequestWithPath:path
@@ -137,11 +137,11 @@ static NSInteger anonymous_user = 0;
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    NSNumber* uid = [user objectForKey:@"uid"];
-    if(!uid || [uid isEqualToNumber: [NSNumber numberWithInt:0]] || [uid isEqualToNumber: [NSNumber numberWithInt:1]])
+    NSNumber* uid = user[@"uid"];
+    if(!uid || [uid isEqualToNumber: @0] || [uid isEqualToNumber: @1])
         [NSException raise:@"Invalid value for user Id" format:@"You cannot delete user wit id: %d", [uid intValue]];
     
-    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, [user objectForKey:@"uid"]];
+    NSString *path = [NSString stringWithFormat:@"%@/%@/%@", kDiosEndpoint, kDiosBaseUser, user[@"uid"]];
     
     if ([[DIOSSession sharedSession] signRequests]) {
         [[DIOSSession sharedSession] sendSignedRequestWithPath:path
@@ -201,7 +201,7 @@ static NSInteger anonymous_user = 0;
                       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:username, password, nil] forKeys:[NSArray arrayWithObjects:@"username", @"password", nil]];
+    NSDictionary *params = [NSDictionary dictionaryWithObjects:@[username, password] forKeys:@[@"username", @"password"]];
     
     NSString *path = [NSString stringWithFormat:@"%@/%@/login", kDiosEndpoint, kDiosBaseUser];
     
@@ -223,8 +223,8 @@ static NSInteger anonymous_user = 0;
           success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure {
     
-    [self userLoginWithUsername:[user objectForKey:@"name"]
-                    andPassword:[user objectForKey:@"pass"]
+    [self userLoginWithUsername:user[@"name"]
+                    andPassword:user[@"pass"]
                         success:success
                         failure:failure];
 }
@@ -238,10 +238,10 @@ static NSInteger anonymous_user = 0;
          
          NSDictionary* responseDict = response;
          
-         if([[[responseDict objectForKey:@"user"]valueForKey:@"uid"]integerValue] == anonymous_user) {
+         if([[responseDict[@"user"]valueForKey:@"uid"]integerValue] == anonymous_user) {
              [DIOSUser userLoginWithUsername:username andPassword:password success:success failure:failure];
          }
-         else if(![[[responseDict objectForKey:@"user"]valueForKey:@"name"] isEqualToString:username]){
+         else if(![[responseDict[@"user"]valueForKey:@"name"] isEqualToString:username]){
              [DIOSUser
               userLogoutWithSuccessBlock:^(AFHTTPRequestOperation *op, id response) {
                   [self userMakeSureUserIsLoggedInWithUsername:username andPassword:password success:success failure:failure];
@@ -286,7 +286,7 @@ static NSInteger anonymous_user = 0;
          
          NSDictionary* responseDict = response;
          
-         if([[[responseDict objectForKey:@"user"]valueForKey:@"uid"]integerValue] != anonymous_user)
+         if([[responseDict[@"user"]valueForKey:@"uid"]integerValue] != anonymous_user)
              [DIOSUser userLogoutWithSuccessBlock:success failure:failure];
          
      }
@@ -342,7 +342,7 @@ static NSInteger anonymous_user = 0;
     if(name.length > USERNAME_MAX_LENGTH)
         [details setValue: [NSString stringWithFormat:@"The username %@ is too long: it must be %d characters or less.", name, USERNAME_MAX_LENGTH]  forKey:@"NSLocalizedRecoverySuggestion"];
     
-    if([details objectForKey:@"NSLocalizedRecoverySuggestion"]) {
+    if(details[@"NSLocalizedRecoverySuggestion"]) {
         
         [details setValue:@"Invalid value for username" forKey:NSLocalizedDescriptionKey];
         
@@ -376,7 +376,7 @@ static NSInteger anonymous_user = 0;
     if(![emailTest evaluateWithObject:email])
         [details setValue:[NSString stringWithFormat:@"The e-mail address %@ is not valid.", email] forKey:@"NSLocalizedRecoverySuggestion"];
     
-    if([details objectForKey:@"NSLocalizedRecoverySuggestion"]) {
+    if(details[@"NSLocalizedRecoverySuggestion"]) {
         
         [details setValue:@"Invalid value for email" forKey:NSLocalizedDescriptionKey];
         
