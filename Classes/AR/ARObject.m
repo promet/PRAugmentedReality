@@ -61,12 +61,10 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     
     CLLocationCoordinate2D object_loc_coord = CLLocationCoordinate2DMake(lat, lon);
     
-    CLLocation *object_location = [[[CLLocation alloc] initWithLatitude:object_loc_coord.latitude
-                                                              longitude:object_loc_coord.longitude]
-                                   autorelease];
-    CLLocation *user_location = [[[CLLocation alloc] initWithLatitude:user_loc_coord.latitude
-                                                            longitude:user_loc_coord.longitude]
-                                 autorelease];
+    CLLocation *object_location = [[CLLocation alloc] initWithLatitude:object_loc_coord.latitude
+                                                              longitude:object_loc_coord.longitude];
+    CLLocation *user_location = [[CLLocation alloc] initWithLatitude:user_loc_coord.latitude
+                                                            longitude:user_loc_coord.longitude];
     
     return [object_location distanceFromLocation:user_location];
 }
@@ -97,11 +95,5 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     [distanceL setText:[self getDistanceLabelText]];
 }
 
-- (void)dealloc {
-    [super dealloc];
-    
-    [arTitle release];
-    [distance release];
-}
 
 @end

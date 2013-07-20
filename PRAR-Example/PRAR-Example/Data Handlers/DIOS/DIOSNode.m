@@ -139,7 +139,6 @@
   [nodeIndexDict setValue:parameteres forKey:@"parameters"];
   [nodeIndexDict setValue:pageSize forKey:@"pagesize"];  
   [self nodeIndex:nodeIndexDict success:success failure:failure];
-  [nodeIndexDict release];
 }
 
 + (void)nodeIndex:(NSDictionary *)params

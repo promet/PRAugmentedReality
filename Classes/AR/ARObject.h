@@ -45,8 +45,8 @@
     IBOutlet UILabel *distanceL;
 }
 
-@property (nonatomic, retain) NSString *arTitle;
-@property (nonatomic, retain) NSNumber *distance;
+@property (nonatomic, strong) NSString *arTitle;
+@property (nonatomic, strong) NSNumber *distance;
 
 - (id)initWithId:(int)newNid
            title:(NSString*)newTitle

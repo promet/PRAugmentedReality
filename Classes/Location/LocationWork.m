@@ -45,18 +45,6 @@
     return self;
 }
 
--(void)dealloc {
-    [locationManager release];
-    [motionManager release];
-    
-    if (accelTimer) {
-        [accelTimer release];
-        accelTimer = nil;
-    }
-    
-    [super dealloc];
-}
-
 
 # pragma mark - LocationManager
 
@@ -110,7 +98,6 @@
     [motionManager startAccelerometerUpdates];
 
     if (accelTimer) {
-        [accelTimer release];
         accelTimer = nil;
     }
     accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE

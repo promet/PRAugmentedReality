@@ -44,7 +44,6 @@
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 

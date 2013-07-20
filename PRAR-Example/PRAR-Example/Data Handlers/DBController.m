@@ -260,7 +260,6 @@
     if ([fmdb hadError]) NSLog(@"error: %@", fmdb.lastError);
     [rs close];
     
-    [grRegion release];
     
     return arObjects;
 }

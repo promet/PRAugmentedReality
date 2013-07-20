@@ -61,20 +61,13 @@
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 
 #pragma mark - Reachability
 
--(NSString*)stripHTTPfrom:(NSString*)inputString {
-    if ([inputString characterAtIndex:inputString.length-1] == '/') {
-        inputString = [inputString stringByPaddingToLength:inputString.length-1 withString:@"" startingAtIndex:0];
-    }
-    return [inputString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-}
 -(void)startReachability {
-    SCNetworkReachability *reachability = [[SCNetworkReachability alloc] initWithHostName:[self stripHTTPfrom:@"www.google.com"]];//kDiosBaseUrl]];
+    reachability = [[SCNetworkReachability alloc] initWithHostName:@"www.google.com"];
     reachability.delegate = self;
 }
 -(void)reachabilityDidChange:(SCNetworkStatus)status {

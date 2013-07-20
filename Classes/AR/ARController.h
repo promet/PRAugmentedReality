@@ -68,8 +68,8 @@
     int dataTries;
 }
 
-@property (assign, nonatomic) id <ARControllerDelegate> delegate;
-@property (retain, nonatomic) LocationWork *locWork;
+@property (weak, nonatomic) id <ARControllerDelegate> delegate;
+@property (strong, nonatomic) LocationWork *locWork;
 
 -(id)initWithScreenSize:(CGSize)screenSize;
 -(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate;

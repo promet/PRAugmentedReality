@@ -48,14 +48,14 @@
   NSString *tokenSecret;
 }
 @property (strong, nonatomic) NSDictionary *user;
-@property (nonatomic, retain) NSMutableDictionary *accessTokens;
+@property (nonatomic, strong) NSMutableDictionary *accessTokens;
 @property (nonatomic) BOOL signRequests;
 @property (nonatomic) BOOL threeLegged;
 @property (nonatomic, copy) NSString *realm;
-@property (nonatomic, retain) NSString *consumerKey;
-@property (nonatomic, retain) NSString *consumerSecret;
-@property (nonatomic, retain) NSString *tokenIdentifier;
-@property (nonatomic, retain) NSString *tokenSecret;
+@property (nonatomic, strong) NSString *consumerKey;
+@property (nonatomic, strong) NSString *consumerSecret;
+@property (nonatomic, strong) NSString *tokenIdentifier;
+@property (nonatomic, strong) NSString *tokenSecret;
 + (DIOSSession *)sharedSession;
 + (DIOSSession *)sharedSessionWithURL:(NSString*)url;
 + (DIOSSession *)sharedOauthSessionWithURL:(NSString*)url consumerKey:(NSString *)aConsumerKey secret:(NSString *)aConsumerSecret;

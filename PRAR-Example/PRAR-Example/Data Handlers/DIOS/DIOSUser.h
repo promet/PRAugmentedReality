@@ -37,7 +37,10 @@
 
 #import "AFHTTPRequestOperation.h"
 
+static NSUInteger USERNAME_MAX_LENGTH = 60;
+
 @interface DIOSUser : NSObject
+
 + (void)userGet:(NSDictionary *)user
         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
@@ -47,8 +50,8 @@
          failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
 
 + (void)userRegister:(NSDictionary *)user
-         success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
-         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+             success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
 
 + (void)userUpdate:(NSDictionary *)user
            success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
@@ -59,9 +62,9 @@
            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
 
 + (void)userIndexWithPage:(NSString *)page
-                   fields:(NSString *)fields 
-               parameters:(NSArray *)parameteres 
-                 pageSize:(NSString *)pageSize  
+                   fields:(NSString *)fields
+               parameters:(NSArray *)parameteres
+                 pageSize:(NSString *)pageSize
                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
 
@@ -78,5 +81,23 @@
                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
 
 + (void)userLogoutWithSuccessBlock:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
-           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+
++ (void)userMakeSureUserIsLoggedInWithUsername:(NSString *)username andPassword:(NSString *)password
+                                       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+                                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+
+
++ (void)userMakeSureUserIsLoggedOutWithSucess:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+                                      failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+
++ (void)userSendPasswordRecoveryEmailWithEmailAddress: (NSString*) email
+                                              success:(void (^)(AFHTTPRequestOperation *operation, id responseObject)) success
+                                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error)) failure;
+
++ (BOOL)userValidateUserName:(NSString*)name error:(NSError**)error;
+
++ (BOOL)userValidateUserEmail:(NSString*)email error:(NSError**)error;
+
+
 @end

@@ -105,12 +105,11 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     ARObject *arObject;
     for (NSDictionary *arObjectData in arData) {
         NSNumber *ar_id = [NSNumber numberWithInt:[[arObjectData objectForKey:@"nid"] intValue]];
-        arObject = [[[ARObject alloc] initWithId:ar_id.intValue
+        arObject = [[ARObject alloc] initWithId:ar_id.intValue
                                            title:[arObjectData objectForKey:@"title"]
                                      coordinates:CLLocationCoordinate2DMake([[arObjectData objectForKey:@"lat"] doubleValue],
                                                                             [[arObjectData objectForKey:@"lon"] doubleValue])
-                              andCurrentLocation:currentLocation]
-                    autorelease];
+                              andCurrentLocation:currentLocation];
         
         x_pos = [locWork getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
@@ -326,22 +325,14 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 
 -(void)dealloc {
-    [super dealloc];
     
 	[cameraSession stopRunning];
     
-	[cameraLayer release];
-	[cameraSession release];
     
     [refreshTimer invalidate];
     
-    [geoobjectOverlays release];
-    [geoobjectPositions release];
-    [geoobjectVerts release];
     
-    [arOverlaysContainerView release];
     
-    [locWork release];
 }
 
 @end

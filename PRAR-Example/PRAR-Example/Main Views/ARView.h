@@ -43,9 +43,9 @@
     IBOutlet UIActivityIndicatorView *loadingI;
 }
 
-@property (assign, nonatomic) id <ARViewDelegate> delegate;
+@property (weak, nonatomic) id <ARViewDelegate> delegate;
 
-@property (retain, nonatomic) NSArray *arData;
+@property (strong, nonatomic) NSArray *arData;
 
 - (IBAction)done:(id)sender;
 

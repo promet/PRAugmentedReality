@@ -42,6 +42,7 @@
 
 @interface DataController : NSObject <SCNetworkReachabilityDelegate> {
     DBController *dbController;
+    SCNetworkReachability *reachability;
     
     // -- Reachability -- //
     BOOL siteIsReachable;
@@ -50,7 +51,7 @@
     BOOL fetching;
 }
 
-@property (assign, nonatomic) id <DataControllerDelegate> delegate;
+@property (weak, nonatomic) id <DataControllerDelegate> delegate;
 
 -(void)getNearARObjects:(CLLocationCoordinate2D)coordinates;
 -(void)getAllARObjects:(CLLocationCoordinate2D)coordinates;

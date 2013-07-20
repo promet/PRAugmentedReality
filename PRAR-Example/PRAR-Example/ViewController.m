@@ -47,7 +47,6 @@
                                           cancelButtonTitle:@"Ok"
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 
@@ -62,14 +61,6 @@
     [dataController setDelegate:self];
     
     [arB setEnabled:NO];
-}
-- (void)dealloc {
-    [super dealloc];
-    
-    [prarSwitch release];
-    
-    if (dataController) [dataController release];
-    if (arData) [arData release];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
