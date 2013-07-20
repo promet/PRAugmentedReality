@@ -40,9 +40,6 @@
     // Major variables   
     float currentHeading;
     float currentInclination;
-
-    double currentLat;
-    double currentLon;
     
     // Others
     float rollingZ;
@@ -50,8 +47,6 @@
     
     float rollingZ2;
     float rollingX2;
-    
-    BOOL gotPreciseEnoughLocation;
     
     float deviceViewHeight;
 }

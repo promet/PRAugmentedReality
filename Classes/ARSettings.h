@@ -25,7 +25,7 @@
 //
 
 
-#define REFRESH_RATE            0.01    // 20hz
+#define REFRESH_RATE            0.01    // 100hz
 
 /**
  * MAX_NUMBER_OF_TRIES

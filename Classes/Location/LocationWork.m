@@ -39,6 +39,7 @@
         gotPreciseEnoughLocation = NO;
         
         motionManager = [[CMMotionManager alloc] init];
+        locationManager = [[CLLocationManager alloc] init];
         
         [self setupLocationManager];
     }
@@ -50,7 +51,6 @@
 
 -(void)setupLocationManager {
 
-    locationManager = [[CLLocationManager alloc] init];
     [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
     [locationManager setDistanceFilter:kCLDistanceFilterNone];
     [locationManager setDelegate:self];
