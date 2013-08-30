@@ -18,6 +18,44 @@
 
 
 #pragma mark - Drawing Override
+/*
+ * This is to draw on the places on the Radar
+ *
+ * It is done for each spot, in the following steps:
+ *
+ * 1. Get & check the heading angle (position over 360 degrees)
+ *
+ * 2. Get a ratio of the angle over 90 degrees
+ *    (ex:72 is 0.8 of 90 and 27 is 30% of 90)
+ *
+ * 3. Get a ration of the distance compared to the rest
+ *    (how far is it compared to the others, where 1 is the maximum
+ *    distance and 0 is the minimum)
+ *
+ * 4. Depending on which section of the axis it is, do the math
+ *    (Could be 0 < x < 90
+ *              90 < x < 180
+ *              180 < x < 270
+ *              270 < x < 360
+ *    The math involves adding a number to the minimum x or y value for
+ *    that particular quadrant of the axis.
+ *    That number is based on the angle ration over 90 degrees (step 2.)
+ *
+ * 5. Add/subtract the x/y value depending on the distance ratio (step 3.)
+ *
+ */
+
+// Those are the N-E-S-W points (highs and lows) //
+// of the axis of the radar //
+#define Nx  49
+#define Ny  10
+#define Ex  85
+#define Ey  48
+#define Sx  49
+#define Sy  85
+#define Wx  10
+#define Wy  48
+
 - (void)drawRect:(CGRect)rect {
     
     if (theSpots.count < 1) return;
@@ -43,15 +81,6 @@
         if ([[theSpots objectForKey:angle] intValue] != min) {
             distModifier = 1-(([[theSpots objectForKey:angle] floatValue]-min)/(max-min));
         }
-        
-#define Nx  49
-#define Ny  10
-#define Ex  85
-#define Ey  48
-#define Sx  49
-#define Sy  85
-#define Wx  10
-#define Wy  48
         
         // Positioning on axis //
         if (angleF < 90) {
