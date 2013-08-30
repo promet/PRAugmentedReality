@@ -58,6 +58,7 @@
     [self.view addSubview:arView];
     
     [self.view bringSubviewToFront:[self.view viewWithTag:AR_VIEW_TAG]];
+    [self.view bringSubviewToFront:closeB];
     
     [self.view addSubview:radar];
     

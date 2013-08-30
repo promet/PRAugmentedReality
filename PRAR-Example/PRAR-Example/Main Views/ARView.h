@@ -40,6 +40,7 @@
     ARController *arController;
     NSArray *arData;
     
+    IBOutlet UIButton *closeB;
     IBOutlet UIActivityIndicatorView *loadingI;
 }
 
