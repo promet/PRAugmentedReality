@@ -59,6 +59,7 @@
 -(void)startAR:(CGSize)deviceScreenSize;
 
 -(CGRect)getCurrentFramePosition;
+-(int)getCurrentHeading;
 -(int)getARObjectXPosition:(ARObject*)arObject;
 
 @end

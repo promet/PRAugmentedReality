@@ -26,6 +26,7 @@
 
 
 #define REFRESH_RATE            0.01    // 100hz
+#define RADAR_ON                YES
 
 /**
  * MAX_NUMBER_OF_TRIES

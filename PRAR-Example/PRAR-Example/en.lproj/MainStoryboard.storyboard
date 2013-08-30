@@ -133,11 +133,15 @@
         <image name="x.png" width="240" height="240"/>
     </resources>
     <classes>
+        <class className="ARRadar" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ARRadar.h"/>
+        </class>
         <class className="ARView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ARView.h"/>
             <relationships>
                 <relationship kind="action" name="done:"/>
                 <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="radarView" candidateClass="ARRadar"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">

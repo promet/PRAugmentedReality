@@ -116,6 +116,9 @@
     
     return CGRectMake(x_pos, y_pos+60, OVERLAY_VIEW_WIDTH, deviceViewHeight);
 }
+-(int)getCurrentHeading {
+    return (int)currentHeading;
+}
 -(int)getARObjectXPosition:(ARObject*)arObject {
     CLLocationCoordinate2D coordinates;
     coordinates.latitude        = [[arObject getARObjectData][@"latitude"] doubleValue];

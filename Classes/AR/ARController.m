@@ -61,6 +61,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 -(void)refreshPositionOfOverlay {
     CGRect newPos = [locWork getCurrentFramePosition];
+    [radar moveDots:[locWork getCurrentHeading]];
     [[self delegate] arControllerUpdateFrame:CGRectMake(newPos.origin.x,
                                                         newPos.origin.y,
                                                         OVERLAY_VIEW_WIDTH,
@@ -103,6 +104,8 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     int x_pos = 0;
     ARObject *arObject;
+    NSMutableArray *spots = [NSMutableArray array];
+    
     for (NSDictionary *arObjectData in arData) {
         NSNumber *ar_id = @([arObjectData[@"nid"] intValue]);
         arObject = [[ARObject alloc] initWithId:ar_id.intValue
@@ -113,6 +116,14 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         
         x_pos = [locWork getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
+        if (RADAR_ON) {
+            NSDictionary *spot = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  [NSNumber numberWithInt:(int)(x_pos/HORIZ_SENS)],         @"angle",
+                                  [NSNumber numberWithFloat:arObject.distance.floatValue],  @"distance",
+                                  nil];
+            [spots addObject:spot];
+        }
+        
         geoobjectOverlays[ar_id] = arObject;
         geoobjectPositions[ar_id] = @(x_pos);
         geoobjectVerts[ar_id] = @1;
@@ -121,7 +132,15 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     [cameraSession startRunning];
     
     [self setupDataForAR];
-    [self.delegate arControllerDidSetupAR:arOverlaysContainerView withCameraLayer:cameraLayer];
+    
+    if (RADAR_ON) {
+        radar = [[ARRadar alloc] initWithFrame:CGRectMake((deviceScreenResolution.width/2)-50, deviceScreenResolution.height-100, 100, 100)
+                                     withSpots:[NSArray arrayWithArray:spots]];
+        [self.delegate arControllerDidSetupAR:arOverlaysContainerView
+                              withCameraLayer:cameraLayer
+                                 andRadarView:radar];
+    }
+    else [self.delegate arControllerDidSetupAR:arOverlaysContainerView withCameraLayer:cameraLayer];
 }
 
 -(void)setupDataForAR {

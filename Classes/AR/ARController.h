@@ -28,6 +28,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "LocationWork.h"
+#import "ARRadar.h"
 
 /**
  * Those protocols are used by the AR View
@@ -40,7 +41,14 @@
 @protocol ARControllerDelegate
 @optional
 - (void)arControllerUpdateFrame:(CGRect)arViewFrame;
-- (void)arControllerDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
+
+- (void)arControllerDidSetupAR:(UIView *)arView
+               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
+
+- (void)arControllerDidSetupAR:(UIView *)arView
+               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer
+                  andRadarView:(UIView*)radar;
+
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details;
 @end
 
@@ -63,6 +71,8 @@
     CGSize deviceScreenResolution;
     UIView *arOverlaysContainerView;
     NSTimer *refreshTimer;
+
+    ARRadar *radar;
     
     int locTries;
     int dataTries;

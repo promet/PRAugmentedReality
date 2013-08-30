@@ -149,7 +149,7 @@
                                                                                                   _mapView.userLocation.location.coordinate.longitude),
                                                                        MAP_SPAN,
                                                                        MAP_SPAN);
-    [_mapView setRegion:[_mapView regionThatFits:viewRegion] animated:YES];
+    [_mapView setRegion:[_mapView regionThatFits:viewRegion] animated:NO];
     [UIView commitAnimations];
 }
 

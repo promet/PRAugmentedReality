@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3617F1D9179A575900483A8D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3617F1D8179A575900483A8D /* SystemConfiguration.framework */; };
+		3647DAF317CFE311001FAA53 /* ARRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3647DAF117CFE311001FAA53 /* ARRadar.m */; };
+		3647DAF417CFE311001FAA53 /* ARRadar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3647DAF217CFE311001FAA53 /* ARRadar.xib */; };
+		3647DAF617CFE504001FAA53 /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3647DAF517CFE504001FAA53 /* Radar.png */; };
+		3647DAF817CFEBDC001FAA53 /* RadarMV.png in Resources */ = {isa = PBXBuildFile; fileRef = 3647DAF717CFEBDC001FAA53 /* RadarMV.png */; };
 		369CB016179A55C000C8F291 /* ARController.m in Sources */ = {isa = PBXBuildFile; fileRef = 369CB00A179A55C000C8F291 /* ARController.m */; };
 		369CB017179A55C000C8F291 /* ARObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 369CB00C179A55C000C8F291 /* ARObject.m */; };
 		369CB018179A55C000C8F291 /* ARObject.xib in Resources */ = {isa = PBXBuildFile; fileRef = 369CB00D179A55C000C8F291 /* ARObject.xib */; };
@@ -54,6 +58,11 @@
 
 /* Begin PBXFileReference section */
 		3617F1D8179A575900483A8D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3647DAF017CFE311001FAA53 /* ARRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRadar.h; sourceTree = "<group>"; };
+		3647DAF117CFE311001FAA53 /* ARRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRadar.m; sourceTree = "<group>"; };
+		3647DAF217CFE311001FAA53 /* ARRadar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARRadar.xib; sourceTree = "<group>"; };
+		3647DAF517CFE504001FAA53 /* Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radar.png; sourceTree = "<group>"; };
+		3647DAF717CFEBDC001FAA53 /* RadarMV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarMV.png; sourceTree = "<group>"; };
 		369CB009179A55C000C8F291 /* ARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARController.h; sourceTree = "<group>"; };
 		369CB00A179A55C000C8F291 /* ARController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARController.m; sourceTree = "<group>"; };
 		369CB00B179A55C000C8F291 /* ARObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARObject.h; sourceTree = "<group>"; };
@@ -168,6 +177,8 @@
 		369CB00F179A55C000C8F291 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				3647DAF717CFEBDC001FAA53 /* RadarMV.png */,
+				3647DAF517CFE504001FAA53 /* Radar.png */,
 				369CB010179A55C000C8F291 /* ar_icon.png */,
 				369CB011179A55C000C8F291 /* ar_overlay.png */,
 				369CB012179A55C000C8F291 /* ar_overlay@2x.png */,
@@ -178,6 +189,9 @@
 		369CB013179A55C000C8F291 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				3647DAF017CFE311001FAA53 /* ARRadar.h */,
+				3647DAF117CFE311001FAA53 /* ARRadar.m */,
+				3647DAF217CFE311001FAA53 /* ARRadar.xib */,
 				369CB014179A55C000C8F291 /* LocationWork.h */,
 				369CB015179A55C000C8F291 /* LocationWork.m */,
 			);
@@ -378,6 +392,9 @@
 				369CB019179A55C000C8F291 /* ar_icon.png in Resources */,
 				369CB01A179A55C000C8F291 /* ar_overlay.png in Resources */,
 				369CB01B179A55C000C8F291 /* ar_overlay@2x.png in Resources */,
+				3647DAF417CFE311001FAA53 /* ARRadar.xib in Resources */,
+				3647DAF617CFE504001FAA53 /* Radar.png in Resources */,
+				3647DAF817CFEBDC001FAA53 /* RadarMV.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +451,7 @@
 				369CB016179A55C000C8F291 /* ARController.m in Sources */,
 				369CB017179A55C000C8F291 /* ARObject.m in Sources */,
 				369CB01C179A55C000C8F291 /* LocationWork.m in Sources */,
+				3647DAF317CFE311001FAA53 /* ARRadar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

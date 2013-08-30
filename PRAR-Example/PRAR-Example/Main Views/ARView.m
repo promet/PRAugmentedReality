@@ -49,16 +49,22 @@
 
 #pragma mark - AR Controller Delegate
 
-- (void)arControllerDidSetupAR:(UIView *)arView withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer {
+- (void)arControllerDidSetupAR:(UIView *)arView
+               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer
+                  andRadarView:(UIView *)radar {
     NSLog(@"Finished displaying ARObjects");
     
     [self.view.layer addSublayer:cameraLayer];
     [self.view addSubview:arView];
     
-    [self.view bringSubviewToFront:[self.view viewWithTag:1992]];
+    [self.view bringSubviewToFront:[self.view viewWithTag:AR_VIEW_TAG]];
+    
+    [self.view addSubview:radar];
     
     [loadingI stopAnimating];
 }
+
+
 - (void)arControllerUpdateFrame:(CGRect)arViewFrame {
     [[self.view viewWithTag:AR_VIEW_TAG] setFrame:arViewFrame];
 }
