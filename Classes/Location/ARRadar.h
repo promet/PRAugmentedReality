@@ -10,6 +10,7 @@
 
 @interface ARRadar : UIView {
     UIImageView *radarMV;
+    UIImageView *radarBars;
     NSMutableDictionary *theSpots;
 }
 

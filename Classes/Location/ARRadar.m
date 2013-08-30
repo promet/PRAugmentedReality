@@ -45,8 +45,7 @@
  *
  */
 
-// Those are the N-E-S-W points (highs and lows) //
-// of the axis of the radar //
+// Those are the N-E-S-W points (highs and lows) of the axis of the radar //
 #define Nx  49
 #define Ny  10
 #define Ex  85
@@ -131,12 +130,12 @@
     radarMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     [radarMV setImage:[UIImage imageNamed:@"RadarMV.png"]];
     
-    UIImageView *bars = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [bars setImage:[UIImage imageNamed:@"Radar.png"]];
-    [bars setAlpha:0.3];
+    radarBars = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [radarBars setImage:[UIImage imageNamed:@"Radar.png"]];
+    [radarBars setAlpha:0.3];
     
     [self addSubview:radarMV];
-    [self addSubview:bars];
+    [self addSubview:radarBars];
 }
 -(void)setupSpots:(NSArray*)spots {
     for (NSDictionary* spot in spots) {
@@ -183,7 +182,9 @@
 }
 
 - (void)moveDots:(int)angle {
-    //NSLog(@"move to %d", angle);
+    self.transform = CGAffineTransformMakeRotation(-RADIANS(angle));
+    
+    radarBars.transform = CGAffineTransformMakeRotation(RADIANS(angle));
 }
 
 
