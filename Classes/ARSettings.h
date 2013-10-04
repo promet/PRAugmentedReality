@@ -70,6 +70,9 @@
 #define X_CENTER                160     // Vertical center value to use to position the overlays
 #define Y_CENTER                170     // Horizontal center value to use to position the overlays
 
+#define DEF_SCREEN_WIDTH        320.0
+#define DEF_SCREEN_HEIGHT       460.0
+
 
 // -- MATH -- //
 // Some of the values below may seem redundant but they do in fact remove overhead floating-point calculations
