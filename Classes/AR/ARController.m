@@ -284,6 +284,24 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 #pragma mark - Main Initialization
 
++ (ARController *)sharedARController
+{
+    static ARController *sharedARController;
+    
+    @synchronized(self)
+    {
+        if (!sharedARController) {
+            sharedARController = [[ARController alloc] init];
+            return [self sharedARControllerWSize:CGSizeMake(DEF_SCREEN_WIDTH, DEF_SCREEN_HEIGHT) withRadar:YES];
+        }
+        
+        return sharedARController;
+    }
+}
++ (ARController *)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar {
+    return [self sharedARController];
+}
+
 -(void)initAndAllocContainers {
     geoobjectOverlays = [[NSMutableDictionary alloc] init];
     geoobjectPositions = [[NSMutableDictionary alloc] init];
@@ -336,13 +354,6 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         [self initAndAllocContainers];
         [self startPosMonitoring];
         [self startCamera];
-    }
-    return self;
-}
--(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate withRadar:(BOOL)withRadar {
-    self = [self initWithScreenSize:screenSize withRadar:withRadar];
-    if (self) {
-        [self setDelegate:delegate];
     }
     return self;
 }

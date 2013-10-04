@@ -82,8 +82,8 @@
 @property (weak, nonatomic) id <ARControllerDelegate> delegate;
 @property (strong, nonatomic) LocationWork *locWork;
 
--(id)initWithScreenSize:(CGSize)screenSize withRadar:(BOOL)withRadar;
--(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate withRadar:(BOOL)withRadar;
++ (ARController *)sharedARController;
++ (ARController *)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar;
 
 -(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation;
 -(void)startARWithData:(NSArray*)arData;
