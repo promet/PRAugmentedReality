@@ -50,8 +50,8 @@
                   andRadarView:(UIView*)radar;
 
 - (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details;
-@end
 
+@end
 
 @interface ARController : NSObject {
     

@@ -239,7 +239,7 @@
     
     NSMutableArray *arObjects = [[NSMutableArray alloc] init];
     
-    FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@",AR_COORDINATES_TABLE]];
+    FMResultSet *rs = [fmdb executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT 10",AR_COORDINATES_TABLE]];
     while ([rs next]) {
         
         CLLocationCoordinate2D geoobjectCoordinates = CLLocationCoordinate2DMake([[rs stringForColumn:@"lat"] floatValue],

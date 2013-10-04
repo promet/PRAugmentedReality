@@ -537,11 +537,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 762233081DD540489E511D03 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRAR-Example/PRAR-Example-Prefix.pch";
 				INFOPLIST_FILE = "PRAR-Example/PRAR-Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6C581BFB-9589-4698-9179-06016559EC98";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -550,11 +552,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 762233081DD540489E511D03 /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Andrew KUCHARSKI (9FLW278DSJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PRAR-Example/PRAR-Example-Prefix.pch";
 				INFOPLIST_FILE = "PRAR-Example/PRAR-Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6C581BFB-9589-4698-9179-06016559EC98";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
