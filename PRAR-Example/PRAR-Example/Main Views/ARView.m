@@ -100,7 +100,8 @@
     [super viewDidLoad];
     
     arController = [[ARController alloc] initWithScreenSize:self.view.frame.size
-                                                andDelegate:self];
+                                                andDelegate:self
+                                                  withRadar:YES];
 }
 
 

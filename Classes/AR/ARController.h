@@ -73,6 +73,7 @@
     NSTimer *refreshTimer;
 
     ARRadar *radar;
+    BOOL radarOption;
     
     int locTries;
     int dataTries;
@@ -81,8 +82,8 @@
 @property (weak, nonatomic) id <ARControllerDelegate> delegate;
 @property (strong, nonatomic) LocationWork *locWork;
 
--(id)initWithScreenSize:(CGSize)screenSize;
--(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate;
+-(id)initWithScreenSize:(CGSize)screenSize withRadar:(BOOL)withRadar;
+-(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate withRadar:(BOOL)withRadar;
 
 -(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation;
 -(void)startARWithData:(NSArray*)arData;

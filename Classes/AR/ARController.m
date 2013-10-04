@@ -133,14 +133,16 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     
     [self setupDataForAR];
     
-    if (RADAR_ON) {
+    if (radarOption) {
         radar = [[ARRadar alloc] initWithFrame:CGRectMake((deviceScreenResolution.width/2)-50, deviceScreenResolution.height-100, 100, 100)
                                      withSpots:[NSArray arrayWithArray:spots]];
+        
         [self.delegate arControllerDidSetupAR:arOverlaysContainerView
                               withCameraLayer:cameraLayer
                                  andRadarView:radar];
     }
-    else [self.delegate arControllerDidSetupAR:arOverlaysContainerView withCameraLayer:cameraLayer];
+    else [self.delegate arControllerDidSetupAR:arOverlaysContainerView
+                               withCameraLayer:cameraLayer];
 }
 
 -(void)setupDataForAR {
@@ -320,7 +322,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
 }
 
--(id)initWithScreenSize:(CGSize)screenSize {
+-(id)initWithScreenSize:(CGSize)screenSize withRadar:(BOOL)withRadar {
     self = [super init];
     if (self) {
         
@@ -329,14 +331,16 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         locTries = 0;
         dataTries = 0;
         
+        radarOption = withRadar;
+        
         [self initAndAllocContainers];
         [self startPosMonitoring];
         [self startCamera];
     }
     return self;
 }
--(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate {
-    self = [self initWithScreenSize:screenSize];
+-(id)initWithScreenSize:(CGSize)screenSize andDelegate:(id)delegate withRadar:(BOOL)withRadar {
+    self = [self initWithScreenSize:screenSize withRadar:withRadar];
     if (self) {
         [self setDelegate:delegate];
     }
