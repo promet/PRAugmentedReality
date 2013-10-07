@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "PRAugmentedReality"
-  s.version       = "2.3.0"
+  s.version       = "3.0.0"
   s.summary       = "iOS AR Library."
   s.homepage      = "https://github.com/promet/PRAugmentedReality"
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
@@ -17,7 +17,11 @@ Pod::Spec.new do |s|
     ss.source_files  = 'Classes/Location/*.{h,m}'
   end
 
+  s.source_files = 'Classes/PRARManager.h'
+  s.source_files = 'Classes/PRARManager.m'
+
   s.source_files = 'Classes/ARSettings.h'
+
   s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib"]
   s.frameworks    = 'AVFoundation', 'CoreLocation', 'CoreMotion', 'MapKit', 'MobileCoreServices', 'SystemConfiguration', 'QuartzCore'
 end
