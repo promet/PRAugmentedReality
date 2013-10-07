@@ -104,7 +104,7 @@
     if (prarSwitch.on) {
         [loadingI startAnimating];
         
-        if (_mapView.userLocation.location.horizontalAccuracy > MIN_LOCATION_ACCURACY) {
+        if (_mapView.userLocation.location.horizontalAccuracy > 100) {
             [statusL setText:@"Waiting for accurate location"];
             [self performSelector:@selector(startPRAR:) withObject:sender afterDelay:1];
             return;
@@ -143,7 +143,7 @@
 
 -(void)setMapToUserLocation {
     
-    if (_mapView.userLocation.location.horizontalAccuracy > MIN_LOCATION_ACCURACY) return;
+    if (_mapView.userLocation.location.horizontalAccuracy > 100) return;
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(_mapView.userLocation.location.coordinate.latitude,
                                                                                                   _mapView.userLocation.location.coordinate.longitude),

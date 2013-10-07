@@ -39,8 +39,8 @@
 - (id)initWithId:(int)newNid
            title:(NSString*)newTitle
      coordinates:(CLLocationCoordinate2D)newCoordinates
-andCurrentLocation:(CLLocationCoordinate2D)currLoc {
-    
+andCurrentLocation:(CLLocationCoordinate2D)currLoc
+{
     self = [super init];
     if (self) {
         nid = newNid;
@@ -57,8 +57,8 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     return self;
 }
 
--(double)calculateDistanceFrom:(CLLocationCoordinate2D)user_loc_coord {
-    
+-(double)calculateDistanceFrom:(CLLocationCoordinate2D)user_loc_coord
+{
     CLLocationCoordinate2D object_loc_coord = CLLocationCoordinate2DMake(lat, lon);
     
     CLLocation *object_location = [[CLLocation alloc] initWithLatitude:object_loc_coord.latitude
@@ -68,13 +68,15 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     
     return [object_location distanceFromLocation:user_location];
 }
--(NSString*)getDistanceLabelText {
+-(NSString*)getDistanceLabelText
+{
     if (distance.doubleValue > POINT_ONE_MILE_METERS)
          return [NSString stringWithFormat:@"%.2f mi", distance.doubleValue*METERS_TO_MILES];
     else return [NSString stringWithFormat:@"%.0f ft", distance.doubleValue*METERS_TO_FEET];
 }
 
-- (NSDictionary*)getARObjectData {
+- (NSDictionary*)getARObjectData
+{
     NSArray *keys = @[@"id",@"title", @"latitude", @"longitude", @"distance"];
     
     NSArray *values = @[@(nid),
@@ -85,7 +87,8 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc {
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
     [titleL setText:arTitle];

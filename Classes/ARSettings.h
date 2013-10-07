@@ -39,9 +39,8 @@
 #define MAX_NUMBER_OF_TRIES     5
 
 
-// -- Location & Heading -- //
+// -- Accelerometer -- //
 
-#define MIN_LOCATION_ACCURACY   100     // Minimum accuracy of the user location required - 100 meters
 #define kFilteringFactor        0.05    // Filtering of noise for the accelerometer
 
 

@@ -11,7 +11,8 @@
 #import "ARView.h"
 #import "DataController.h"
 
-@interface ViewController : UIViewController <ARViewDelegate, DataControllerDelegate, MKMapViewDelegate> {
+@interface ViewController : UIViewController <ARViewDelegate, DataControllerDelegate, MKMapViewDelegate>
+{
     
     DataController *dataController;
     IBOutlet MKMapView *_mapView;

@@ -49,9 +49,10 @@
 
 #pragma mark - AR Controller Delegate
 
-- (void)arControllerDidSetupAR:(UIView *)arView
-               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer
-                  andRadarView:(UIView *)radar {
+-(void)prarDidSetupAR:(UIView *)arView
+      withCameraLayer:(AVCaptureVideoPreviewLayer *)cameraLayer
+         andRadarView:(UIView *)radar
+{
     NSLog(@"Finished displaying ARObjects");
     
     [self.view.layer addSublayer:cameraLayer];
@@ -66,10 +67,10 @@
 }
 
 
-- (void)arControllerUpdateFrame:(CGRect)arViewFrame {
+- (void)prarUpdateFrame:(CGRect)arViewFrame {
     [[self.view viewWithTag:AR_VIEW_TAG] setFrame:arViewFrame];
 }
-- (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details {
+- (void)prarGotProblem:(NSString*)problemOrigin withDetails:(NSString*)details {
 
     [loadingI stopAnimating];
     
@@ -82,16 +83,10 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (arData.count > 0) {
-        [loadingI startAnimating];
-        [arController startARWithData:arData];
-        return;
-    }
-    
-    [self alert:@"No data" withDetails:nil];
+    [[PRARManager sharedManager] startARWithData:arData forLocation:CLLocationCoordinate2DMake(41.958014,-87.674584)];
 }
 -(void)viewWillDisappear:(BOOL)animated {
-    [arController stopAR];
+    [[PRARManager sharedManager] stopAR];
     
     [super viewWillDisappear:animated];
 }
@@ -99,15 +94,13 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    arController = [ARController sharedARControllerWSize:self.view.frame.size withRadar:YES];
-    [arController setDelegate:self];
+    [PRARManager sharedManagerWithRadarAndSize:self.view.frame.size andDelegate:self];
 }
 
 
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender {
-    //[arController release];
     
     [self.delegate arViewControllerDidFinish:self];
 }

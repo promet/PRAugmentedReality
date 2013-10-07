@@ -58,8 +58,8 @@
 
 #pragma mark - Creating the radar image
 
-- (void)drawRect:(CGRect)rect {
-    
+- (void)drawRect:(CGRect)rect
+{
     if (theSpots.count < 1) return;
     
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
@@ -72,7 +72,7 @@
     int x = 0;
     int y = 0;
     
-    for (NSNumber *angle in [theSpots allKeys]) {
+    for (NSNumber *angle in theSpots.allKeys) {
         
         // Angle modifier //
         double angleD = angle.doubleValue-20; // -20 degrees to ofset for the fact that the overlays
@@ -125,46 +125,6 @@
             y = Ny+(yWidth*angleModifier);
             y+=(yWidth*distModifier)*(1-((y-Ny)/yWidth));
         }
-        /*
-        if (angleI < 90) {
-            float xWidth = Ex-Nx;
-            x = Nx+(xWidth*angleModifier);
-            x-=(xWidth*distModifier)*((x-Nx)/xWidth);
-            
-            float yWidth = Ey-Ny;
-            y = Ny+(yWidth*angleModifier);
-            y+=(yWidth*distModifier)*(1-((y-Ny)/yWidth));
-        }
-        else if (angleI < 180) {
-            float xWidth = Ex-Sx;
-            x = Ex-(xWidth*angleModifier);
-            x-=(xWidth*distModifier)*((x-Sx)/xWidth);
-            
-            float yWidth = Sy-Ey;
-            y = Ey+(yWidth*angleModifier);
-            y-=(yWidth*distModifier)*((y-Ey)/yWidth);
-        }
-        
-        else if (angleI < 270) {
-            float xWidth = Sx-Wx;
-            x = Sx-(xWidth*angleModifier);
-            x+=(xWidth*distModifier)*(1-((x-Wx)/xWidth));
-            
-            float yWidth = Sy-Wy;
-            y = Sy-(yWidth*angleModifier);
-            y-=(yWidth*distModifier)*((y-Wy)/yWidth);
-        }
-        
-        else {
-            float xWidth = Nx-Wx;
-            x = Wx+(xWidth*angleModifier);
-            x+=(xWidth*distModifier)*(1-((x-Wx)/xWidth));
-            
-            float yWidth = Wy-Ny;
-            y = Wy-(yWidth*angleModifier);
-            y+=(yWidth*distModifier)*(1-((y-Ny)/yWidth));
-        }
-         */
         
         CGContextFillEllipseInRect(contextRef, CGRectMake(x, y, 4, 4));
     }
@@ -173,7 +133,8 @@
 
 #pragma mark - Setting up the radar
 
--(void)setupRadarImages {
+-(void)setupRadarImages
+{
     radarMV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     [radarMV setImage:[UIImage imageNamed:@"RadarMV.png"]];
     
@@ -184,7 +145,8 @@
     [self addSubview:radarMV];
     [self addSubview:radarBars];
 }
--(void)setupSpots:(NSArray*)spots {
+-(void)setupSpots:(NSArray*)spots
+{
     for (NSDictionary* spot in spots) {
         int x = [[spot objectForKey:@"angle"] intValue];
         if (x > 360) x-= 360;
@@ -201,8 +163,8 @@
 
 #pragma mark - Factory Method
 
-- (id)initWithFrame:(CGRect)frame withSpots:(NSArray*)spots {
-    
+- (id)initWithFrame:(CGRect)frame withSpots:(NSArray*)spots
+{
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -223,7 +185,8 @@
 #pragma mark - Moving the radar scanner
 
 #define RADIANS( degrees )      ((degrees)*(M_PI/180))
--(void)turnRadar {
+-(void)turnRadar
+{
     CABasicAnimation *rotation;
     rotation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     rotation.fromValue = [NSNumber numberWithFloat:0];
@@ -233,7 +196,8 @@
     [radarMV.layer addAnimation:rotation forKey:@"Spin"];
 }
 
-- (void)moveDots:(int)angle {
+- (void)moveDots:(int)angle
+{
     self.transform = CGAffineTransformMakeRotation(-RADIANS(angle));
     
     radarBars.transform = CGAffineTransformMakeRotation(RADIANS(angle));

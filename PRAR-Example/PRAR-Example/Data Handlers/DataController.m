@@ -128,7 +128,7 @@
 -(void)saveAllARObjects:(NSDictionary*)newARObjects {
     @try {
         if ([newARObjects count] > 0) {
-            for (NSString *ar_object_nid in [newARObjects allKeys]) {
+            for (NSString *ar_object_nid in newARObjects.allKeys) {
                 NSDictionary *ar_obj = newARObjects[ar_object_nid];
                 if (ar_obj[@"coordinates"][@"lat"] == [NSNull null]) continue;
                 if ([ar_obj[@"coordinates"][@"lat"] isEqualToString:@"<null>"]) continue;

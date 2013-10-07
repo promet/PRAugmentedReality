@@ -30,7 +30,8 @@
 #import "ARSettings.h"
 
 
-@interface ARObject : UIViewController {
+@interface ARObject : UIViewController
+{
     
     // ARObject main components
     NSString *arTitle;

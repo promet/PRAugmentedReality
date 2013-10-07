@@ -26,7 +26,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ARController.h"
+#import "PRARManager.h"
 
 
 @class ARView;
@@ -36,8 +36,8 @@
 @end
 
 
-@interface ARView : UIViewController <ARControllerDelegate> {
-    ARController *arController;
+@interface ARView : UIViewController <PRARManagerDelegate>
+{
     NSArray *arData;
     
     IBOutlet UIButton *closeB;

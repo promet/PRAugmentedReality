@@ -1,5 +1,5 @@
 //
-//  LocationWork.m
+//  LocationMath.m
 //  PrometAR
 //
 // Created by Geoffroy Lesage on 4/24/13.
@@ -24,24 +24,37 @@
 // THE SOFTWARE.
 //
 
-#import "LocationWork.h"
+#import "LocationMath.h"
 
 
-@implementation LocationWork
+@implementation LocationMath
 
-@synthesize gotPreciseEnoughLocation;
-@synthesize currentLat, currentLon;
+static LocationMath *_sharedCalculator = nil;
+static dispatch_once_t onceToken;
+
+@synthesize location;
 
 
--(id)init {
++(id)sharedExpert
+{
+    @synchronized([LocationMath class]) {
+        dispatch_once(&onceToken, ^{
+            _sharedCalculator = [[self alloc] init];
+        });
+    }
+    
+    return _sharedCalculator;
+}
+-(id)init
+{
     self = [super init];
-    if (self) {
-        gotPreciseEnoughLocation = NO;
-        
+    if (self) {        
         motionManager = [[CMMotionManager alloc] init];
         locationManager = [[CLLocationManager alloc] init];
         
-        [self setupLocationManager];
+        [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [locationManager setDistanceFilter:kCLDistanceFilterNone];
+        [locationManager setDelegate:self];
     }
     return self;
 }
@@ -49,34 +62,18 @@
 
 # pragma mark - LocationManager
 
--(void)setupLocationManager {
 
-    [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    [locationManager setDistanceFilter:kCLDistanceFilterNone];
-    [locationManager setDelegate:self];
-    
-    [locationManager startUpdatingLocation];
-}
-
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+-(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
     currentHeading =  fmod(newHeading.trueHeading, 360.0);
 }
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (newLocation.horizontalAccuracy < MIN_LOCATION_ACCURACY) {
-        gotPreciseEnoughLocation = YES;
-        currentLat = newLocation.coordinate.latitude;
-        currentLon = newLocation.coordinate.longitude;
-    }
-}
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
     NSLog(@"Failed to update Loc: %@", error);
 }
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusAuthorized) [self setupLocationManager];
-}
 
--(void)pollAccellerometerForVerticalPosition {
-    
+-(void)pollAccellerometerForVerticalPosition
+{
     CMAcceleration acceleration = motionManager.accelerometerData.acceleration;
     
     rollingZ  = (acceleration.z * kFilteringFactor) + (rollingZ  * (1.0 - kFilteringFactor));
@@ -90,16 +87,16 @@
 
 # pragma mark - Accellerometer
 
--(void)startAR:(CGSize)deviceScreenSize {
-    
+-(void)startTrackingWithLocation:(CLLocationCoordinate2D)newLocation andSize:(CGSize)deviceScreenSize
+{
     deviceViewHeight = deviceScreenSize.height;
     
     [locationManager startUpdatingHeading];
     [motionManager startAccelerometerUpdates];
+    
+    location = CLLocationCoordinate2DMake(newLocation.latitude, newLocation.longitude);
 
-    if (accelTimer) {
-        accelTimer = nil;
-    }
+    if (accelTimer) accelTimer = nil;
     accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
                                                   target:self
                                                 selector:@selector(pollAccellerometerForVerticalPosition)
@@ -110,32 +107,35 @@
 
 # pragma mark - Callback functions
 
--(CGRect)getCurrentFramePosition {
+-(CGRect)getCurrentFramePosition
+{
     float y_pos = currentInclination*VERTICAL_SENS;
     float x_pos = X_CENTER+(0-currentHeading)*HORIZ_SENS;
     
     return CGRectMake(x_pos, y_pos+60, OVERLAY_VIEW_WIDTH, deviceViewHeight);
 }
--(int)getCurrentHeading {
+-(int)getCurrentHeading
+{
     return (int)currentHeading;
 }
--(int)getARObjectXPosition:(ARObject*)arObject {
+-(int)getARObjectXPosition:(ARObject*)arObject
+{
     CLLocationCoordinate2D coordinates;
     coordinates.latitude        = [[arObject getARObjectData][@"latitude"] doubleValue];
     coordinates.longitude       = [[arObject getARObjectData][@"longitude"] doubleValue];
     
-    double latitudeDistance     = max(coordinates.latitude, currentLat) - min(coordinates.latitude, currentLat);
-    double longitudeDistance    = max(coordinates.longitude, currentLon) - min(coordinates.longitude, currentLon);
+    double latitudeDistance     = max(coordinates.latitude, location.latitude) - min(coordinates.latitude, location.latitude);
+    double longitudeDistance    = max(coordinates.longitude, location.longitude) - min(coordinates.longitude, location.longitude);
     
     int x_position = DEGREES(atanf(longitudeDistance/(latitudeDistance*lat_over_lon)));
     
-    if ((coordinates.latitude < currentLat) && (coordinates.longitude > currentLon))
+    if ((coordinates.latitude < location.latitude) && (coordinates.longitude > location.longitude))
         x_position = 180-x_position;
     
-    else if ((coordinates.latitude < currentLat) && (coordinates.longitude < currentLon))
+    else if ((coordinates.latitude < location.latitude) && (coordinates.longitude < location.longitude))
         x_position += 180;
     
-    else if ((coordinates.latitude > currentLat) && (coordinates.longitude < currentLon))
+    else if ((coordinates.latitude > location.latitude) && (coordinates.longitude < location.longitude))
         x_position += 270;
     
     return x_position*HORIZ_SENS;

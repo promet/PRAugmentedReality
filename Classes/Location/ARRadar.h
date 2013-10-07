@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Settings.h"
 
-@interface ARRadar : UIView {
+@interface ARRadar : UIView
+{
     UIImageView *radarMV;
     UIImageView *radarBars;
     NSMutableDictionary *theSpots;

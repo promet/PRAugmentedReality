@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3617F1D9179A575900483A8D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3617F1D8179A575900483A8D /* SystemConfiguration.framework */; };
+		36446C8C1803143E00DB7A68 /* PRARManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36446C8B1803143E00DB7A68 /* PRARManager.m */; };
+		36446C921803208F00DB7A68 /* LocationMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 36446C911803208F00DB7A68 /* LocationMath.m */; };
 		3647DAF317CFE311001FAA53 /* ARRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3647DAF117CFE311001FAA53 /* ARRadar.m */; };
 		3647DAF417CFE311001FAA53 /* ARRadar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3647DAF217CFE311001FAA53 /* ARRadar.xib */; };
 		3647DAF617CFE504001FAA53 /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3647DAF517CFE504001FAA53 /* Radar.png */; };
@@ -18,7 +20,6 @@
 		369CB019179A55C000C8F291 /* ar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 369CB010179A55C000C8F291 /* ar_icon.png */; };
 		369CB01A179A55C000C8F291 /* ar_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 369CB011179A55C000C8F291 /* ar_overlay.png */; };
 		369CB01B179A55C000C8F291 /* ar_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369CB012179A55C000C8F291 /* ar_overlay@2x.png */; };
-		369CB01C179A55C000C8F291 /* LocationWork.m in Sources */ = {isa = PBXBuildFile; fileRef = 369CB015179A55C000C8F291 /* LocationWork.m */; };
 		369CB01E179A55D700C8F291 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB01D179A55D700C8F291 /* CoreLocation.framework */; };
 		369CB020179A55DA00C8F291 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB01F179A55DA00C8F291 /* CoreMotion.framework */; };
 		369CB022179A55DD00C8F291 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB021179A55DD00C8F291 /* QuartzCore.framework */; };
@@ -58,6 +59,10 @@
 
 /* Begin PBXFileReference section */
 		3617F1D8179A575900483A8D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		36446C8A1803143E00DB7A68 /* PRARManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRARManager.h; sourceTree = "<group>"; };
+		36446C8B1803143E00DB7A68 /* PRARManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRARManager.m; sourceTree = "<group>"; };
+		36446C901803208F00DB7A68 /* LocationMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMath.h; sourceTree = "<group>"; };
+		36446C911803208F00DB7A68 /* LocationMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMath.m; sourceTree = "<group>"; };
 		3647DAF017CFE311001FAA53 /* ARRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRadar.h; sourceTree = "<group>"; };
 		3647DAF117CFE311001FAA53 /* ARRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRadar.m; sourceTree = "<group>"; };
 		3647DAF217CFE311001FAA53 /* ARRadar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARRadar.xib; sourceTree = "<group>"; };
@@ -72,8 +77,6 @@
 		369CB010179A55C000C8F291 /* ar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_icon.png; sourceTree = "<group>"; };
 		369CB011179A55C000C8F291 /* ar_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_overlay.png; sourceTree = "<group>"; };
 		369CB012179A55C000C8F291 /* ar_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ar_overlay@2x.png"; sourceTree = "<group>"; };
-		369CB014179A55C000C8F291 /* LocationWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationWork.h; sourceTree = "<group>"; };
-		369CB015179A55C000C8F291 /* LocationWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationWork.m; sourceTree = "<group>"; };
 		369CB01D179A55D700C8F291 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		369CB01F179A55DA00C8F291 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		369CB021179A55DD00C8F291 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 		369CB007179A55C000C8F291 /* PRAugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
+				36446C8A1803143E00DB7A68 /* PRARManager.h */,
+				36446C8B1803143E00DB7A68 /* PRARManager.m */,
 				369CB008179A55C000C8F291 /* AR */,
 				369CB00E179A55C000C8F291 /* ARSettings.h */,
 				369CB00F179A55C000C8F291 /* Graphics */,
@@ -192,8 +197,8 @@
 				3647DAF017CFE311001FAA53 /* ARRadar.h */,
 				3647DAF117CFE311001FAA53 /* ARRadar.m */,
 				3647DAF217CFE311001FAA53 /* ARRadar.xib */,
-				369CB014179A55C000C8F291 /* LocationWork.h */,
-				369CB015179A55C000C8F291 /* LocationWork.m */,
+				36446C901803208F00DB7A68 /* LocationMath.h */,
+				36446C911803208F00DB7A68 /* LocationMath.m */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -450,8 +455,9 @@
 				36CF8C2D179A5122007BE243 /* ARView.m in Sources */,
 				369CB016179A55C000C8F291 /* ARController.m in Sources */,
 				369CB017179A55C000C8F291 /* ARObject.m in Sources */,
-				369CB01C179A55C000C8F291 /* LocationWork.m in Sources */,
 				3647DAF317CFE311001FAA53 /* ARRadar.m in Sources */,
+				36446C8C1803143E00DB7A68 /* PRARManager.m in Sources */,
+				36446C921803208F00DB7A68 /* LocationMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

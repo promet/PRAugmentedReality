@@ -25,68 +25,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
+#import <CoreLocation/CoreLocation.h>
 
-#import "LocationWork.h"
-#import "ARRadar.h"
-
-/**
- * Those protocols are used by the AR View
- * arControllerUpdateFrame  - Updates the position of the AR Views Containers
- * arControllerDidSetupAR   - Receives the AR data once it is set up or updated
- * gotProblemIn             - Generic error protocol
- */
-@class ARController;
-
-@protocol ARControllerDelegate
-@optional
-- (void)arControllerUpdateFrame:(CGRect)arViewFrame;
-
-- (void)arControllerDidSetupAR:(UIView *)arView
-               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer;
-
-- (void)arControllerDidSetupAR:(UIView *)arView
-               withCameraLayer:(AVCaptureVideoPreviewLayer*)cameraLayer
-                  andRadarView:(UIView*)radar;
-
-- (void)gotProblemIn:(NSString*)problemOrigin withDetails:(NSString*)details;
-
-@end
-
-@interface ARController : NSObject {
-    
-    // -- Main Handler Classes -- //
-    LocationWork *locWork;
-    
-    // -- Main Containers -- //
+@interface ARController : NSObject
+{
     NSMutableDictionary *geoobjectOverlays;
     NSMutableDictionary *geoobjectPositions;
     NSMutableDictionary *geoobjectVerts;
-    
-    // -- Camera -- //
-    AVCaptureSession *cameraSession;
-    AVCaptureVideoPreviewLayer *cameraLayer;
-    
-    // -- Other -- //
-    CGSize deviceScreenResolution;
-    UIView *arOverlaysContainerView;
-    NSTimer *refreshTimer;
-
-    ARRadar *radar;
-    BOOL radarOption;
-    
-    int locTries;
-    int dataTries;
 }
 
-@property (weak, nonatomic) id <ARControllerDelegate> delegate;
-@property (strong, nonatomic) LocationWork *locWork;
-
-+ (id)sharedARController;
-+ (id)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar;
-
--(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation;
--(void)startARWithData:(NSArray*)arData;
--(void)stopAR;
+-(NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation;
+-(NSArray*)createRadarSpots;
 
 @end

@@ -30,14 +30,14 @@
 #import <QuartzCore/CALayer.h>
 #import <QuartzCore/CATransform3D.h>
 
+#import "LocationMath.h"
+
 @interface ARController ()
 
 @end
 
 
 @implementation ARController
-
-@synthesize locWork;
 
 
 // -- Shape warper -- //
@@ -58,53 +58,14 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 	return t;
 }
 
-
--(void)refreshPositionOfOverlay {
-    CGRect newPos = [locWork getCurrentFramePosition];
-    [radar moveDots:[locWork getCurrentHeading]];
-    [[self delegate] arControllerUpdateFrame:CGRectMake(newPos.origin.x,
-                                                        newPos.origin.y,
-                                                        OVERLAY_VIEW_WIDTH,
-                                                        deviceScreenResolution.height)];
-}
-
-
-#pragma mark - Data Delegate
-
--(void)startARWithData:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation {
-    if (locTries == MAX_NUMBER_OF_TRIES) {
-        [self.delegate gotProblemIn:@"Location :(" withDetails:@"Can't seem to pinpoint your location..."];
-        return;
-    }
-    else if (!locWork.gotPreciseEnoughLocation) {
-        locTries++;
-        [self performSelector:@selector(startARWithData:)
-                   withObject:arData
-                   afterDelay:1];
-        return;
-    }
-    
-    locTries = 0;
-    [self buildAROverlays:arData andCurrentLoc:currentLocation];
-    
-    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                    target:self
-                                                  selector:@selector(refreshPositionOfOverlay)
-                                                  userInfo:nil
-                                                   repeats:YES];
-}
--(void)startARWithData:(NSArray*)arData {
-    [self startARWithData:arData andCurrentLoc:CLLocationCoordinate2DMake(locWork.currentLat, locWork.currentLon)];
-}
-
-
 #pragma mark - AR builders
 
--(void)buildAROverlays:(NSArray*)arData andCurrentLoc:(CLLocationCoordinate2D)currentLocation {
+-(NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation
+{
+    LocationMath *locationMath = [LocationMath sharedExpert];
     
     int x_pos = 0;
     ARObject *arObject;
-    NSMutableArray *spots = [NSMutableArray array];
     
     for (NSDictionary *arObjectData in arData) {
         NSNumber *ar_id = @([arObjectData[@"nid"] intValue]);
@@ -112,43 +73,42 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                                            title:arObjectData[@"title"]
                                      coordinates:CLLocationCoordinate2DMake([arObjectData[@"lat"] doubleValue],
                                                                             [arObjectData[@"lon"] doubleValue])
-                              andCurrentLocation:currentLocation];
+                              andCurrentLocation:newLocation];
         
-        x_pos = [locWork getARObjectXPosition:arObject]-arObject.view.frame.size.width;
-        
-        if (RADAR_ON) {
-            NSDictionary *spot = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  [NSNumber numberWithInt:(int)(x_pos/HORIZ_SENS)],         @"angle",
-                                  [NSNumber numberWithFloat:arObject.distance.floatValue],  @"distance",
-                                  nil];
-            [spots addObject:spot];
-        }
+        x_pos = [locationMath getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
         geoobjectOverlays[ar_id] = arObject;
         geoobjectPositions[ar_id] = @(x_pos);
         geoobjectVerts[ar_id] = @1;
     }
     
-    [cameraSession startRunning];
-    
     [self setupDataForAR];
     
-    if (radarOption) {
-        radar = [[ARRadar alloc] initWithFrame:CGRectMake((deviceScreenResolution.width/2)-50, deviceScreenResolution.height-100, 100, 100)
-                                     withSpots:[NSArray arrayWithArray:spots]];
-        
-        [self.delegate arControllerDidSetupAR:arOverlaysContainerView
-                              withCameraLayer:cameraLayer
-                                 andRadarView:radar];
-    }
-    else [self.delegate arControllerDidSetupAR:arOverlaysContainerView
-                               withCameraLayer:cameraLayer];
+    return geoobjectOverlays;
 }
 
--(void)setupDataForAR {
+-(NSArray*)createRadarSpots
+{    
+    NSMutableArray *spots = [NSMutableArray arrayWithCapacity:geoobjectOverlays.count];
     
-    [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    int x_pos = 0;
+    ARObject *arObject;
     
+    for (NSNumber *ar_id in geoobjectOverlays.allKeys) {
+        
+        x_pos = [geoobjectPositions[ar_id] intValue];
+        arObject = geoobjectOverlays[ar_id];
+        
+        NSDictionary *spot = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithInt:(int)(x_pos/HORIZ_SENS)],         @"angle",
+                              [NSNumber numberWithFloat:arObject.distance.floatValue],  @"distance",
+                              nil];
+        [spots addObject:spot];
+    }
+    return [NSArray arrayWithArray:spots];
+}
+-(void)setupDataForAR
+{
     [self setVerticalPosWithDistance];
     [self checkForVerticalPosClashes];
     [self checkAllVerticalPos];
@@ -157,28 +117,28 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 
 // Warps the view into a parrallelogram shape in order to give it a 3D perspective
--(void)warpView:(UIView*)arView atVerticalPosition:(int)verticalPos {
-    
+-(void)warpView:(UIView*)arView atVerticalPosition:(int)verticalPos
+{
     arView.layer.sublayerTransform = CATransform3DMakePerspective(0, verticalPos*-0.0004);
     
     float shrinkLevel = powf(0.9, verticalPos-1);
     arView.transform = CGAffineTransformMakeScale(shrinkLevel, shrinkLevel);
     
 }
--(int)setYPosForView:(UIView*)arView atVerticalPos:(int)verticalPos {
-    
+-(int)setYPosForView:(UIView*)arView atVerticalPos:(int)verticalPos
+{
     int pos = Y_CENTER-(int)(arView.frame.size.height*verticalPos);
     pos -= (powf(verticalPos, 2)*4);
     
     return pos-(arView.frame.size.height/2);
 }
 
--(void)setVerticalPosWithDistance {
-    
+-(void)setVerticalPosWithDistance
+{
     ARObject *arObject;
     int distance;
     
-    for (NSString *key in [geoobjectOverlays allKeys]) {
+    for (NSString *key in geoobjectOverlays.allKeys) {
         
         arObject = geoobjectOverlays[key];
         distance = (int)(arObject.distance.doubleValue);
@@ -203,8 +163,8 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         }
     }
 }
--(void)checkForVerticalPosClashes {
-    
+-(void)checkForVerticalPosClashes
+{
     int distance, sub_distance, diff, x_pos, vertPosition, sub_vertPosition;
     int overlay_width = ((ARObject*)[geoobjectOverlays allValues][0]).view.frame.size.width;
     BOOL gotConflict = YES;
@@ -212,13 +172,13 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     while (gotConflict) {
         gotConflict = NO;
         
-        for (NSString *key in [geoobjectOverlays allKeys]) {
+        for (NSString *key in geoobjectOverlays.allKeys) {
             
             vertPosition = [geoobjectVerts[key] intValue];
             distance = (int)([(ARObject*)geoobjectOverlays[key] distance].doubleValue);
             x_pos = [geoobjectPositions[key] intValue];
             
-            for (NSString *sub_key in [geoobjectOverlays allKeys]) {
+            for (NSString *sub_key in geoobjectOverlays.allKeys) {
                 if ([sub_key intValue] == [key intValue]) continue;
                 
                 sub_vertPosition = [geoobjectVerts[sub_key] intValue];
@@ -244,25 +204,27 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         }
     }
 }
--(void)checkAllVerticalPos {
-    
+-(void)checkAllVerticalPos
+{
     NSNumber *vert;
     while (![[geoobjectVerts allValues] containsObject:@0]) {
-        for (NSNumber *key in [geoobjectVerts allKeys]) {
+        for (NSNumber *key in geoobjectVerts.allKeys) {
             vert = geoobjectVerts[key];
             geoobjectVerts[key] = @(vert.intValue-1);
         }
     }
 }
--(void)setFramesForOverlays {
-    
+-(void)setFramesForOverlays
+{
     int distance, x_pos, y_pos, vertPosition;
     
-    for (ARObject *arObject in [geoobjectOverlays allValues]) {
-        NSNumber *arObjectId = (arObject.getARObjectData)[@"id"];
+    ARObject *arObject = nil;
+    
+    for (NSNumber *ar_id in geoobjectOverlays.allKeys) {
+        arObject = geoobjectOverlays[ar_id];
         
-        x_pos = [geoobjectPositions[arObjectId] intValue];
-        vertPosition = [geoobjectVerts[arObjectId] intValue];
+        x_pos = [geoobjectPositions[ar_id] intValue];
+        vertPosition = [geoobjectVerts[ar_id] intValue];
         y_pos = [self setYPosForView:arObject.view atVerticalPos:vertPosition];
         distance = (int)(arObject.distance.doubleValue);
         
@@ -273,101 +235,28 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         
         [self warpView:arObject.view atVerticalPosition:vertPosition];
         
-        [arOverlaysContainerView addSubview:arObject.view];
+        [geoobjectOverlays setObject:arObject forKey:ar_id];
     }
-}
-
--(void)stopAR {
-    [refreshTimer invalidate];
 }
 
 
 #pragma mark - Main Initialization
 
-+ (id)sharedARController {    
-    static ARController *sharedARController = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedARController = [[self alloc] initWithScreenSize:CGSizeMake(DEF_SCREEN_WIDTH, DEF_SCREEN_HEIGHT) withRadar:YES];
-    });
-    
-    return sharedARController;
-}
-+ (id)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar {
-    static ARController *sharedARController = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedARController = [[self alloc] initWithScreenSize:size withRadar:wRadar];
-    });
-    
-    return [self sharedARController];
-}
-
--(void)initAndAllocContainers {
+-(void)initAndAllocContainers
+{
     geoobjectOverlays = [[NSMutableDictionary alloc] init];
     geoobjectPositions = [[NSMutableDictionary alloc] init];
     geoobjectVerts = [[NSMutableDictionary alloc] init];
-    
-    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                       OVERLAY_VIEW_WIDTH,
-                                                                       deviceScreenResolution.height)];
-    [arOverlaysContainerView setTag:AR_VIEW_TAG];
 }
 
--(void)startPosMonitoring {
-    locWork = [[LocationWork alloc] init];
-    [locWork startAR:deviceScreenResolution];
-}
--(void)startCamera {
-    cameraSession = [[AVCaptureSession alloc] init];
-    AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-	if (videoDevice) {
-		NSError *error;
-		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
-		if (!error) {
-			if ([cameraSession canAddInput:videoIn]) [cameraSession addInput:videoIn];
-			else    NSLog(@"Couldn't add video input");
-		} else      NSLog(@"Couldn't create video input");
-	} else          NSLog(@"Couldn't create video capture device");
-    
-    cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
-    [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    CGRect layerRect = CGRectMake(0, 0,
-                                  deviceScreenResolution.width,
-                                  deviceScreenResolution.height);
-	[cameraLayer setBounds:layerRect];
-	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
-}
-
--(id)initWithScreenSize:(CGSize)screenSize withRadar:(BOOL)withRadar {
+-(id)init
+{
     self = [super init];
     if (self) {
-        
-        deviceScreenResolution = screenSize;
-        
-        locTries = 0;
-        dataTries = 0;
-        
-        radarOption = withRadar;
-        
         [self initAndAllocContainers];
-        [self startPosMonitoring];
-        [self startCamera];
     }
     return self;
 }
 
--(void)dealloc {
-    
-	[cameraSession stopRunning];
-    
-    
-    [refreshTimer invalidate];
-    
-    
-    
-}
 
 @end

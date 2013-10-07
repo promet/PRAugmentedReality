@@ -1,5 +1,5 @@
 //
-//  LocationWork.h
+//  LocationMath.h
 //  PrometAR
 //
 // Created by Geoffroy Lesage on 4/24/13.
@@ -30,16 +30,19 @@
 #import "ARObject.h"
 
 
-@interface LocationWork : NSObject <CLLocationManagerDelegate> {
+@interface LocationMath : NSObject <CLLocationManagerDelegate>
+{
     
     // Main managers
     CLLocationManager * locationManager;
     CMMotionManager * motionManager;
     NSTimer *accelTimer;
     
-    // Major variables   
+    // Major variables
     float currentHeading;
     float currentInclination;
+    
+    CLLocationCoordinate2D location;
     
     // Others
     float rollingZ;
@@ -51,12 +54,12 @@
     float deviceViewHeight;
 }
 
-@property (nonatomic, assign) BOOL gotPreciseEnoughLocation;
-@property (nonatomic, assign) double currentLat;
-@property (nonatomic, assign) double currentLon;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
 
--(id)init;
--(void)startAR:(CGSize)deviceScreenSize;
+
++ (id)sharedExpert;
+
+-(void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
 
 -(CGRect)getCurrentFramePosition;
 -(int)getCurrentHeading;
