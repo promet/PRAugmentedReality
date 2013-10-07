@@ -284,21 +284,22 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 #pragma mark - Main Initialization
 
-+ (ARController *)sharedARController
-{
-    static ARController *sharedARController;
++ (id)sharedARController {    
+    static ARController *sharedARController = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedARController = [[self alloc] initWithScreenSize:CGSizeMake(DEF_SCREEN_WIDTH, DEF_SCREEN_HEIGHT) withRadar:YES];
+    });
     
-    @synchronized(self)
-    {
-        if (!sharedARController) {
-            sharedARController = [[ARController alloc] init];
-            return [self sharedARControllerWSize:CGSizeMake(DEF_SCREEN_WIDTH, DEF_SCREEN_HEIGHT) withRadar:YES];
-        }
-        
-        return sharedARController;
-    }
+    return sharedARController;
 }
-+ (ARController *)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar {
++ (id)sharedARControllerWSize:(CGSize)size withRadar:(BOOL)wRadar {
+    static ARController *sharedARController = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedARController = [[self alloc] initWithScreenSize:size withRadar:wRadar];
+    });
+    
     return [self sharedARController];
 }
 
