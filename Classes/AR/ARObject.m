@@ -97,4 +97,11 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
 }
 
 
+#pragma mark -- OO Methods
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"ARObject %d - %@ - lat: %f - lon: %f - distance: %@",
+            nid, arTitle, lat, lon, distance];
+}
+
 @end
