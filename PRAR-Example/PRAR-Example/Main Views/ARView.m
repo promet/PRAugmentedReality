@@ -34,6 +34,7 @@
 @implementation ARView
 
 @synthesize arData;
+@synthesize currentLoc;
 
 
 - (void)alert:(NSString*)title withDetails:(NSString*)details {
@@ -83,7 +84,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[PRARManager sharedManager] startARWithData:arData forLocation:CLLocationCoordinate2DMake(41.958014,-87.674584)];
+    [[PRARManager sharedManager] startARWithData:arData forLocation:CLLocationCoordinate2DMake(currentLoc.coordinate.latitude,currentLoc.coordinate.longitude)];
 }
 -(void)viewWillDisappear:(BOOL)animated {
     [[PRARManager sharedManager] stopAR];

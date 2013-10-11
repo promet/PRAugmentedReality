@@ -204,4 +204,10 @@
 }
 
 
+#pragma mark -- OO Methods
+
+- (NSString *)description {
+    return [NSString stringWithFormat: @"ARRadar with %d dots", theSpots.count];
+}
+
 @end

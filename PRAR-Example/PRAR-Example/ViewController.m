@@ -89,6 +89,7 @@
     if ([[segue identifier] isEqualToString:@"showAR"]) {
         ARView *arview = [segue destinationViewController];
         
+        [arview setCurrentLoc:_mapView.userLocation.location];
         [arview setArData:arData];
         [arview setDelegate:self];
     }

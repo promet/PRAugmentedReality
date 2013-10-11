@@ -39,6 +39,7 @@
 @interface ARView : UIViewController <PRARManagerDelegate>
 {
     NSArray *arData;
+    CLLocation *currentLoc;
     
     IBOutlet UIButton *closeB;
     IBOutlet UIActivityIndicatorView *loadingI;
@@ -47,6 +48,7 @@
 @property (weak, nonatomic) id <ARViewDelegate> delegate;
 
 @property (strong, nonatomic) NSArray *arData;
+@property (strong, nonatomic) CLLocation *currentLoc;
 
 - (IBAction)done:(id)sender;
 
