@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tjP-dn-NBf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tjP-dn-NBf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -13,47 +13,96 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="Yx0-Xn-5NC">
-                                <rect key="frame" x="0.0" y="143" width="320" height="317"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <connections>
                                     <outlet property="delegate" destination="tjP-dn-NBf" id="1Je-Xc-7qz"/>
                                 </connections>
                             </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Image_back.png" id="Ea1-0a-XhC">
-                                <rect key="frame" x="0.0" y="-5" width="320" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZIU-qy-20d">
-                                <rect key="frame" x="176" y="36" width="68" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="ARBU.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled" backgroundImage="ARBO.png"/>
-                                <state key="selected" backgroundImage="ARBD.png"/>
-                                <state key="highlighted" backgroundImage="ARBD.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="S4k-iz-KMp" kind="modal" identifier="showAR" modalTransitionStyle="coverVertical" id="DZQ-Du-gyD"/>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cn3-C9-SX4">
-                                <rect key="frame" x="57" y="48" width="79" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="startPRAR:" destination="tjP-dn-NBf" eventType="valueChanged" id="s9Z-Ax-hoQ"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncr-6F-ZrT">
-                                <rect key="frame" x="20" y="114" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="KlA-bX-OAb" userLabel="Portrait">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Image_back.png" id="Ea1-0a-XhC" userLabel="Portrait Image">
+                                        <rect key="frame" x="0.0" y="-2" width="320" height="168"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZIU-qy-20d">
+                                        <rect key="frame" x="196" y="27" width="68" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="ARBU.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="ARBO.png"/>
+                                        <state key="selected" backgroundImage="ARBD.png"/>
+                                        <state key="highlighted" backgroundImage="ARBD.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="S4k-iz-KMp" kind="modal" identifier="showAR" modalTransitionStyle="coverVertical" id="DZQ-Du-gyD"/>
+                                        </connections>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cn3-C9-SX4">
+                                        <rect key="frame" x="50.5" y="38" width="79" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="startPRAR:" destination="tjP-dn-NBf" eventType="valueChanged" id="s9Z-Ax-hoQ"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncr-6F-ZrT">
+                                        <rect key="frame" x="20" y="100" width="280" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" opaque="NO" contentMode="scaleToFill" id="2wR-u9-wlK" userLabel="Landscape">
+                                <rect key="frame" x="0.0" y="-5" width="168" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="Image_back_L.png" id="d8O-61-8iv" userLabel="Landscape Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="168" height="320"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ANg-Ji-cfs">
+                                        <rect key="frame" x="44" y="69" width="79" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="startPRAR:" destination="tjP-dn-NBf" eventType="valueChanged" id="Tnj-GF-O2g"/>
+                                        </connections>
+                                    </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="O3O-JG-txQ">
+                                        <rect key="frame" x="50" y="135" width="68" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" backgroundImage="ARBU.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="ARBO.png"/>
+                                        <state key="selected" backgroundImage="ARBD.png"/>
+                                        <state key="highlighted" backgroundImage="ARBD.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="S4k-iz-KMp" kind="modal" identifier="showAR" modalTransitionStyle="coverVertical" id="zVu-Oo-RMO"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fGe-Vf-Q8u">
+                                        <rect key="frame" x="19" y="240" width="130" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="5YP-WY-BdV">
                                 <rect key="frame" x="9" y="8" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -63,9 +112,14 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_mapView" destination="Yx0-Xn-5NC" id="4ye-zN-kjO"/>
-                        <outlet property="arB" destination="ZIU-qy-20d" id="dpM-Xz-dwx"/>
-                        <outlet property="prarSwitch" destination="cn3-C9-SX4" id="Jtq-9Y-YQA"/>
-                        <outlet property="statusL" destination="ncr-6F-ZrT" id="DcB-2h-hZB"/>
+                        <outlet property="arBL" destination="O3O-JG-txQ" id="Ln1-1u-1dT"/>
+                        <outlet property="arBP" destination="ZIU-qy-20d" id="a9k-UA-V4d"/>
+                        <outlet property="landscapeControls" destination="2wR-u9-wlK" id="TMv-72-Khe"/>
+                        <outlet property="portraitControls" destination="KlA-bX-OAb" id="cta-lJ-xc4"/>
+                        <outlet property="prarSwitchL" destination="ANg-Ji-cfs" id="fjY-MF-f6Z"/>
+                        <outlet property="prarSwitchP" destination="cn3-C9-SX4" id="xTn-s5-Tgv"/>
+                        <outlet property="statusLL" destination="fGe-Vf-Q8u" id="OZr-d3-Heu"/>
+                        <outlet property="statusLP" destination="ncr-6F-ZrT" id="HOx-YM-1G6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocZ-Y5-LsA" sceneMemberID="firstResponder"/>
@@ -78,11 +132,11 @@
                 <viewController id="S4k-iz-KMp" customClass="ARView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d2e-We-ZXn">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" tag="1992" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uA3-vV-gYC">
                                 <rect key="frame" x="260" y="0.0" width="60" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" backgroundImage="x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -113,11 +167,41 @@
         <image name="ARBO.png" width="512" height="376"/>
         <image name="ARBU.png" width="512" height="376"/>
         <image name="Image_back.png" width="640" height="336"/>
+        <image name="Image_back_L.png" width="336" height="640"/>
         <image name="x.png" width="240" height="240"/>
     </resources>
+    <classes>
+        <class className="ARView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ARView.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="closeB" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="startPRAR:"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="arBL" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="arBP" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="landscapeControls" candidateClass="UIView"/>
+                <relationship kind="outlet" name="loadingI" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="portraitControls" candidateClass="UIView"/>
+                <relationship kind="outlet" name="prarSwitchL" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="prarSwitchP" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="statusLL" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="statusLP" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="DZQ-Du-gyD"/>
+    </inferredMetricsTieBreakers>
 </document>

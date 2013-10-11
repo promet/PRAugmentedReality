@@ -30,6 +30,9 @@
 #define LOC_REFRESH_TIMER   10  //seconds
 #define MAP_SPAN            804 // The span of the map view
 
+#define MAP_FRAME_P         CGRectMake(0, 160, 320, 317)
+#define MAP_FRAME_L         CGRectMake(160, 0, 317, 320)
+
 
 @interface ViewController ()
 
@@ -55,12 +58,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [prarSwitch setOn:NO];
+    [prarSwitchL setOn:NO];
+    [prarSwitchP setOn:NO];
     
     dataController = [[DataController alloc] init];
     [dataController setDelegate:self];
     
-    [arB setEnabled:NO];
+    [arBL setEnabled:NO];
+    [arBP setEnabled:NO];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -72,6 +77,14 @@
                                                       repeats: YES];
     
     [self performSelector:@selector(setMapToUserLocation) withObject:nil afterDelay:1];
+    
+    if (self.interfaceOrientation != UIInterfaceOrientationPortrait) {
+        [_mapView setFrame:MAP_FRAME_L];
+        [landscapeControls setHidden:NO];
+    } else {
+        [_mapView setFrame:MAP_FRAME_P];
+        [portraitControls setHidden:NO];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -83,9 +96,6 @@
 #pragma mark - View Segue delegates
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if (!prarSwitch.on) [self startPRAR:nil];
-    
     if ([[segue identifier] isEqualToString:@"showAR"]) {
         ARView *arview = [segue destinationViewController];
         
@@ -102,41 +112,47 @@
 #pragma mark - PRAR system
 
 - (IBAction)startPRAR:(id)sender {
-    if (prarSwitch.on) {
+    if (prarSwitchL.on || prarSwitchP.on) {
         [loadingI startAnimating];
         
         if (_mapView.userLocation.location.horizontalAccuracy > 100) {
-            [statusL setText:@"Waiting for accurate location"];
+            [statusLP setText:@"Waiting for accurate location"];
+            [statusLL setText:@"Waiting for accurate location"];
             [self performSelector:@selector(startPRAR:) withObject:sender afterDelay:1];
             return;
         }
         
-        [statusL setText:@"Building data"];
+        [statusLP setText:@"Building data"];
+        [statusLL setText:@"Building data"];
         [dataController getNearARObjects:_mapView.userLocation.location.coordinate];
     }
 }
 
 - (void)gotNearData:(NSArray*)arObjects {
     arData = [[NSArray alloc] initWithArray:arObjects];
-    [statusL setText:@"Got Near Data"];
+    [statusLP setText:@"Got Near Data"];
+    [statusLL setText:@"Got Near Data"];
     
     [loadingI stopAnimating];
-    [arB setEnabled:YES];
+    [arBP setEnabled:YES];
+    [arBL setEnabled:YES];
     
     [self plotAllPlaces];
 }
 - (void)gotAllData:(NSArray*)arObjects {
     arData = [[NSArray alloc] initWithArray:arObjects];
-    [statusL setText:@"Got All Data"];
+    [statusLP setText:@"Got All Data"];
+    [statusLL setText:@"Got All Data"];
     
     [loadingI stopAnimating];
-    [arB setEnabled:YES];
+    [arBP setEnabled:YES];
+    [arBL setEnabled:YES];
     
     [self plotAllPlaces];
 }
 
 - (void)gotUpdatedData {
-    
+    NSLog(@"Got updated");
 }
 
 
@@ -186,5 +202,29 @@
     }
     return nil;
 }
+
+
+#pragma mark - Orientation
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    if (toInterfaceOrientation != UIInterfaceOrientationPortrait) {
+        [portraitControls setHidden:YES];
+        [landscapeControls setHidden:NO];
+        [_mapView setFrame:MAP_FRAME_L];
+        
+        [arBL setEnabled:arBP.enabled];
+        [statusLL setText:statusLP.text];
+        [prarSwitchL setOn:prarSwitchP.on];
+    } else {
+        [portraitControls setHidden:NO];
+        [landscapeControls setHidden:YES];
+        [_mapView setFrame:MAP_FRAME_P];
+        
+        [arBP setEnabled:arBL.enabled];
+        [statusLP setText:statusLL.text];
+        [prarSwitchP setOn:prarSwitchL.on];
+    }
+}
+
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Settings.h"
 
 @interface ARRadar : UIView
 {

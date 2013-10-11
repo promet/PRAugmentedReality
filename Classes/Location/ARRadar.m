@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Geoffroy Lesage. All rights reserved.
 //
 
-#import "ARRadar.h"
-
 #import <QuartzCore/QuartzCore.h>
+
+#import "ARRadar.h"
+#import "Settings.h"
 
 @interface ARRadar ()
 

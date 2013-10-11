@@ -26,6 +26,7 @@
 		369CB024179A55E100C8F291 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB023179A55E000C8F291 /* MapKit.framework */; };
 		369CB026179A560700C8F291 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB025179A560700C8F291 /* AVFoundation.framework */; };
 		369CB028179A560C00C8F291 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369CB027179A560C00C8F291 /* MobileCoreServices.framework */; };
+		36BE519E18084E4000F7E322 /* Image_back_L.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BE519D18084E4000F7E322 /* Image_back_L.png */; };
 		36CF8BDC179A5088007BE243 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CF8BDB179A5088007BE243 /* UIKit.framework */; };
 		36CF8BDE179A5088007BE243 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CF8BDD179A5088007BE243 /* Foundation.framework */; };
 		36CF8BE0179A5088007BE243 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CF8BDF179A5088007BE243 /* CoreGraphics.framework */; };
@@ -83,6 +84,7 @@
 		369CB023179A55E000C8F291 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		369CB025179A560700C8F291 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		369CB027179A560C00C8F291 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		36BE519D18084E4000F7E322 /* Image_back_L.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image_back_L.png; sourceTree = "<group>"; };
 		36CF8BD8179A5088007BE243 /* PRAR-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CF8BDB179A5088007BE243 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		36CF8BDD179A5088007BE243 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -288,6 +290,7 @@
 				36CF8C04179A511B007BE243 /* ARBO.png */,
 				36CF8C05179A511B007BE243 /* ARBU.png */,
 				36CF8C06179A511B007BE243 /* Image_back.png */,
+				36BE519D18084E4000F7E322 /* Image_back_L.png */,
 				36CF8C07179A511B007BE243 /* x.png */,
 			);
 			name = "Main Graphics";
@@ -400,6 +403,7 @@
 				3647DAF417CFE311001FAA53 /* ARRadar.xib in Resources */,
 				3647DAF617CFE504001FAA53 /* Radar.png in Resources */,
 				3647DAF817CFEBDC001FAA53 /* RadarMV.png in Resources */,
+				36BE519E18084E4000F7E322 /* Image_back_L.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

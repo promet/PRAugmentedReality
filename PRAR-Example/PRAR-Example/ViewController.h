@@ -17,11 +17,18 @@
     DataController *dataController;
     IBOutlet MKMapView *_mapView;
     
-    IBOutlet UISwitch *prarSwitch;
     IBOutlet UIActivityIndicatorView *loadingI;
-    IBOutlet UILabel *statusL;
     
-    IBOutlet UIButton *arB;
+    IBOutlet UILabel *statusLL;
+    IBOutlet UISwitch *prarSwitchL;
+    IBOutlet UIButton *arBL;
+    
+    IBOutlet UILabel *statusLP;
+    IBOutlet UISwitch *prarSwitchP;
+    IBOutlet UIButton *arBP;
+    
+    IBOutlet UIView *portraitControls;
+    IBOutlet UIView *landscapeControls;
     
     NSArray *arData;
     
