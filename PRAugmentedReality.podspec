@@ -10,10 +10,10 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "6.0"
   s.requires_arc  = true
 
-  s.source_files  = 'Classes/*.{h,m}'
-  s.source_files  = 'Classes/AR/*.{h,m}'
   s.source_files  = 'Classes/Location/*.{h,m}'
+  s.source_files  = 'Classes/AR/*.{h,m}'
+  s.source_files  = 'Classes/*.{h,m}'
 
-  s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib"]
+  s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib", "Classes/Location/*.xib"]
   s.frameworks    = 'AVFoundation', 'CoreLocation', 'CoreMotion', 'MapKit', 'MobileCoreServices', 'SystemConfiguration', 'QuartzCore'
 end
