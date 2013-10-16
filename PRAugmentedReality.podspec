@@ -17,9 +17,7 @@ Pod::Spec.new do |s|
     ss.source_files  = 'Classes/Location/*.{h,m}'
   end
 
-  s.source_files = 'Classes/PRARManager.h'
-  s.source_files = 'Classes/PRARManager.m'
-
+  s.source_files = 'Classes/PRARManager.{h,m}'
   s.source_files = 'Classes/ARSettings.h'
 
   s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib"]

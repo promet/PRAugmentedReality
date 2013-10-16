@@ -84,7 +84,9 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [[PRARManager sharedManager] startARWithData:arData forLocation:CLLocationCoordinate2DMake(currentLoc.coordinate.latitude,currentLoc.coordinate.longitude)];
+    [[PRARManager sharedManager] startARWithData:arData
+                                     forLocation:CLLocationCoordinate2DMake(currentLoc.coordinate.latitude,
+                                                                            currentLoc.coordinate.longitude)];
 }
 -(void)viewWillDisappear:(BOOL)animated {
     [[PRARManager sharedManager] stopAR];
