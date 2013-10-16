@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "ARRadar.h"
-#import "Settings.h"
 
 @interface ARRadar ()
 

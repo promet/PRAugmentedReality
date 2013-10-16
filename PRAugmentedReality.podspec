@@ -17,8 +17,7 @@ Pod::Spec.new do |s|
     ss.source_files  = 'Classes/Location/*.{h,m}'
   end
 
-  s.source_files = 'Classes/PRARManager.{h,m}'
-  s.source_files = 'Classes/ARSettings.h'
+  s.source_files = 'Classes/'
 
   s.resources     = ["Classes/Graphics/*.png", "Classes/AR/*.xib"]
   s.frameworks    = 'AVFoundation', 'CoreLocation', 'CoreMotion', 'MapKit', 'MobileCoreServices', 'SystemConfiguration', 'QuartzCore'
