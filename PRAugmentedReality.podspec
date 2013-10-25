@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = "PRAugmentedReality"
-  s.version       = "3.0.1"
+  s.version       = "3.0.2"
   s.summary       = "iOS AR Library."
   s.homepage      = "https://github.com/promet/PRAugmentedReality"
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
