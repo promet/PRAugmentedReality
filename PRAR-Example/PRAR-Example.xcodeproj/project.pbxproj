@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3617F1D9179A575900483A8D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3617F1D8179A575900483A8D /* SystemConfiguration.framework */; };
+		36281F941811BBAA00860A3D /* NE.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36281F901811BBAA00860A3D /* NE.gpx */; };
+		36281F951811BBAA00860A3D /* NW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36281F911811BBAA00860A3D /* NW.gpx */; };
+		36281F961811BBAA00860A3D /* SE.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36281F921811BBAA00860A3D /* SE.gpx */; };
+		36281F971811BBAA00860A3D /* SW.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 36281F931811BBAA00860A3D /* SW.gpx */; };
 		36446C8C1803143E00DB7A68 /* PRARManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36446C8B1803143E00DB7A68 /* PRARManager.m */; };
 		36446C921803208F00DB7A68 /* LocationMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 36446C911803208F00DB7A68 /* LocationMath.m */; };
 		3647DAF317CFE311001FAA53 /* ARRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3647DAF117CFE311001FAA53 /* ARRadar.m */; };
@@ -60,6 +64,10 @@
 
 /* Begin PBXFileReference section */
 		3617F1D8179A575900483A8D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		36281F901811BBAA00860A3D /* NE.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NE.gpx; sourceTree = "<group>"; };
+		36281F911811BBAA00860A3D /* NW.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NW.gpx; sourceTree = "<group>"; };
+		36281F921811BBAA00860A3D /* SE.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SE.gpx; sourceTree = "<group>"; };
+		36281F931811BBAA00860A3D /* SW.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SW.gpx; sourceTree = "<group>"; };
 		36446C8A1803143E00DB7A68 /* PRARManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRARManager.h; sourceTree = "<group>"; };
 		36446C8B1803143E00DB7A68 /* PRARManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRARManager.m; sourceTree = "<group>"; };
 		36446C901803208F00DB7A68 /* LocationMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMath.h; sourceTree = "<group>"; };
@@ -154,6 +162,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36281F981811CE2600860A3D /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				36281F901811BBAA00860A3D /* NE.gpx */,
+				36281F911811BBAA00860A3D /* NW.gpx */,
+				36281F921811BBAA00860A3D /* SE.gpx */,
+				36281F931811BBAA00860A3D /* SW.gpx */,
+				36CF8C20179A5122007BE243 /* TestLoc.gpx */,
+			);
+			name = Locations;
+			sourceTree = "<group>";
+		};
 		369CB007179A55C000C8F291 /* PRAugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,7 +329,7 @@
 				36CF8C1D179A5122007BE243 /* DIOSARNode.m */,
 				36CF8C1E179A5122007BE243 /* MyLocation.h */,
 				36CF8C1F179A5122007BE243 /* MyLocation.m */,
-				36CF8C20179A5122007BE243 /* TestLoc.gpx */,
+				36281F981811CE2600860A3D /* Locations */,
 			);
 			path = "Data Handlers";
 			sourceTree = "<group>";
@@ -404,6 +424,10 @@
 				3647DAF617CFE504001FAA53 /* Radar.png in Resources */,
 				3647DAF817CFEBDC001FAA53 /* RadarMV.png in Resources */,
 				36BE519E18084E4000F7E322 /* Image_back_L.png in Resources */,
+				36281F941811BBAA00860A3D /* NE.gpx in Resources */,
+				36281F951811BBAA00860A3D /* NW.gpx in Resources */,
+				36281F961811BBAA00860A3D /* SE.gpx in Resources */,
+				36281F971811BBAA00860A3D /* SW.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

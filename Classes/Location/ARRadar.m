@@ -75,9 +75,7 @@
     for (NSNumber *angle in theSpots.allKeys) {
         
         // Angle modifier //
-        double angleD = angle.doubleValue-20; // -20 degrees to ofset for the fact that the overlays
-        if (angleD < 0) angleD+= 360;         // actually point to right side instead of middle
-        int angleI = (int)fmod(angleD, 360);
+        int angleI = angle.intValue;
         float angleModifier = fmod(angleI,90)/90.0;
         
         // Distance modifier //
@@ -88,41 +86,41 @@
         
         // Positioning on axis //
         if (angleI < 90) {
-            float xWidth = Ex-Sx;
-            x = Ex-(xWidth*angleModifier);
-            x-=(xWidth*distModifier)*((x-Sx)/xWidth);
-            
-            float yWidth = Sy-Ey;
-            y = Ey+(yWidth*angleModifier);
-            y-=(yWidth*distModifier)*((y-Ey)/yWidth);
-        }
-        else if (angleI < 180) {
-            float xWidth = Sx-Wx;
-            x = Sx-(xWidth*angleModifier);
-            x+=(xWidth*distModifier)*(1-((x-Wx)/xWidth));
-            
-            float yWidth = Sy-Wy;
-            y = Sy-(yWidth*angleModifier);
-            y-=(yWidth*distModifier)*((y-Wy)/yWidth);
-        }
-        
-        else if (angleI < 270) {
-            float xWidth = Nx-Wx;
-            x = Wx+(xWidth*angleModifier);
-            x+=(xWidth*distModifier)*(1-((x-Wx)/xWidth));
-            
-            float yWidth = Wy-Ny;
-            y = Wy-(yWidth*angleModifier);
-            y+=(yWidth*distModifier)*(1-((y-Ny)/yWidth));
-        }
-        
-        else {
             float xWidth = Ex-Nx;
             x = Nx+(xWidth*angleModifier);
             x-=(xWidth*distModifier)*((x-Nx)/xWidth);
             
             float yWidth = Ey-Ny;
-            y = Ny+(yWidth*angleModifier);
+            y = Ey-(yWidth*angleModifier);
+            y+=(yWidth*distModifier)*((y-Ny)/yWidth);
+        }
+        else if (angleI < 180) {
+            float xWidth = Ex-Sx;
+            x = Ex-(xWidth*angleModifier);
+            x+=(xWidth*distModifier)*(1-((x-Sx)/xWidth));
+            
+            float yWidth = Sy-Ey;
+            y = Ey+(yWidth*angleModifier);
+            y-=(yWidth*distModifier)*((y-Ey)/yWidth);
+        }
+        
+        else if (angleI < 270) {
+            float xWidth = Sx-Wx;
+            x = Sx-(xWidth*angleModifier);
+            x+=(xWidth*distModifier)*(1-((x-Wx)/xWidth));
+            
+            float yWidth = Sy-Wy;
+            y = Wy+(yWidth*angleModifier);
+            y-=(yWidth*distModifier)*(1-((y-Wy)/yWidth));
+        }
+        
+        else {
+            float xWidth = Nx-Wx;
+            x = Wx+(xWidth*angleModifier);
+            x-=(xWidth*distModifier)*((x-Wx)/xWidth);
+            
+            float yWidth = Wy-Ny;
+            y = Wy-(yWidth*angleModifier);
             y+=(yWidth*distModifier)*(1-((y-Ny)/yWidth));
         }
         
@@ -148,15 +146,17 @@
 -(void)setupSpots:(NSArray*)spots
 {
     for (NSDictionary* spot in spots) {
-        int x = [[spot objectForKey:@"angle"] intValue];
-        if (x > 360) x-= 360;
-        if (x < 0) x+= 360;
+        int angle = [[spot objectForKey:@"angle"] intValue];
+        while (angle < 0) angle += 360;
+        
+        angle += 16; // +16 degrees offset for the non-symetrical positioning (tip is the center)
+        angle = (int)fmod(angle, 360);
         
         int dist = [[spot objectForKey:@"distance"] intValue];
         if (dist < 0) dist = 0;
         
-        [theSpots setObject:[NSNumber numberWithInt:x]
-                     forKey:[NSNumber numberWithInt:dist]];
+        [theSpots setObject:[NSNumber numberWithInt:dist]
+                     forKey:[NSNumber numberWithInt:angle]];
     }
 }
 
@@ -199,7 +199,6 @@
 - (void)moveDots:(int)angle
 {
     self.transform = CGAffineTransformMakeRotation(-RADIANS(angle));
-    
     radarBars.transform = CGAffineTransformMakeRotation(RADIANS(angle));
 }
 

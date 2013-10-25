@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tjP-dn-NBf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="tjP-dn-NBf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -9,7 +10,7 @@
             <objects>
                 <viewController id="tjP-dn-NBf" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aoz-O3-ggQ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="Yx0-Xn-5NC">
@@ -45,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cn3-C9-SX4">
-                                        <rect key="frame" x="50.5" y="38" width="79" height="27"/>
+                                        <rect key="frame" x="79" y="38" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="startPRAR:" destination="tjP-dn-NBf" eventType="valueChanged" id="s9Z-Ax-hoQ"/>
@@ -70,7 +71,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     </imageView>
                                     <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ANg-Ji-cfs">
-                                        <rect key="frame" x="44" y="69" width="79" height="27"/>
+                                        <rect key="frame" x="72" y="69" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="startPRAR:" destination="tjP-dn-NBf" eventType="valueChanged" id="Tnj-GF-O2g"/>
@@ -109,7 +110,6 @@
                             </activityIndicatorView>
                         </subviews>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="_mapView" destination="Yx0-Xn-5NC" id="4ye-zN-kjO"/>
                         <outlet property="arBL" destination="O3O-JG-txQ" id="Ln1-1u-1dT"/>
@@ -131,7 +131,7 @@
             <objects>
                 <viewController id="S4k-iz-KMp" customClass="ARView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d2e-We-ZXn">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button opaque="NO" tag="1992" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uA3-vV-gYC">
@@ -152,7 +152,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="closeB" destination="uA3-vV-gYC" id="YLV-60-XiK"/>
                     </connections>

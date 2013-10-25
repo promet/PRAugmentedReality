@@ -216,7 +216,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 }
 -(void)setFramesForOverlays
 {
-    int distance, x_pos, y_pos, vertPosition;
+    int x_pos, y_pos, vertPosition;
     
     ARObject *arObject = nil;
     
@@ -226,7 +226,6 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
         x_pos = [geoobjectPositions[ar_id] intValue];
         vertPosition = [geoobjectVerts[ar_id] intValue];
         y_pos = [self setYPosForView:arObject.view atVerticalPos:vertPosition];
-        distance = (int)(arObject.distance.doubleValue);
         
         // Subtract the half the width to the x_pos so it points to the right place with it's right tip
         [arObject.view setFrame:CGRectMake(x_pos, y_pos,
