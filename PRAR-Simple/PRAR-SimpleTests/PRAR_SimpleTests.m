@@ -2,8 +2,8 @@
 //  PRAR_SimpleTests.m
 //  PRAR-SimpleTests
 //
-//  Created by Jeff on 3/27/14.
-//  Copyright (c) 2014 GeoffroyLesage. All rights reserved.
+//  Created by Geoffroy Lesage on 3/27/14.
+//  Copyright (c) 2014 Promet Solutions Inc,. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

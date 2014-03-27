@@ -2,8 +2,8 @@
 //  ViewController.m
 //  PRAR-Simple
 //
-//  Created by Jeff on 3/27/14.
-//  Copyright (c) 2014 GeoffroyLesage. All rights reserved.
+//  Created by Geoffroy Lesage on 3/27/14.
+//  Copyright (c) 2014 Promet Solutions Inc,. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 
-#define NUMBER_OF_POINTS    10
+#define NUMBER_OF_POINTS    20
 
 
 @interface ViewController ()
@@ -42,6 +42,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    // Initialize your current location as 0,0 (since it works with our randomly generated locations)
     CLLocationCoordinate2D locationCoordinates = CLLocationCoordinate2DMake(0, 0);
     
     [[PRARManager sharedManager] startARWithData:[self getDummyData]
