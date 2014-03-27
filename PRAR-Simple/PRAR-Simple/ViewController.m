@@ -70,13 +70,13 @@
 // Returns a random location
 -(CLLocationCoordinate2D)getRandomLocation
 {
-    double random = drand48() * 90.0;
+    double latRand = drand48() * 90.0;
+    double lonRand = drand48() * 180.0;
     double latSign = drand48();
     double lonSign = drand48();
     
-    CLLocationCoordinate2D locCoordinates = CLLocationCoordinate2DMake(latSign > 0.5 ? random : -random,
-                                                                       lonSign > 0.5 ? random*2 : -random*2);
-    
+    CLLocationCoordinate2D locCoordinates = CLLocationCoordinate2DMake(latSign > 0.5 ? latRand : -latRand,
+                                                                       lonSign > 0.5 ? lonRand*2 : -lonRand*2);
     return locCoordinates;
 }
 

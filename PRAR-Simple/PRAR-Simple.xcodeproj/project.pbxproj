@@ -229,12 +229,12 @@
 		36CB218918E49992000483F2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				36CB218A18E49992000483F2 /* AR */,
 				36CB219018E49992000483F2 /* ARSettings.h */,
-				36CB219118E49992000483F2 /* Graphics */,
-				36CB219718E49992000483F2 /* Location */,
 				36CB219D18E49992000483F2 /* PRARManager.h */,
 				36CB219E18E49992000483F2 /* PRARManager.m */,
+				36CB218A18E49992000483F2 /* AR */,
+				36CB219118E49992000483F2 /* Graphics */,
+				36CB219718E49992000483F2 /* Location */,
 			);
 			name = Classes;
 			path = ../../Classes;
