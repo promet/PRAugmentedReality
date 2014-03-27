@@ -36,14 +36,14 @@
 
 @synthesize arTitle, distance;
 
-- (id)initWithId:(int)newNid
+- (id)initWithId:(int)newId
            title:(NSString*)newTitle
      coordinates:(CLLocationCoordinate2D)newCoordinates
 andCurrentLocation:(CLLocationCoordinate2D)currLoc
 {
     self = [super init];
     if (self) {
-        nid = newNid;
+        arId = newId;
         
         arTitle = [[NSString alloc] initWithString:newTitle];
         
@@ -52,7 +52,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
         
         distance = @([self calculateDistanceFrom:currLoc]);
         
-        [self.view setTag:newNid];
+        [self.view setTag:newId];
     }
     return self;
 }
@@ -79,7 +79,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
 {
     NSArray *keys = @[@"id",@"title", @"latitude", @"longitude", @"distance"];
     
-    NSArray *values = @[@(nid),
+    NSArray *values = @[@(arId),
                        arTitle,
                        @(lat),
                        @(lon),
@@ -101,7 +101,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"ARObject %d - %@ - lat: %f - lon: %f - distance: %@",
-            nid, arTitle, lat, lon, distance];
+            arId, arTitle, lat, lon, distance];
 }
 
 @end

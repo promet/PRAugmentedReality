@@ -32,7 +32,18 @@
 		36CB218318E4861B000483F2 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218118E4861B000483F2 /* launch.png */; };
 		36CB218418E4861B000483F2 /* launchR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218218E4861B000483F2 /* launchR4.png */; };
 		36CB218618E490B8000483F2 /* LoadingBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218518E490B8000483F2 /* LoadingBack.png */; };
-		DCC5D558A5D54E0999634DB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB23E47C42D742E9A50498CB /* libPods.a */; };
+		36CB219F18E49992000483F2 /* ARController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB218C18E49992000483F2 /* ARController.m */; };
+		36CB21A018E49992000483F2 /* ARObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB218E18E49992000483F2 /* ARObject.m */; };
+		36CB21A118E49992000483F2 /* ARObject.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218F18E49992000483F2 /* ARObject.xib */; };
+		36CB21A218E49992000483F2 /* ar_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219218E49992000483F2 /* ar_icon.png */; };
+		36CB21A318E49992000483F2 /* ar_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219318E49992000483F2 /* ar_overlay.png */; };
+		36CB21A418E49992000483F2 /* ar_overlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219418E49992000483F2 /* ar_overlay@2x.png */; };
+		36CB21A518E49992000483F2 /* Radar.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219518E49992000483F2 /* Radar.png */; };
+		36CB21A618E49992000483F2 /* RadarMV.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219618E49992000483F2 /* RadarMV.png */; };
+		36CB21A718E49992000483F2 /* ARRadar.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB219918E49992000483F2 /* ARRadar.m */; };
+		36CB21A818E49992000483F2 /* ARRadar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36CB219A18E49992000483F2 /* ARRadar.xib */; };
+		36CB21A918E49992000483F2 /* LocationMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB219C18E49992000483F2 /* LocationMath.m */; };
+		36CB21AA18E49992000483F2 /* PRARManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB219E18E49992000483F2 /* PRARManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +87,25 @@
 		36CB218118E4861B000483F2 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		36CB218218E4861B000483F2 /* launchR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchR4.png; sourceTree = "<group>"; };
 		36CB218518E490B8000483F2 /* LoadingBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingBack.png; sourceTree = "<group>"; };
+		36CB218B18E49992000483F2 /* ARController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARController.h; sourceTree = "<group>"; };
+		36CB218C18E49992000483F2 /* ARController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARController.m; sourceTree = "<group>"; };
+		36CB218D18E49992000483F2 /* ARObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARObject.h; sourceTree = "<group>"; };
+		36CB218E18E49992000483F2 /* ARObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARObject.m; sourceTree = "<group>"; };
+		36CB218F18E49992000483F2 /* ARObject.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARObject.xib; sourceTree = "<group>"; };
+		36CB219018E49992000483F2 /* ARSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSettings.h; sourceTree = "<group>"; };
+		36CB219218E49992000483F2 /* ar_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_icon.png; sourceTree = "<group>"; };
+		36CB219318E49992000483F2 /* ar_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ar_overlay.png; sourceTree = "<group>"; };
+		36CB219418E49992000483F2 /* ar_overlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ar_overlay@2x.png"; sourceTree = "<group>"; };
+		36CB219518E49992000483F2 /* Radar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Radar.png; sourceTree = "<group>"; };
+		36CB219618E49992000483F2 /* RadarMV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadarMV.png; sourceTree = "<group>"; };
+		36CB219818E49992000483F2 /* ARRadar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRadar.h; sourceTree = "<group>"; };
+		36CB219918E49992000483F2 /* ARRadar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRadar.m; sourceTree = "<group>"; };
+		36CB219A18E49992000483F2 /* ARRadar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ARRadar.xib; sourceTree = "<group>"; };
+		36CB219B18E49992000483F2 /* LocationMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMath.h; sourceTree = "<group>"; };
+		36CB219C18E49992000483F2 /* LocationMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMath.m; sourceTree = "<group>"; };
+		36CB219D18E49992000483F2 /* PRARManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRARManager.h; sourceTree = "<group>"; };
+		36CB219E18E49992000483F2 /* PRARManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRARManager.m; sourceTree = "<group>"; };
 		CB23E47C42D742E9A50498CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1D466CD685848C4A569A2BB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +116,6 @@
 				36CB212618E480E7000483F2 /* CoreGraphics.framework in Frameworks */,
 				36CB212818E480E7000483F2 /* UIKit.framework in Frameworks */,
 				36CB212418E480E7000483F2 /* Foundation.framework in Frameworks */,
-				DCC5D558A5D54E0999634DB8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +140,6 @@
 				36CB214818E480E8000483F2 /* PRAR-SimpleTests */,
 				36CB212218E480E7000483F2 /* Frameworks */,
 				36CB212118E480E7000483F2 /* Products */,
-				D1D466CD685848C4A569A2BB /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +173,7 @@
 				36CB213818E480E7000483F2 /* ViewController.h */,
 				36CB213918E480E7000483F2 /* ViewController.m */,
 				36CB216318E48338000483F2 /* Media.xcassets */,
+				36CB218918E49992000483F2 /* Classes */,
 				36CB212A18E480E7000483F2 /* Supporting Files */,
 			);
 			path = "PRAR-Simple";
@@ -199,6 +226,56 @@
 			path = Graphics;
 			sourceTree = "<group>";
 		};
+		36CB218918E49992000483F2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				36CB218A18E49992000483F2 /* AR */,
+				36CB219018E49992000483F2 /* ARSettings.h */,
+				36CB219118E49992000483F2 /* Graphics */,
+				36CB219718E49992000483F2 /* Location */,
+				36CB219D18E49992000483F2 /* PRARManager.h */,
+				36CB219E18E49992000483F2 /* PRARManager.m */,
+			);
+			name = Classes;
+			path = ../../Classes;
+			sourceTree = "<group>";
+		};
+		36CB218A18E49992000483F2 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				36CB218B18E49992000483F2 /* ARController.h */,
+				36CB218C18E49992000483F2 /* ARController.m */,
+				36CB218D18E49992000483F2 /* ARObject.h */,
+				36CB218E18E49992000483F2 /* ARObject.m */,
+				36CB218F18E49992000483F2 /* ARObject.xib */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		36CB219118E49992000483F2 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				36CB219218E49992000483F2 /* ar_icon.png */,
+				36CB219318E49992000483F2 /* ar_overlay.png */,
+				36CB219418E49992000483F2 /* ar_overlay@2x.png */,
+				36CB219518E49992000483F2 /* Radar.png */,
+				36CB219618E49992000483F2 /* RadarMV.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		36CB219718E49992000483F2 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				36CB219818E49992000483F2 /* ARRadar.h */,
+				36CB219918E49992000483F2 /* ARRadar.m */,
+				36CB219A18E49992000483F2 /* ARRadar.xib */,
+				36CB219B18E49992000483F2 /* LocationMath.h */,
+				36CB219C18E49992000483F2 /* LocationMath.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,11 +283,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36CB215218E480E8000483F2 /* Build configuration list for PBXNativeTarget "PRAR-Simple" */;
 			buildPhases = (
-				E328CD026E71427C86E86084 /* Check Pods Manifest.lock */,
 				36CB211C18E480E7000483F2 /* Sources */,
 				36CB211D18E480E7000483F2 /* Frameworks */,
 				36CB211E18E480E7000483F2 /* Resources */,
-				BB9D9B0ECA77494B91B33ED1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,20 +352,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36CB21A418E49992000483F2 /* ar_overlay@2x.png in Resources */,
 				36CB218318E4861B000483F2 /* launch.png in Resources */,
 				36CB217A18E48447000483F2 /* logo114.png in Resources */,
 				36CB217B18E48447000483F2 /* logo120.png in Resources */,
 				36CB216F18E483C6000483F2 /* logo57.png in Resources */,
 				36CB212E18E480E7000483F2 /* InfoPlist.strings in Resources */,
+				36CB21A818E49992000483F2 /* ARRadar.xib in Resources */,
 				36CB217818E48447000483F2 /* logo58.png in Resources */,
 				36CB216C18E483C6000483F2 /* logo29.png in Resources */,
 				36CB216D18E483C6000483F2 /* logo40.png in Resources */,
 				36CB217918E48447000483F2 /* logo80.png in Resources */,
+				36CB21A218E49992000483F2 /* ar_icon.png in Resources */,
+				36CB21A118E49992000483F2 /* ARObject.xib in Resources */,
 				36CB217018E483C6000483F2 /* logo60.png in Resources */,
 				36CB216418E48338000483F2 /* Media.xcassets in Resources */,
 				36CB218618E490B8000483F2 /* LoadingBack.png in Resources */,
+				36CB21A518E49992000483F2 /* Radar.png in Resources */,
 				36CB218418E4861B000483F2 /* launchR4.png in Resources */,
+				36CB21A318E49992000483F2 /* ar_overlay.png in Resources */,
 				36CB213718E480E7000483F2 /* Main.storyboard in Resources */,
+				36CB21A618E49992000483F2 /* RadarMV.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,47 +386,19 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		BB9D9B0ECA77494B91B33ED1 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E328CD026E71427C86E86084 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		36CB211C18E480E7000483F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36CB21AA18E49992000483F2 /* PRARManager.m in Sources */,
+				36CB21A018E49992000483F2 /* ARObject.m in Sources */,
+				36CB219F18E49992000483F2 /* ARController.m in Sources */,
 				36CB213A18E480E8000483F2 /* ViewController.m in Sources */,
+				36CB21A718E49992000483F2 /* ARRadar.m in Sources */,
 				36CB213418E480E7000483F2 /* AppDelegate.m in Sources */,
 				36CB213018E480E7000483F2 /* main.m in Sources */,
+				36CB21A918E49992000483F2 /* LocationMath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +520,6 @@
 		};
 		36CB215318E480E8000483F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1D466CD685848C4A569A2BB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -480,7 +533,6 @@
 		};
 		36CB215418E480E8000483F2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1D466CD685848C4A569A2BB /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

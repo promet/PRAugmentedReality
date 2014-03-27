@@ -92,7 +92,7 @@ static dispatch_once_t onceToken;
         return;
     }
     
-    NSLog(@"Starting AR with %d places", arData.count);
+    NSLog(@"Starting AR with %lu places", (unsigned long)arData.count);
     
     [[LocationMath sharedExpert] startTrackingWithLocation:location
                                                    andSize:frameSize];

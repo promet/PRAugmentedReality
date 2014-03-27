@@ -206,7 +206,7 @@
 #pragma mark -- OO Methods
 
 - (NSString *)description {
-    return [NSString stringWithFormat: @"ARRadar with %d dots", theSpots.count];
+    return [NSString stringWithFormat: @"ARRadar with %lu dots", (unsigned long)theSpots.count];
 }
 
 @end
