@@ -31,6 +31,7 @@
 		36CB217B18E48447000483F2 /* logo120.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB217618E48447000483F2 /* logo120.png */; };
 		36CB218318E4861B000483F2 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218118E4861B000483F2 /* launch.png */; };
 		36CB218418E4861B000483F2 /* launchR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218218E4861B000483F2 /* launchR4.png */; };
+		36CB218618E490B8000483F2 /* LoadingBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218518E490B8000483F2 /* LoadingBack.png */; };
 		DCC5D558A5D54E0999634DB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB23E47C42D742E9A50498CB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		36CB217618E48447000483F2 /* logo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo120.png; sourceTree = "<group>"; };
 		36CB218118E4861B000483F2 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
 		36CB218218E4861B000483F2 /* launchR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchR4.png; sourceTree = "<group>"; };
+		36CB218518E490B8000483F2 /* LoadingBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingBack.png; sourceTree = "<group>"; };
 		CB23E47C42D742E9A50498CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1D466CD685848C4A569A2BB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 		36CB215818E481B2000483F2 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				36CB218518E490B8000483F2 /* LoadingBack.png */,
 				36CB216518E483C6000483F2 /* logo29.png */,
 				36CB216618E483C6000483F2 /* logo40.png */,
 				36CB216818E483C6000483F2 /* logo57.png */,
@@ -285,6 +288,7 @@
 				36CB217918E48447000483F2 /* logo80.png in Resources */,
 				36CB217018E483C6000483F2 /* logo60.png in Resources */,
 				36CB216418E48338000483F2 /* Media.xcassets in Resources */,
+				36CB218618E490B8000483F2 /* LoadingBack.png in Resources */,
 				36CB218418E4861B000483F2 /* launchR4.png in Resources */,
 				36CB213718E480E7000483F2 /* Main.storyboard in Resources */,
 			);

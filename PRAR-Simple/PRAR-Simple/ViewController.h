@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PRARManager.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <PRARManagerDelegate>
+{
+    IBOutlet UIView *loadingV;
+}
 
 @end
