@@ -284,7 +284,7 @@ realm, signRequests, threeLegged;
 
 - (void)addGeneratedTimestampAndNonceInto:(NSMutableDictionary *)dictionary {
   NSUInteger epochTime = (NSUInteger)[[NSDate date] timeIntervalSince1970];
-  NSString *timestamp = [NSString stringWithFormat:@"%d", epochTime];
+  NSString *timestamp = [NSString stringWithFormat:@"%lu", (unsigned long)epochTime];
   CFUUIDRef theUUID = CFUUIDCreate(NULL);
   CFStringRef string = CFUUIDCreateString(NULL, theUUID);
   NSString *nonce = (NSString *)CFBridgingRelease(string);

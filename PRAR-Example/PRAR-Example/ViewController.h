@@ -19,16 +19,9 @@
     
     IBOutlet UIActivityIndicatorView *loadingI;
     
-    IBOutlet UILabel *statusLL;
-    IBOutlet UISwitch *prarSwitchL;
-    IBOutlet UIButton *arBL;
-    
-    IBOutlet UILabel *statusLP;
-    IBOutlet UISwitch *prarSwitchP;
-    IBOutlet UIButton *arBP;
-    
-    IBOutlet UIView *portraitControls;
-    IBOutlet UIView *landscapeControls;
+    IBOutlet UILabel *statusL;
+    IBOutlet UISwitch *prarSwitch;
+    IBOutlet UIButton *arB;
     
     NSArray *arData;
     

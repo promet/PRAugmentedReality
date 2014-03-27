@@ -49,7 +49,7 @@
         [fileManager removeItemAtPath:[self getTimestampPath] error:nil];
     
     NSInteger timestamp = round([[NSDate date] timeIntervalSince1970]);
-    [[NSString stringWithFormat:@"%d", timestamp] writeToFile:[self getTimestampPath]
+    [[NSString stringWithFormat:@"%ld", (long)timestamp] writeToFile:[self getTimestampPath]
                                                    atomically:YES
                                                      encoding:NSUTF8StringEncoding
                                                         error:nil];

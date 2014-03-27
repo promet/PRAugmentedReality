@@ -15,7 +15,14 @@ Augmented Reality Framework for iOS - Well optimized for all devices, even the o
 [![](https://dl.dropboxusercontent.com/u/30415492/Device-Main-thumb.png)](https://dl.dropboxusercontent.com/u/30415492/Device-Main.png)
 
 
-#### Example App
+#### (NEW) SIMPLE Example App
+
+Demonstrates the use of the PRAugmentedReality Framework
+* Basic data is generated at runtime
+* 1 view: Augmented Reality
+
+
+#### More complex Example App
 
 Demonstrates the use of the PRAugmentedReality Framework with:
 * Simple and efficient Data Storing for AR Objects using SQLite DB
