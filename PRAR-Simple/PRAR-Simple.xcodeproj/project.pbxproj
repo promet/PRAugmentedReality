@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36CB212418E480E7000483F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB212318E480E7000483F2 /* Foundation.framework */; };
+		36CB212618E480E7000483F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB212518E480E7000483F2 /* CoreGraphics.framework */; };
+		36CB212818E480E7000483F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB212718E480E7000483F2 /* UIKit.framework */; };
+		36CB212E18E480E7000483F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36CB212C18E480E7000483F2 /* InfoPlist.strings */; };
+		36CB213018E480E7000483F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB212F18E480E7000483F2 /* main.m */; };
+		36CB213418E480E7000483F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB213318E480E7000483F2 /* AppDelegate.m */; };
+		36CB213718E480E7000483F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36CB213518E480E7000483F2 /* Main.storyboard */; };
+		36CB213A18E480E8000483F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB213918E480E7000483F2 /* ViewController.m */; };
+		36CB214318E480E8000483F2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB214218E480E8000483F2 /* XCTest.framework */; };
+		36CB214418E480E8000483F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB212318E480E7000483F2 /* Foundation.framework */; };
+		36CB214518E480E8000483F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CB212718E480E7000483F2 /* UIKit.framework */; };
+		36CB214D18E480E8000483F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36CB214B18E480E8000483F2 /* InfoPlist.strings */; };
+		36CB214F18E480E8000483F2 /* PRAR_SimpleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36CB214E18E480E8000483F2 /* PRAR_SimpleTests.m */; };
+		36CB216418E48338000483F2 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36CB216318E48338000483F2 /* Media.xcassets */; };
+		36CB216C18E483C6000483F2 /* logo29.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB216518E483C6000483F2 /* logo29.png */; };
+		36CB216D18E483C6000483F2 /* logo40.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB216618E483C6000483F2 /* logo40.png */; };
+		36CB216F18E483C6000483F2 /* logo57.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB216818E483C6000483F2 /* logo57.png */; };
+		36CB217018E483C6000483F2 /* logo60.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB216918E483C6000483F2 /* logo60.png */; };
+		36CB217818E48447000483F2 /* logo58.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB217318E48447000483F2 /* logo58.png */; };
+		36CB217918E48447000483F2 /* logo80.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB217418E48447000483F2 /* logo80.png */; };
+		36CB217A18E48447000483F2 /* logo114.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB217518E48447000483F2 /* logo114.png */; };
+		36CB217B18E48447000483F2 /* logo120.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB217618E48447000483F2 /* logo120.png */; };
+		36CB218318E4861B000483F2 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218118E4861B000483F2 /* launch.png */; };
+		36CB218418E4861B000483F2 /* launchR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 36CB218218E4861B000483F2 /* launchR4.png */; };
+		DCC5D558A5D54E0999634DB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB23E47C42D742E9A50498CB /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36CB214618E480E8000483F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36CB211818E480E7000483F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36CB211F18E480E7000483F2;
+			remoteInfo = "PRAR-Simple";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		36CB212018E480E7000483F2 /* PRAR-Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PRAR-Simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36CB212318E480E7000483F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		36CB212518E480E7000483F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		36CB212718E480E7000483F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		36CB212B18E480E7000483F2 /* PRAR-Simple-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PRAR-Simple-Info.plist"; sourceTree = "<group>"; };
+		36CB212D18E480E7000483F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		36CB212F18E480E7000483F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		36CB213118E480E7000483F2 /* PRAR-Simple-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PRAR-Simple-Prefix.pch"; sourceTree = "<group>"; };
+		36CB213218E480E7000483F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		36CB213318E480E7000483F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		36CB213618E480E7000483F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36CB213818E480E7000483F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		36CB213918E480E7000483F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		36CB214118E480E8000483F2 /* PRAR-SimpleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PRAR-SimpleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36CB214218E480E8000483F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		36CB214A18E480E8000483F2 /* PRAR-SimpleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PRAR-SimpleTests-Info.plist"; sourceTree = "<group>"; };
+		36CB214C18E480E8000483F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		36CB214E18E480E8000483F2 /* PRAR_SimpleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PRAR_SimpleTests.m; sourceTree = "<group>"; };
+		36CB216318E48338000483F2 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		36CB216518E483C6000483F2 /* logo29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo29.png; sourceTree = "<group>"; };
+		36CB216618E483C6000483F2 /* logo40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo40.png; sourceTree = "<group>"; };
+		36CB216818E483C6000483F2 /* logo57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo57.png; sourceTree = "<group>"; };
+		36CB216918E483C6000483F2 /* logo60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo60.png; sourceTree = "<group>"; };
+		36CB217318E48447000483F2 /* logo58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo58.png; sourceTree = "<group>"; };
+		36CB217418E48447000483F2 /* logo80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo80.png; sourceTree = "<group>"; };
+		36CB217518E48447000483F2 /* logo114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo114.png; sourceTree = "<group>"; };
+		36CB217618E48447000483F2 /* logo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo120.png; sourceTree = "<group>"; };
+		36CB218118E4861B000483F2 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		36CB218218E4861B000483F2 /* launchR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchR4.png; sourceTree = "<group>"; };
+		CB23E47C42D742E9A50498CB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1D466CD685848C4A569A2BB /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		36CB211D18E480E7000483F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB212618E480E7000483F2 /* CoreGraphics.framework in Frameworks */,
+				36CB212818E480E7000483F2 /* UIKit.framework in Frameworks */,
+				36CB212418E480E7000483F2 /* Foundation.framework in Frameworks */,
+				DCC5D558A5D54E0999634DB8 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36CB213E18E480E8000483F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB214318E480E8000483F2 /* XCTest.framework in Frameworks */,
+				36CB214518E480E8000483F2 /* UIKit.framework in Frameworks */,
+				36CB214418E480E8000483F2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36CB211718E480E7000483F2 = {
+			isa = PBXGroup;
+			children = (
+				36CB215818E481B2000483F2 /* Graphics */,
+				36CB212918E480E7000483F2 /* PRAR-Simple */,
+				36CB214818E480E8000483F2 /* PRAR-SimpleTests */,
+				36CB212218E480E7000483F2 /* Frameworks */,
+				36CB212118E480E7000483F2 /* Products */,
+				D1D466CD685848C4A569A2BB /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		36CB212118E480E7000483F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36CB212018E480E7000483F2 /* PRAR-Simple.app */,
+				36CB214118E480E8000483F2 /* PRAR-SimpleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		36CB212218E480E7000483F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36CB212318E480E7000483F2 /* Foundation.framework */,
+				36CB212518E480E7000483F2 /* CoreGraphics.framework */,
+				36CB212718E480E7000483F2 /* UIKit.framework */,
+				36CB214218E480E8000483F2 /* XCTest.framework */,
+				CB23E47C42D742E9A50498CB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36CB212918E480E7000483F2 /* PRAR-Simple */ = {
+			isa = PBXGroup;
+			children = (
+				36CB213218E480E7000483F2 /* AppDelegate.h */,
+				36CB213318E480E7000483F2 /* AppDelegate.m */,
+				36CB213518E480E7000483F2 /* Main.storyboard */,
+				36CB213818E480E7000483F2 /* ViewController.h */,
+				36CB213918E480E7000483F2 /* ViewController.m */,
+				36CB216318E48338000483F2 /* Media.xcassets */,
+				36CB212A18E480E7000483F2 /* Supporting Files */,
+			);
+			path = "PRAR-Simple";
+			sourceTree = "<group>";
+		};
+		36CB212A18E480E7000483F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				36CB212B18E480E7000483F2 /* PRAR-Simple-Info.plist */,
+				36CB212C18E480E7000483F2 /* InfoPlist.strings */,
+				36CB212F18E480E7000483F2 /* main.m */,
+				36CB213118E480E7000483F2 /* PRAR-Simple-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36CB214818E480E8000483F2 /* PRAR-SimpleTests */ = {
+			isa = PBXGroup;
+			children = (
+				36CB214E18E480E8000483F2 /* PRAR_SimpleTests.m */,
+				36CB214918E480E8000483F2 /* Supporting Files */,
+			);
+			path = "PRAR-SimpleTests";
+			sourceTree = "<group>";
+		};
+		36CB214918E480E8000483F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				36CB214A18E480E8000483F2 /* PRAR-SimpleTests-Info.plist */,
+				36CB214B18E480E8000483F2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		36CB215818E481B2000483F2 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				36CB216518E483C6000483F2 /* logo29.png */,
+				36CB216618E483C6000483F2 /* logo40.png */,
+				36CB216818E483C6000483F2 /* logo57.png */,
+				36CB217318E48447000483F2 /* logo58.png */,
+				36CB216918E483C6000483F2 /* logo60.png */,
+				36CB217418E48447000483F2 /* logo80.png */,
+				36CB217518E48447000483F2 /* logo114.png */,
+				36CB217618E48447000483F2 /* logo120.png */,
+				36CB218118E4861B000483F2 /* launch.png */,
+				36CB218218E4861B000483F2 /* launchR4.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36CB211F18E480E7000483F2 /* PRAR-Simple */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36CB215218E480E8000483F2 /* Build configuration list for PBXNativeTarget "PRAR-Simple" */;
+			buildPhases = (
+				E328CD026E71427C86E86084 /* Check Pods Manifest.lock */,
+				36CB211C18E480E7000483F2 /* Sources */,
+				36CB211D18E480E7000483F2 /* Frameworks */,
+				36CB211E18E480E7000483F2 /* Resources */,
+				BB9D9B0ECA77494B91B33ED1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PRAR-Simple";
+			productName = "PRAR-Simple";
+			productReference = 36CB212018E480E7000483F2 /* PRAR-Simple.app */;
+			productType = "com.apple.product-type.application";
+		};
+		36CB214018E480E8000483F2 /* PRAR-SimpleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36CB215518E480E8000483F2 /* Build configuration list for PBXNativeTarget "PRAR-SimpleTests" */;
+			buildPhases = (
+				36CB213D18E480E8000483F2 /* Sources */,
+				36CB213E18E480E8000483F2 /* Frameworks */,
+				36CB213F18E480E8000483F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36CB214718E480E8000483F2 /* PBXTargetDependency */,
+			);
+			name = "PRAR-SimpleTests";
+			productName = "PRAR-SimpleTests";
+			productReference = 36CB214118E480E8000483F2 /* PRAR-SimpleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		36CB211818E480E7000483F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = GeoffroyLesage;
+				TargetAttributes = {
+					36CB214018E480E8000483F2 = {
+						TestTargetID = 36CB211F18E480E7000483F2;
+					};
+				};
+			};
+			buildConfigurationList = 36CB211B18E480E7000483F2 /* Build configuration list for PBXProject "PRAR-Simple" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 36CB211718E480E7000483F2;
+			productRefGroup = 36CB212118E480E7000483F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				36CB211F18E480E7000483F2 /* PRAR-Simple */,
+				36CB214018E480E8000483F2 /* PRAR-SimpleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		36CB211E18E480E7000483F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB218318E4861B000483F2 /* launch.png in Resources */,
+				36CB217A18E48447000483F2 /* logo114.png in Resources */,
+				36CB217B18E48447000483F2 /* logo120.png in Resources */,
+				36CB216F18E483C6000483F2 /* logo57.png in Resources */,
+				36CB212E18E480E7000483F2 /* InfoPlist.strings in Resources */,
+				36CB217818E48447000483F2 /* logo58.png in Resources */,
+				36CB216C18E483C6000483F2 /* logo29.png in Resources */,
+				36CB216D18E483C6000483F2 /* logo40.png in Resources */,
+				36CB217918E48447000483F2 /* logo80.png in Resources */,
+				36CB217018E483C6000483F2 /* logo60.png in Resources */,
+				36CB216418E48338000483F2 /* Media.xcassets in Resources */,
+				36CB218418E4861B000483F2 /* launchR4.png in Resources */,
+				36CB213718E480E7000483F2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36CB213F18E480E8000483F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB214D18E480E8000483F2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB9D9B0ECA77494B91B33ED1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E328CD026E71427C86E86084 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36CB211C18E480E7000483F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB213A18E480E8000483F2 /* ViewController.m in Sources */,
+				36CB213418E480E7000483F2 /* AppDelegate.m in Sources */,
+				36CB213018E480E7000483F2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36CB213D18E480E8000483F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36CB214F18E480E8000483F2 /* PRAR_SimpleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36CB214718E480E8000483F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36CB211F18E480E7000483F2 /* PRAR-Simple */;
+			targetProxy = 36CB214618E480E8000483F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		36CB212C18E480E7000483F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36CB212D18E480E7000483F2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		36CB213518E480E7000483F2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36CB213618E480E7000483F2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		36CB214B18E480E8000483F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36CB214C18E480E8000483F2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36CB215018E480E8000483F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		36CB215118E480E8000483F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36CB215318E480E8000483F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1D466CD685848C4A569A2BB /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRAR-Simple/PRAR-Simple-Prefix.pch";
+				INFOPLIST_FILE = "PRAR-Simple/PRAR-Simple-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		36CB215418E480E8000483F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1D466CD685848C4A569A2BB /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRAR-Simple/PRAR-Simple-Prefix.pch";
+				INFOPLIST_FILE = "PRAR-Simple/PRAR-Simple-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		36CB215618E480E8000483F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PRAR-Simple.app/PRAR-Simple";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRAR-Simple/PRAR-Simple-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PRAR-SimpleTests/PRAR-SimpleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		36CB215718E480E8000483F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PRAR-Simple.app/PRAR-Simple";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PRAR-Simple/PRAR-Simple-Prefix.pch";
+				INFOPLIST_FILE = "PRAR-SimpleTests/PRAR-SimpleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		36CB211B18E480E7000483F2 /* Build configuration list for PBXProject "PRAR-Simple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36CB215018E480E8000483F2 /* Debug */,
+				36CB215118E480E8000483F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36CB215218E480E8000483F2 /* Build configuration list for PBXNativeTarget "PRAR-Simple" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36CB215318E480E8000483F2 /* Debug */,
+				36CB215418E480E8000483F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36CB215518E480E8000483F2 /* Build configuration list for PBXNativeTarget "PRAR-SimpleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36CB215618E480E8000483F2 /* Debug */,
+				36CB215718E480E8000483F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 36CB211818E480E7000483F2 /* Project object */;
+}
