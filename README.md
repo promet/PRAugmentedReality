@@ -59,6 +59,6 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 
 ==================
 
-### Chi TechWeek 2013 AR Promo
+### Getting Started Video Tutorial
 
-[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/promo-thumb.png)](http://www.youtube.com/watch?v=7SIn5tmcjvc)
+[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/prar-tuto-screenshot.jpg)](http://youtu.be/fdN0XAoZXOY)
