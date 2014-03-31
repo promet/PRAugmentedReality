@@ -64,6 +64,7 @@
         NSDictionary *point = [self createPointWithId:i at:pointCoordinates];
         [points addObject:point];
     }
+    
     return [NSArray arrayWithArray:points];
 }
 
