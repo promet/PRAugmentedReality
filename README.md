@@ -5,6 +5,12 @@ Augmented Reality Framework for iOS - Well optimized for all devices, even the o
 
 ==================
 
+### Getting Started Video Tutorial
+
+[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/prar-tuto-screenshot.jpg)](http://youtu.be/fdN0XAoZXOY)
+
+==================
+
 ### What it provides
 
 * An Augmented reality view out-of-the-box
@@ -55,10 +61,3 @@ Put this line in your podfile: `pod 'PRAugmentedReality'`
 ### DrupalCon Social - Demo App
 
 [![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/video-thumb.png)](http://youtu.be/vBc8L1zr0kk)
-
-
-==================
-
-### Getting Started Video Tutorial
-
-[![ScreenShot](https://dl.dropboxusercontent.com/u/30415492/prar-tuto-screenshot.jpg)](http://youtu.be/fdN0XAoZXOY)
