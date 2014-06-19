@@ -32,14 +32,7 @@
 #import "ARObject.h"
 #import "LocationMath.h"
 
-@interface PRARManager ()
-
-@end
-
-
 @implementation PRARManager
-
-static PRARManager * _sharedManager = nil;
 
 #pragma mark - Life cycle
 
