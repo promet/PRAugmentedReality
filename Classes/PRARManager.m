@@ -40,12 +40,66 @@
 @implementation PRARManager
 
 static PRARManager * _sharedManager = nil;
-static dispatch_once_t onceToken;
 
+#pragma mark - Life cycle
+
+- (id)initWithSize:(CGSize)size delegate:(id)delegate showRadar:(BOOL)showRadar
+{
+    self = [super init];
+    if (self) {
+        frameSize = size;
+        radarOption = showRadar;
+        self.delegate = delegate;
+        
+        [self initAndAllocContainers];
+        [self startCamera];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+	[cameraSession stopRunning];
+    [refreshTimer invalidate];
+}
+
+- (void)initAndAllocContainers
+{
+    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                       OVERLAY_VIEW_WIDTH,
+                                                                       frameSize.height)];
+    [arOverlaysContainerView setTag:AR_VIEW_TAG];
+    
+    arController = [[ARController alloc] init];
+}
+
+- (void)startCamera
+{
+    cameraSession = [[AVCaptureSession alloc] init];
+    AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+	if (videoDevice) {
+		NSError *error;
+		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+		if (!error) {
+			if ([cameraSession canAddInput:videoIn]) [cameraSession addInput:videoIn];
+			else    NSLog(@"Couldn't add video input");
+		} else      NSLog(@"Couldn't create video input");
+	} else          NSLog(@"Couldn't create video capture device");
+    
+    cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
+    [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    CGRect layerRect = CGRectMake(0, 0,
+                                  frameSize.width,
+                                  frameSize.height);
+	[cameraLayer setBounds:layerRect];
+	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
+}
 
 #pragma mark - AR Setup
 
--(void)setupAROverlaysWithData:(NSDictionary*)arObjectsDict
+- (void)setupAROverlaysWithData:(NSDictionary*)arObjectsDict
 {
     [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -53,7 +107,8 @@ static dispatch_once_t onceToken;
         [arOverlaysContainerView addSubview:[arObjectsDict[ar_id] view]];
     }
 }
--(void)setupRadar
+
+- (void)setupRadar
 {
     NSArray *spots = [arController createRadarSpots];
     
@@ -77,15 +132,14 @@ static dispatch_once_t onceToken;
                                               frameSize.height)];
 }
 
-
 #pragma mark - AR controls
 
--(void)stopAR
+- (void)stopAR
 {
     [refreshTimer invalidate];
 }
 
--(void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location
+- (void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location
 {
     if (arData.count < 1) {
         [self.delegate prarGotProblem:@"No AR Data" withDetails:nil];
@@ -116,100 +170,6 @@ static dispatch_once_t onceToken;
                                                   selector:@selector(refreshPositionOfOverlay)
                                                   userInfo:nil
                                                    repeats:YES];
-}
-
-
-#pragma mark - Main Initialization
-
-+ (id)sharedManager
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            [NSException raise:@"Invalid PRARManager" format:@"PRARManager was never instanciated with a delegate"];
-        });
-    }
-    
-    return _sharedManager;
-}
-+ (id)sharedManagerWithSize:(CGSize)size andDelegate:(id)theDelegate
-{
-    NSLog(@"Hello! I'm there");
-    
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedManager = [[self alloc] initWithScreenSize:size withRadar:NO andDelegate:theDelegate];
-        });
-    }
-    
-    return _sharedManager;
-}
-+ (id)sharedManagerWithRadarAndSize:(CGSize)size andDelegate:(id)theDelegate
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedManager = [[self alloc] initWithScreenSize:size withRadar:YES andDelegate:theDelegate];
-        });
-    }
-    
-    return _sharedManager;
-}
-
-
-#pragma mark - Main Instanciation
-
--(id)initWithScreenSize:(CGSize)newFrameSize withRadar:(BOOL)withRadar andDelegate:(id)theDelegate
-{
-    self = [super init];
-    if (self) {
-        
-        frameSize = newFrameSize;        
-        radarOption = withRadar;
-        
-        self.delegate = theDelegate;
-        
-        [self initAndAllocContainers];
-        [self startCamera];
-    }
-    return self;
-}
-
--(void)initAndAllocContainers
-{
-    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                       OVERLAY_VIEW_WIDTH,
-                                                                       frameSize.height)];
-    [arOverlaysContainerView setTag:AR_VIEW_TAG];
-    
-    arController = [[ARController alloc] init];
-}
--(void)startCamera
-{
-    cameraSession = [[AVCaptureSession alloc] init];
-    AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-	if (videoDevice) {
-		NSError *error;
-		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
-		if (!error) {
-			if ([cameraSession canAddInput:videoIn]) [cameraSession addInput:videoIn];
-			else    NSLog(@"Couldn't add video input");
-		} else      NSLog(@"Couldn't create video input");
-	} else          NSLog(@"Couldn't create video capture device");
-    
-    cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
-    [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    CGRect layerRect = CGRectMake(0, 0,
-                                  frameSize.width,
-                                  frameSize.height);
-	[cameraLayer setBounds:layerRect];
-	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
-}
-
--(void)dealloc
-{
-	[cameraSession stopRunning];
-    [refreshTimer invalidate];
 }
 
 @end
