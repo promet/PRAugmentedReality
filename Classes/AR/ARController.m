@@ -255,5 +255,11 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     return self;
 }
 
+- (void)dealloc
+{
+        [self.locationMath.motionManager stopAccelerometerUpdates];
+        [self.locationMath.locationManager stopUpdatingHeading];
+        self.locationMath.locationManager.delegate = nil;
+}
 
 @end

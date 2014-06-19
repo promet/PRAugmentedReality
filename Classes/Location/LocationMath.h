@@ -32,9 +32,6 @@
 
 @interface LocationMath : NSObject <CLLocationManagerDelegate>
 {
-    // Main managers
-    CLLocationManager * locationManager;
-    CMMotionManager * motionManager;
     NSTimer *accelTimer;
     
     // Major variables
@@ -52,6 +49,9 @@
     
     float deviceViewHeight;
 }
+
+@property (nonatomic, strong) CLLocationManager * locationManager;
+@property (nonatomic, strong) CMMotionManager * motionManager;
 
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 

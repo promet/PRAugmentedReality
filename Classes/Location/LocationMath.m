@@ -34,12 +34,12 @@
 {
     self = [super init];
     if (self) {        
-        motionManager = [[CMMotionManager alloc] init];
-        locationManager = [[CLLocationManager alloc] init];
+        self.motionManager = [[CMMotionManager alloc] init];
+        self.locationManager = [[CLLocationManager alloc] init];
         
-        [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [locationManager setDistanceFilter:kCLDistanceFilterNone];
-        [locationManager setDelegate:self];
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
+        [self.locationManager setDelegate:self];
     }
     return self;
 }
@@ -57,7 +57,7 @@
 
 - (void)pollAccellerometerForVerticalPosition
 {
-    CMAcceleration acceleration = motionManager.accelerometerData.acceleration;
+    CMAcceleration acceleration = self.motionManager.accelerometerData.acceleration;
     
     rollingZ  = (acceleration.z * kFilteringFactor) + (rollingZ  * (1.0 - kFilteringFactor));
     rollingX = (acceleration.y * kFilteringFactor) + (rollingX * (1.0 - kFilteringFactor));
@@ -74,8 +74,8 @@
 {
     deviceViewHeight = deviceScreenSize.height;
     
-    [locationManager startUpdatingHeading];
-    [motionManager startAccelerometerUpdates];
+    [self.locationManager startUpdatingHeading];
+    [self.motionManager startAccelerometerUpdates];
     
     location = CLLocationCoordinate2DMake(newLocation.latitude, newLocation.longitude);
 
