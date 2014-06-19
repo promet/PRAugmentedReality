@@ -44,6 +44,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [accelTimer invalidate];
+}
+
 # pragma mark - LocationManager
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
@@ -86,7 +91,6 @@
                                                 userInfo:nil
                                                  repeats:YES];
 }
-
 
 # pragma mark - Callback functions
 
