@@ -32,7 +32,6 @@
 
 @interface LocationMath : NSObject <CLLocationManagerDelegate>
 {
-    
     // Main managers
     CLLocationManager * locationManager;
     CMMotionManager * motionManager;
@@ -56,13 +55,12 @@
 
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
+- (id)init;
 
-+ (id)sharedExpert;
+- (void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
 
--(void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
-
--(CGRect)getCurrentFramePosition;
--(int)getCurrentHeading;
--(int)getARObjectXPosition:(ARObject*)arObject;
+- (CGRect)getCurrentFramePosition;
+- (int)getCurrentHeading;
+- (int)getARObjectXPosition:(ARObject*)arObject;
 
 @end

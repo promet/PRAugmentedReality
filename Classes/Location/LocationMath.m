@@ -26,26 +26,11 @@
 
 #import "LocationMath.h"
 
-
 @implementation LocationMath
-
-static LocationMath *_sharedCalculator = nil;
-static dispatch_once_t onceToken;
 
 @synthesize location;
 
-
-+(id)sharedExpert
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedCalculator = [[self alloc] init];
-        });
-    }
-    
-    return _sharedCalculator;
-}
--(id)init
+- (id)init
 {
     self = [super init];
     if (self) {        
@@ -59,20 +44,18 @@ static dispatch_once_t onceToken;
     return self;
 }
 
-
 # pragma mark - LocationManager
 
-
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
 {
     currentHeading =  fmod(newHeading.trueHeading, 360.0);
 }
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Failed to update Loc: %@", error);
 }
 
--(void)pollAccellerometerForVerticalPosition
+- (void)pollAccellerometerForVerticalPosition
 {
     CMAcceleration acceleration = motionManager.accelerometerData.acceleration;
     
@@ -87,7 +70,7 @@ static dispatch_once_t onceToken;
 
 # pragma mark - Accellerometer
 
--(void)startTrackingWithLocation:(CLLocationCoordinate2D)newLocation andSize:(CGSize)deviceScreenSize
+- (void)startTrackingWithLocation:(CLLocationCoordinate2D)newLocation andSize:(CGSize)deviceScreenSize
 {
     deviceViewHeight = deviceScreenSize.height;
     
@@ -107,18 +90,20 @@ static dispatch_once_t onceToken;
 
 # pragma mark - Callback functions
 
--(CGRect)getCurrentFramePosition
+- (CGRect)getCurrentFramePosition
 {
     float y_pos = currentInclination*VERTICAL_SENS;
     float x_pos = X_CENTER+(0-currentHeading)*HORIZ_SENS;
     
     return CGRectMake(x_pos, y_pos+60, OVERLAY_VIEW_WIDTH, deviceViewHeight);
 }
--(int)getCurrentHeading
+
+- (int)getCurrentHeading
 {
     return (int)currentHeading;
 }
--(int)getARObjectXPosition:(ARObject*)arObject
+
+- (int)getARObjectXPosition:(ARObject*)arObject
 {
     CLLocationCoordinate2D coordinates;
     coordinates.latitude        = [[arObject getARObjectData][@"latitude"] doubleValue];

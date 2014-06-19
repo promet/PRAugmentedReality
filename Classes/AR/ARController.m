@@ -36,7 +36,6 @@
 
 @end
 
-
 @implementation ARController
 
 
@@ -60,10 +59,8 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 #pragma mark - AR builders
 
--(NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation
+- (NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation
 {
-    LocationMath *locationMath = [LocationMath sharedExpert];
-    
     int x_pos = 0;
     ARObject *arObject;
     
@@ -75,7 +72,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                                                                             [arObjectData[@"lon"] doubleValue])
                               andCurrentLocation:newLocation];
         
-        x_pos = [locationMath getARObjectXPosition:arObject]-arObject.view.frame.size.width;
+        x_pos = [self.locationMath getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
         geoobjectOverlays[ar_id] = arObject;
         geoobjectPositions[ar_id] = @(x_pos);
@@ -248,10 +245,11 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     geoobjectVerts = [[NSMutableDictionary alloc] init];
 }
 
--(id)init
+- (id)init
 {
     self = [super init];
     if (self) {
+        self.locationMath = [[LocationMath alloc] init];
         [self initAndAllocContainers];
     }
     return self;

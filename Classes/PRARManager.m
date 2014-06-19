@@ -63,7 +63,7 @@
                                                                        frameSize.height)];
     [arOverlaysContainerView setTag:AR_VIEW_TAG];
     
-    arController = [[ARController alloc] init];
+    self.arController = [[ARController alloc] init];
 }
 
 - (void)startCamera
@@ -103,7 +103,7 @@
 
 - (void)setupRadar
 {
-    NSArray *spots = [arController createRadarSpots];
+    NSArray *spots = [self.arController createRadarSpots];
     
     radar = [[ARRadar alloc] initWithFrame:CGRectMake((frameSize.width/2)-50, frameSize.height-100, 100, 100)
                                  withSpots:spots];
@@ -114,10 +114,8 @@
 
 -(void)refreshPositionOfOverlay
 {
-    LocationMath *locationMath = [LocationMath sharedExpert];
-    
-    CGRect newPos = [locationMath getCurrentFramePosition];
-    [radar moveDots:[locationMath getCurrentHeading]];
+    CGRect newPos = [self.arController.locationMath getCurrentFramePosition];
+    [radar moveDots:[self.arController.locationMath getCurrentHeading]];
     
     [self.delegate prarUpdateFrame:CGRectMake(newPos.origin.x,
                                               newPos.origin.y,
@@ -141,9 +139,9 @@
     
     NSLog(@"Starting AR with %lu places", (unsigned long)arData.count);
     
-    [[LocationMath sharedExpert] startTrackingWithLocation:location
+    [self.arController.locationMath startTrackingWithLocation:location
                                                    andSize:frameSize];
-    NSDictionary *arObjectsDict = [arController buildAROverlaysForData:arData
+    NSDictionary *arObjectsDict = [self.arController buildAROverlaysForData:arData
                                                            andLocation:location];
     [self setupAROverlaysWithData:arObjectsDict];
     if (radarOption) [self setupRadar];

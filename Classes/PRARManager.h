@@ -58,9 +58,6 @@
 
 @interface PRARManager : NSObject
 {
-    
-    ARController *arController;
-    
     // -- Camera -- //
     AVCaptureSession *cameraSession;
     AVCaptureVideoPreviewLayer *cameraLayer;
@@ -75,6 +72,7 @@
     NSTimer *refreshTimer;
 }
 
+@property (nonatomic, strong) ARController *arController;
 @property (weak, nonatomic) id <PRARManagerDelegate> delegate;
 
 - (id)initWithSize:(CGSize)size delegate:(id)delegate showRadar:(BOOL)showRadar;
