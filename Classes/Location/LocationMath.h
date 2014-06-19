@@ -32,8 +32,6 @@
 
 @interface LocationMath : NSObject <CLLocationManagerDelegate>
 {
-    NSTimer *accelTimer;
-    
     // Major variables
     float currentHeading;
     float currentInclination;
@@ -52,7 +50,7 @@
 
 @property (nonatomic, strong) CLLocationManager * locationManager;
 @property (nonatomic, strong) CMMotionManager * motionManager;
-
+@property (nonatomic, strong) NSTimer *accelTimer;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
 - (id)init;

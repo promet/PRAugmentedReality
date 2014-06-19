@@ -44,11 +44,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [accelTimer invalidate];
-}
-
 # pragma mark - LocationManager
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
@@ -84,8 +79,8 @@
     
     location = CLLocationCoordinate2DMake(newLocation.latitude, newLocation.longitude);
 
-    if (accelTimer) accelTimer = nil;
-    accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
+    if (self.accelTimer) self.accelTimer = nil;
+    self.accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
                                                   target:self
                                                 selector:@selector(pollAccellerometerForVerticalPosition)
                                                 userInfo:nil
