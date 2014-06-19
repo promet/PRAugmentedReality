@@ -133,6 +133,8 @@ static dispatch_once_t onceToken;
 }
 + (id)sharedManagerWithSize:(CGSize)size andDelegate:(id)theDelegate
 {
+    NSLog(@"Hello! I'm there");
+    
     @synchronized([LocationMath class]) {
         dispatch_once(&onceToken, ^{
             _sharedManager = [[self alloc] initWithScreenSize:size withRadar:NO andDelegate:theDelegate];
