@@ -42,7 +42,7 @@
     if (self) {
         frameSize = size;
         radarOption = showRadar;
-        self.delegate = delegate;
+        _delegate = delegate;
         
         [self initAndAllocContainers];
         [self startCamera];
@@ -52,7 +52,7 @@
 
 - (void)dealloc
 {
-	[cameraSession stopRunning];
+    [cameraSession stopRunning];
     [refreshTimer invalidate];
 }
 
@@ -75,10 +75,16 @@
 		NSError *error;
 		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
 		if (!error) {
-			if ([cameraSession canAddInput:videoIn]) [cameraSession addInput:videoIn];
-			else    NSLog(@"Couldn't add video input");
-		} else      NSLog(@"Couldn't create video input");
-	} else          NSLog(@"Couldn't create video capture device");
+			if ([cameraSession canAddInput:videoIn]) {
+                [cameraSession addInput:videoIn];
+            } else {
+                NSLog(@"Couldn't add video input");
+            }
+		} else {
+            NSLog(@"Couldn't create video input"); }
+	} else {
+        NSLog(@"Couldn't create video capture device");
+    }
     
     cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
     [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];

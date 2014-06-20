@@ -34,12 +34,12 @@
 {
     self = [super init];
     if (self) {        
-        self.motionManager = [[CMMotionManager alloc] init];
-        self.locationManager = [[CLLocationManager alloc] init];
+        _motionManager = [[CMMotionManager alloc] init];
+        _locationManager = [[CLLocationManager alloc] init];
         
-        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
-        [self.locationManager setDelegate:self];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+        [_locationManager setDelegate:self];
     }
     return self;
 }
