@@ -44,6 +44,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [self.motionManager stopAccelerometerUpdates];
+    [self.locationManager stopUpdatingHeading];
+    self.locationManager.delegate = nil;
+    [self.accelTimer invalidate];
+}
+
 # pragma mark - LocationManager
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
