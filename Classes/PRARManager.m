@@ -162,11 +162,11 @@
         [self.delegate prarDidSetupAR:arOverlaysContainerView
                       withCameraLayer:cameraLayer];
     }
-    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                    target:self
-                                                  selector:@selector(refreshPositionOfOverlay)
-                                                  userInfo:nil
-                                                   repeats:YES];
+    
+    refreshTimer = [CADisplayLink displayLinkWithTarget:self
+                                               selector:@selector(refreshPositionOfOverlay)];
+    [refreshTimer addToRunLoop:[NSRunLoop currentRunLoop]
+                       forMode:NSDefaultRunLoopMode];
 }
 
 @end

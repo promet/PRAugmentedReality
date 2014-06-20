@@ -88,11 +88,10 @@
     location = CLLocationCoordinate2DMake(newLocation.latitude, newLocation.longitude);
 
     if (self.accelTimer) self.accelTimer = nil;
-    self.accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                  target:self
-                                                selector:@selector(pollAccellerometerForVerticalPosition)
-                                                userInfo:nil
-                                                 repeats:YES];
+    self.accelTimer = [CADisplayLink displayLinkWithTarget:self
+                                                  selector:@selector(pollAccellerometerForVerticalPosition)];
+    [self.accelTimer addToRunLoop:[NSRunLoop currentRunLoop]
+                          forMode:NSDefaultRunLoopMode];
 }
 
 # pragma mark - Callback functions

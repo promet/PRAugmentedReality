@@ -69,7 +69,7 @@
     // -- Other -- //
     CGSize frameSize;
     UIView *arOverlaysContainerView;
-    NSTimer *refreshTimer;
+    CADisplayLink *refreshTimer;
 }
 
 @property (nonatomic, strong) ARController *arController;

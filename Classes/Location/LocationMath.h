@@ -50,7 +50,7 @@
 
 @property (nonatomic, strong) CLLocationManager * locationManager;
 @property (nonatomic, strong) CMMotionManager * motionManager;
-@property (nonatomic, strong) NSTimer *accelTimer;
+@property (nonatomic, strong) CADisplayLink *accelTimer;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
 
 - (id)init;
