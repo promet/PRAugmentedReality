@@ -32,12 +32,7 @@
 
 #import "LocationMath.h"
 
-@interface ARController ()
-
-@end
-
 @implementation ARController
-
 
 // -- Shape warper -- //
 #define CATransform3DPerspective(t, x, y) (CATransform3DConcat(t, CATransform3DMake(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, 0, 0, 0, 0, 1)))

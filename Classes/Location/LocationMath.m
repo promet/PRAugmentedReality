@@ -26,6 +26,15 @@
 
 #import "LocationMath.h"
 
+@interface LocationMath ()
+
+@property (nonatomic, strong) CLLocationManager * locationManager;
+@property (nonatomic, strong) CMMotionManager * motionManager;
+@property (nonatomic, strong) CADisplayLink *accelTimer;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
+
+@end
+
 @implementation LocationMath
 
 @synthesize location;
