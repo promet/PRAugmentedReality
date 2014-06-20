@@ -257,7 +257,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 - (void)dealloc
 {
-    self.locationMath = nil;
+    [self.locationMath stopTracking];
 }
 
 @end

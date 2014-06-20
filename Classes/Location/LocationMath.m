@@ -44,12 +44,17 @@
     return self;
 }
 
-- (void)dealloc
+- (void)stopTracking
 {
     [self.motionManager stopAccelerometerUpdates];
     [self.locationManager stopUpdatingHeading];
     self.locationManager.delegate = nil;
     [self.accelTimer invalidate];
+}
+
+- (void)dealloc
+{
+    
 }
 
 # pragma mark - LocationManager

@@ -56,6 +56,7 @@
 - (id)init;
 
 - (void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
+- (void)stopTracking;
 
 - (CGRect)getCurrentFramePosition;
 - (int)getCurrentHeading;
