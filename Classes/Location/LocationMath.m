@@ -52,11 +52,6 @@
     [self.accelTimer invalidate];
 }
 
-- (void)dealloc
-{
-    
-}
-
 # pragma mark - LocationManager
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
