@@ -32,13 +32,7 @@
 
 #import "LocationMath.h"
 
-@interface ARController ()
-
-@end
-
-
 @implementation ARController
-
 
 // -- Shape warper -- //
 #define CATransform3DPerspective(t, x, y) (CATransform3DConcat(t, CATransform3DMake(1, 0, 0, x, 0, 1, 0, y, 0, 0, 1, 0, 0, 0, 0, 1)))
@@ -60,10 +54,8 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
 
 #pragma mark - AR builders
 
--(NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation
+- (NSDictionary*)buildAROverlaysForData:(NSArray*)arData andLocation:(CLLocationCoordinate2D)newLocation
 {
-    LocationMath *locationMath = [LocationMath sharedExpert];
-    
     int x_pos = 0;
     ARObject *arObject;
     
@@ -75,7 +67,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
                                                                             [arObjectData[@"lon"] doubleValue])
                               andCurrentLocation:newLocation];
         
-        x_pos = [locationMath getARObjectXPosition:arObject]-arObject.view.frame.size.width;
+        x_pos = [self.locationMath getARObjectXPosition:arObject]-arObject.view.frame.size.width;
         
         geoobjectOverlays[ar_id] = arObject;
         geoobjectPositions[ar_id] = @(x_pos);
@@ -87,7 +79,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     return geoobjectOverlays;
 }
 
--(NSArray*)createRadarSpots
+- (NSArray*)createRadarSpots
 {    
     NSMutableArray *spots = [NSMutableArray arrayWithCapacity:geoobjectOverlays.count];
     
@@ -107,7 +99,7 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     }
     return [NSArray arrayWithArray:spots];
 }
--(void)setupDataForAR
+- (void)setupDataForAR
 {
     [self setVerticalPosWithDistance];
     [self checkForVerticalPosClashes];
@@ -248,14 +240,19 @@ CATransform3DMake(CGFloat m11, CGFloat m12, CGFloat m13, CGFloat m14,
     geoobjectVerts = [[NSMutableDictionary alloc] init];
 }
 
--(id)init
+- (id)init
 {
     self = [super init];
     if (self) {
+        self.locationMath = [[LocationMath alloc] init];
         [self initAndAllocContainers];
     }
     return self;
 }
 
+- (void)dealloc
+{
+    [self.locationMath stopTracking];
+}
 
 @end

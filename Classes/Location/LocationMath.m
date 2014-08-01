@@ -26,55 +26,55 @@
 
 #import "LocationMath.h"
 
+@interface LocationMath ()
+
+@property (nonatomic, strong) CLLocationManager * locationManager;
+@property (nonatomic, strong) CMMotionManager * motionManager;
+@property (nonatomic, strong) CADisplayLink *accelTimer;
+@property (nonatomic, assign) CLLocationCoordinate2D location;
+
+@end
 
 @implementation LocationMath
 
-static LocationMath *_sharedCalculator = nil;
-static dispatch_once_t onceToken;
-
 @synthesize location;
 
-
-+(id)sharedExpert
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedCalculator = [[self alloc] init];
-        });
-    }
-    
-    return _sharedCalculator;
-}
--(id)init
+- (id)init
 {
     self = [super init];
     if (self) {        
-        motionManager = [[CMMotionManager alloc] init];
-        locationManager = [[CLLocationManager alloc] init];
+        _motionManager = [[CMMotionManager alloc] init];
+        _locationManager = [[CLLocationManager alloc] init];
         
-        [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [locationManager setDistanceFilter:kCLDistanceFilterNone];
-        [locationManager setDelegate:self];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+        [_locationManager setDelegate:self];
     }
     return self;
 }
 
+- (void)stopTracking
+{
+    [self.motionManager stopAccelerometerUpdates];
+    [self.locationManager stopUpdatingHeading];
+    self.locationManager.delegate = nil;
+    [self.accelTimer invalidate];
+}
 
 # pragma mark - LocationManager
 
-
--(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
 {
     currentHeading =  fmod(newHeading.trueHeading, 360.0);
 }
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"Failed to update Loc: %@", error);
 }
 
--(void)pollAccellerometerForVerticalPosition
+- (void)pollAccellerometerForVerticalPosition
 {
-    CMAcceleration acceleration = motionManager.accelerometerData.acceleration;
+    CMAcceleration acceleration = self.motionManager.accelerometerData.acceleration;
     
     rollingZ  = (acceleration.z * kFilteringFactor) + (rollingZ  * (1.0 - kFilteringFactor));
     rollingX = (acceleration.y * kFilteringFactor) + (rollingX * (1.0 - kFilteringFactor));
@@ -87,38 +87,38 @@ static dispatch_once_t onceToken;
 
 # pragma mark - Accellerometer
 
--(void)startTrackingWithLocation:(CLLocationCoordinate2D)newLocation andSize:(CGSize)deviceScreenSize
+- (void)startTrackingWithLocation:(CLLocationCoordinate2D)newLocation andSize:(CGSize)deviceScreenSize
 {
     deviceViewHeight = deviceScreenSize.height;
     
-    [locationManager startUpdatingHeading];
-    [motionManager startAccelerometerUpdates];
+    [self.locationManager startUpdatingHeading];
+    [self.motionManager startAccelerometerUpdates];
     
     location = CLLocationCoordinate2DMake(newLocation.latitude, newLocation.longitude);
 
-    if (accelTimer) accelTimer = nil;
-    accelTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                  target:self
-                                                selector:@selector(pollAccellerometerForVerticalPosition)
-                                                userInfo:nil
-                                                 repeats:YES];
+    if (self.accelTimer) self.accelTimer = nil;
+    self.accelTimer = [CADisplayLink displayLinkWithTarget:self
+                                                  selector:@selector(pollAccellerometerForVerticalPosition)];
+    [self.accelTimer addToRunLoop:[NSRunLoop currentRunLoop]
+                          forMode:NSDefaultRunLoopMode];
 }
-
 
 # pragma mark - Callback functions
 
--(CGRect)getCurrentFramePosition
+- (CGRect)getCurrentFramePosition
 {
     float y_pos = currentInclination*VERTICAL_SENS;
     float x_pos = X_CENTER+(0-currentHeading)*HORIZ_SENS;
     
     return CGRectMake(x_pos, y_pos+60, OVERLAY_VIEW_WIDTH, deviceViewHeight);
 }
--(int)getCurrentHeading
+
+- (int)getCurrentHeading
 {
     return (int)currentHeading;
 }
--(int)getARObjectXPosition:(ARObject*)arObject
+
+- (int)getARObjectXPosition:(ARObject*)arObject
 {
     CLLocationCoordinate2D coordinates;
     coordinates.latitude        = [[arObject getARObjectData][@"latitude"] doubleValue];

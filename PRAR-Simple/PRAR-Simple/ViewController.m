@@ -16,6 +16,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) PRARManager *prARManager;
+
 @end
 
 
@@ -37,7 +39,7 @@
     [super viewDidLoad];
     
     // Initialize the manager so it wakes up (can do this anywhere you want
-    [PRARManager sharedManagerWithRadarAndSize:self.view.frame.size andDelegate:self];
+    self.prARManager = [[PRARManager alloc] initWithSize:self.view.frame.size delegate:self showRadar:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -45,8 +47,7 @@
     // Initialize your current location as 0,0 (since it works with our randomly generated locations)
     CLLocationCoordinate2D locationCoordinates = CLLocationCoordinate2DMake(0, 0);
     
-    [[PRARManager sharedManager] startARWithData:[self getDummyData]
-                                     forLocation:locationCoordinates];
+    [self.prARManager startARWithData:[self getDummyData] forLocation:locationCoordinates];
 }
 
 

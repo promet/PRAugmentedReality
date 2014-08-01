@@ -32,20 +32,73 @@
 #import "ARObject.h"
 #import "LocationMath.h"
 
-@interface PRARManager ()
-
-@end
-
-
 @implementation PRARManager
 
-static PRARManager * _sharedManager = nil;
-static dispatch_once_t onceToken;
+#pragma mark - Life cycle
 
+- (id)initWithSize:(CGSize)size delegate:(id)delegate showRadar:(BOOL)showRadar
+{
+    self = [super init];
+    if (self) {
+        frameSize = size;
+        radarOption = showRadar;
+        _delegate = delegate;
+        
+        [self initAndAllocContainers];
+        [self startCamera];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [cameraSession stopRunning];
+    [refreshTimer invalidate];
+}
+
+- (void)initAndAllocContainers
+{
+    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
+                                                                       OVERLAY_VIEW_WIDTH,
+                                                                       frameSize.height)];
+    [arOverlaysContainerView setTag:AR_VIEW_TAG];
+    
+    self.arController = [[ARController alloc] init];
+}
+
+- (void)startCamera
+{
+    cameraSession = [[AVCaptureSession alloc] init];
+    AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+	if (videoDevice) {
+		NSError *error;
+		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+		if (!error) {
+			if ([cameraSession canAddInput:videoIn]) {
+                [cameraSession addInput:videoIn];
+            } else {
+                NSLog(@"Couldn't add video input");
+            }
+		} else {
+            NSLog(@"Couldn't create video input"); }
+	} else {
+        NSLog(@"Couldn't create video capture device");
+    }
+    
+    cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
+    [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    CGRect layerRect = CGRectMake(0, 0,
+                                  frameSize.width,
+                                  frameSize.height);
+	[cameraLayer setBounds:layerRect];
+	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
+}
 
 #pragma mark - AR Setup
 
--(void)setupAROverlaysWithData:(NSDictionary*)arObjectsDict
+- (void)setupAROverlaysWithData:(NSDictionary*)arObjectsDict
 {
     [[arOverlaysContainerView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
@@ -53,9 +106,10 @@ static dispatch_once_t onceToken;
         [arOverlaysContainerView addSubview:[arObjectsDict[ar_id] view]];
     }
 }
--(void)setupRadar
+
+- (void)setupRadar
 {
-    NSArray *spots = [arController createRadarSpots];
+    NSArray *spots = [self.arController createRadarSpots];
     
     radar = [[ARRadar alloc] initWithFrame:CGRectMake((frameSize.width/2)-50, frameSize.height-100, 100, 100)
                                  withSpots:spots];
@@ -66,10 +120,8 @@ static dispatch_once_t onceToken;
 
 -(void)refreshPositionOfOverlay
 {
-    LocationMath *locationMath = [LocationMath sharedExpert];
-    
-    CGRect newPos = [locationMath getCurrentFramePosition];
-    [radar moveDots:[locationMath getCurrentHeading]];
+    CGRect newPos = [self.arController.locationMath getCurrentFramePosition];
+    [radar moveDots:[self.arController.locationMath getCurrentHeading]];
     
     [self.delegate prarUpdateFrame:CGRectMake(newPos.origin.x,
                                               newPos.origin.y,
@@ -77,15 +129,14 @@ static dispatch_once_t onceToken;
                                               frameSize.height)];
 }
 
-
 #pragma mark - AR controls
 
--(void)stopAR
+- (void)stopAR
 {
     [refreshTimer invalidate];
 }
 
--(void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location
+- (void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location
 {
     if (arData.count < 1) {
         [self.delegate prarGotProblem:@"No AR Data" withDetails:nil];
@@ -94,9 +145,9 @@ static dispatch_once_t onceToken;
     
     NSLog(@"Starting AR with %lu places", (unsigned long)arData.count);
     
-    [[LocationMath sharedExpert] startTrackingWithLocation:location
+    [self.arController.locationMath startTrackingWithLocation:location
                                                    andSize:frameSize];
-    NSDictionary *arObjectsDict = [arController buildAROverlaysForData:arData
+    NSDictionary *arObjectsDict = [self.arController buildAROverlaysForData:arData
                                                            andLocation:location];
     [self setupAROverlaysWithData:arObjectsDict];
     if (radarOption) [self setupRadar];
@@ -111,103 +162,11 @@ static dispatch_once_t onceToken;
         [self.delegate prarDidSetupAR:arOverlaysContainerView
                       withCameraLayer:cameraLayer];
     }
-    refreshTimer = [NSTimer scheduledTimerWithTimeInterval:REFRESH_RATE
-                                                    target:self
-                                                  selector:@selector(refreshPositionOfOverlay)
-                                                  userInfo:nil
-                                                   repeats:YES];
-}
-
-
-#pragma mark - Main Initialization
-
-+ (id)sharedManager
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            [NSException raise:@"Invalid PRARManager" format:@"PRARManager was never instanciated with a delegate"];
-        });
-    }
     
-    return _sharedManager;
-}
-+ (id)sharedManagerWithSize:(CGSize)size andDelegate:(id)theDelegate
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedManager = [[self alloc] initWithScreenSize:size withRadar:NO andDelegate:theDelegate];
-        });
-    }
-    
-    return _sharedManager;
-}
-+ (id)sharedManagerWithRadarAndSize:(CGSize)size andDelegate:(id)theDelegate
-{
-    @synchronized([LocationMath class]) {
-        dispatch_once(&onceToken, ^{
-            _sharedManager = [[self alloc] initWithScreenSize:size withRadar:YES andDelegate:theDelegate];
-        });
-    }
-    
-    return _sharedManager;
-}
-
-
-#pragma mark - Main Instanciation
-
--(id)initWithScreenSize:(CGSize)newFrameSize withRadar:(BOOL)withRadar andDelegate:(id)theDelegate
-{
-    self = [super init];
-    if (self) {
-        
-        frameSize = newFrameSize;        
-        radarOption = withRadar;
-        
-        self.delegate = theDelegate;
-        
-        [self initAndAllocContainers];
-        [self startCamera];
-    }
-    return self;
-}
-
--(void)initAndAllocContainers
-{
-    arOverlaysContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,
-                                                                       OVERLAY_VIEW_WIDTH,
-                                                                       frameSize.height)];
-    [arOverlaysContainerView setTag:AR_VIEW_TAG];
-    
-    arController = [[ARController alloc] init];
-}
--(void)startCamera
-{
-    cameraSession = [[AVCaptureSession alloc] init];
-    AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-	if (videoDevice) {
-		NSError *error;
-		AVCaptureDeviceInput *videoIn = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
-		if (!error) {
-			if ([cameraSession canAddInput:videoIn]) [cameraSession addInput:videoIn];
-			else    NSLog(@"Couldn't add video input");
-		} else      NSLog(@"Couldn't create video input");
-	} else          NSLog(@"Couldn't create video capture device");
-    
-    cameraLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:cameraSession];// autorelease];
-    [cameraLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    
-    CGRect layerRect = CGRectMake(0, 0,
-                                  frameSize.width,
-                                  frameSize.height);
-	[cameraLayer setBounds:layerRect];
-	[cameraLayer setPosition:CGPointMake(CGRectGetMidX(layerRect),CGRectGetMidY(layerRect))];
-}
-
--(void)dealloc
-{
-	[cameraSession stopRunning];
-    [refreshTimer invalidate];
+    refreshTimer = [CADisplayLink displayLinkWithTarget:self
+                                               selector:@selector(refreshPositionOfOverlay)];
+    [refreshTimer addToRunLoop:[NSRunLoop currentRunLoop]
+                       forMode:NSDefaultRunLoopMode];
 }
 
 @end

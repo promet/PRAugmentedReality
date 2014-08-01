@@ -32,12 +32,6 @@
 
 @interface LocationMath : NSObject <CLLocationManagerDelegate>
 {
-    
-    // Main managers
-    CLLocationManager * locationManager;
-    CMMotionManager * motionManager;
-    NSTimer *accelTimer;
-    
     // Major variables
     float currentHeading;
     float currentInclination;
@@ -53,16 +47,13 @@
     
     float deviceViewHeight;
 }
+- (id)init;
 
-@property (nonatomic, assign) CLLocationCoordinate2D location;
+- (void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
+- (void)stopTracking;
 
-
-+ (id)sharedExpert;
-
--(void)startTrackingWithLocation:(CLLocationCoordinate2D)location andSize:(CGSize)deviceScreenSize;
-
--(CGRect)getCurrentFramePosition;
--(int)getCurrentHeading;
--(int)getARObjectXPosition:(ARObject*)arObject;
+- (CGRect)getCurrentFramePosition;
+- (int)getCurrentHeading;
+- (int)getARObjectXPosition:(ARObject*)arObject;
 
 @end

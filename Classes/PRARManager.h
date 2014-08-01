@@ -40,7 +40,9 @@
 @class PRARManager;
 
 @protocol PRARManagerDelegate
+
 @optional
+
 - (void)prarUpdateFrame:(CGRect)arViewFrame;
 
 - (void)prarDidSetupAR:(UIView *)arView
@@ -56,9 +58,6 @@
 
 @interface PRARManager : NSObject
 {
-    
-    ARController *arController;
-    
     // -- Camera -- //
     AVCaptureSession *cameraSession;
     AVCaptureVideoPreviewLayer *cameraLayer;
@@ -70,16 +69,15 @@
     // -- Other -- //
     CGSize frameSize;
     UIView *arOverlaysContainerView;
-    NSTimer *refreshTimer;
+    CADisplayLink *refreshTimer;
 }
 
+@property (nonatomic, strong) ARController *arController;
 @property (weak, nonatomic) id <PRARManagerDelegate> delegate;
 
-+ (id)sharedManager;
-+ (id)sharedManagerWithSize:(CGSize)size andDelegate:(id)theDelegate;
-+ (id)sharedManagerWithRadarAndSize:(CGSize)size andDelegate:(id)theDelegate;
+- (id)initWithSize:(CGSize)size delegate:(id)delegate showRadar:(BOOL)showRadar;
 
--(void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location;
--(void)stopAR;
+- (void)startARWithData:(NSArray*)arData forLocation:(CLLocationCoordinate2D)location;
+- (void)stopAR;
 
 @end
