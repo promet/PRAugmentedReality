@@ -26,6 +26,7 @@
 
 #import "ARObject.h"
 
+NSNotificationName const ARObjectTappedNotification = @"kARObjectTappedNotification";
 
 @interface ARObject ()
 
@@ -96,6 +97,12 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
     [distanceL setText:[self getDistanceLabelText]];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kARObjectTappedNotification" object:self];
+}
 
 #pragma mark -- OO Methods
 
