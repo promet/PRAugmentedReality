@@ -101,7 +101,7 @@ andCurrentLocation:(CLLocationCoordinate2D)currLoc
 {
     [super touchesBegan:touches withEvent:event];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kARObjectTappedNotification" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ARObjectTappedNotification object:self];
 }
 
 #pragma mark -- OO Methods

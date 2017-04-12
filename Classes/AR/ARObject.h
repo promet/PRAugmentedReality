@@ -29,7 +29,7 @@
 
 #import "ARSettings.h"
 
-extern NSNotificationName ARObjectTappedNotification;
+extern NSNotificationName const ARObjectTappedNotification;
 
 @interface ARObject : UIViewController
 {
