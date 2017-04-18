@@ -36,5 +36,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>The app displays annotation in the world around, overlaying the video from your camera.</string>
 </dict>
 </plist>
