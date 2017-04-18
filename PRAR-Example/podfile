@@ -1,5 +1,10 @@
 platform :ios, '6.0'
 
-pod 'FMDB', '~> 2.0'
-pod 'AFNetworking', '~> 1.0'
-pod 'SCNetworkReachability', '~> 1.0'
+target 'PRAR-Example' do
+
+  # Pods for PRAR-Example
+  pod 'FMDB', '~> 2.0'
+  pod 'AFNetworking', '~> 1.0'
+  pod 'SCNetworkReachability', '~> 1.0'
+
+end
