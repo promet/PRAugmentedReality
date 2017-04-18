@@ -28,6 +28,11 @@
 
 @interface ARView ()
 
+/**
+ The PRAR manager that the view uses.
+ */
+@property (nonatomic) PRARManager *prarManager;
+
 @end
 
 
@@ -83,21 +88,21 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [[PRARManager sharedManager] startARWithData:arData
-                                     forLocation:CLLocationCoordinate2DMake(currentLoc.coordinate.latitude,
-                                                                            currentLoc.coordinate.longitude)];
+
+    [self.prarManager startARWithData:arData
+                          forLocation:CLLocationCoordinate2DMake(currentLoc.coordinate.latitude,
+                                                                 currentLoc.coordinate.longitude)];
 }
 -(void)viewWillDisappear:(BOOL)animated {
-    [[PRARManager sharedManager] stopAR];
+    [self.prarManager stopAR];
     
     [super viewWillDisappear:animated];
 }
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    
-    [PRARManager sharedManagerWithRadarAndSize:self.view.frame.size andDelegate:self];
+
+    self.prarManager = [[PRARManager alloc] initWithSize:self.view.frame.size delegate:self showRadar:YES];
 }
 
 
